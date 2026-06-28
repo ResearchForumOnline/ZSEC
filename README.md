@@ -7,6 +7,8 @@
 <p align="center">
   <a href="https://talktoai.org/zsec/">Website</a>
   |
+  <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">Video</a>
+  |
   <a href="https://talktoai.org/zsec/feed.json">Advisory Feed</a>
   |
   <a href="docs/advisory-feed.md">Feed Design</a>
@@ -26,6 +28,18 @@
 Made by [FreeWebPanel.com](https://freewebpanel.com/) and [talktoai.org](https://talktoai.org/).
 
 ZSEC is a standalone open-source server utility. It does not depend on FreeWebPanel, does not run AI by default, and does not expose a web panel, socket, or remote command API.
+
+## Video Walkthrough
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">
+    <img src="https://img.youtube.com/vi/_ZTn8SGT0VU/hqdefault.jpg" alt="Watch the ZSEC Auto Updates video walkthrough on YouTube" width="640">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU"><strong>Watch the ZSEC Auto Updates video walkthrough</strong></a>
+</p>
 
 ## Quick Start
 
@@ -184,4 +198,3 @@ See [docs/zero-boundary-algebra.md](docs/zero-boundary-algebra.md).
 ## License
 
 Open source under the repository license. The code should be visible and auditable. Hiding code is not treated as a security feature.
-
