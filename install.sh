@@ -24,7 +24,13 @@ fetch_file() {
     return
   fi
   command -v curl >/dev/null 2>&1 || die "curl is required for remote install"
-  curl -fsSL "${SOURCE_BASE}/${source_path}" -o "$destination"
+  local remote_url separator
+  remote_url="${SOURCE_BASE}/${source_path}"
+  separator="?"
+  case "$remote_url" in
+    *\?*) separator="&" ;;
+  esac
+  curl -fsSL "${remote_url}${separator}cachebust=$(date +%s)" -o "$destination"
 }
 
 detect_admin_ip() {
