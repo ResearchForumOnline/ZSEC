@@ -59,6 +59,24 @@ need_root() {
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
+is_active_unit() {
+  have systemctl && systemctl is-active "$1" >/dev/null 2>&1
+}
+
+container_or_virtualization_host() {
+  have docker && return 0
+  have podman && return 0
+  have kubelet && return 0
+  have pveversion && return 0
+  have pct && return 0
+  is_active_unit lxc && return 0
+  is_active_unit pve-cluster && return 0
+  is_active_unit kubelet && return 0
+  [ -d /etc/pve ] && return 0
+  [ -d /var/lib/lxc ] && return 0
+  return 1
+}
+
 os_id() {
   # shellcheck disable=SC1091
   . /etc/os-release
@@ -192,8 +210,10 @@ write_sysctl_hardening() {
   if [ "$ZSEC_DISABLE_UNPRIVILEGED_USERNS" = "1" ]; then
     userns_line="kernel.unprivileged_userns_clone = 0"
   elif [ "$ZSEC_DISABLE_UNPRIVILEGED_USERNS" = "auto" ]; then
-    if ! have docker && ! have podman && ! systemctl is-active lxc >/dev/null 2>&1; then
+    if ! container_or_virtualization_host; then
       userns_line="kernel.unprivileged_userns_clone = 0"
+    else
+      info "preserving unprivileged user namespaces on container/virtualization host"
     fi
   fi
 
@@ -259,41 +279,6 @@ EOF
   systemctl enable --now fail2ban >/dev/null 2>&1 || true
   systemctl restart fail2ban >/dev/null 2>&1 || true
   info "fail2ban sshd jail configured"
-}
-
-configure_ubuntu_security_only() {
-  local codename distro_id distro_origin
-  # shellcheck disable=SC1091
-  . /etc/os-release
-  codename="${VERSION_CODENAME:-$(lsb_release -sc 2>/dev/null || true)}"
-  distro_id="${ID:-ubuntu}"
-  case "$distro_id" in
-    ubuntu) distro_origin="Ubuntu" ;;
-    debian) distro_origin="Debian" ;;
-    *) distro_origin="$distro_id" ;;
-  esac
-
-  if [ "$DRY_RUN" = "1" ]; then
-    info "dry-run: would configure unattended-upgrades for ${distro_origin} ${codename} security"
-    return 0
-  fi
-
-  have unattended-upgrade || {
-    apt-get update -y >/dev/null
-    DEBIAN_FRONTEND=noninteractive apt-get install -y unattended-upgrades apt-listchanges >/dev/null
-  }
-
-  cat > /etc/apt/apt.conf.d/52zsec-security-only <<EOF
-Unattended-Upgrade::Origins-Pattern {
-        "origin=${distro_origin},codename=${codename}-security";
-        "origin=${distro_origin}ESMApps,codename=${codename}-apps-security";
-        "origin=${distro_origin}ESM,codename=${codename}-infra-security";
-};
-Unattended-Upgrade::Package-Blacklist {};
-Unattended-Upgrade::Automatic-Reboot "false";
-Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
-Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
-EOF
 }
 
 debian_security_package_list() {

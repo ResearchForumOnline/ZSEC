@@ -68,6 +68,7 @@ ZSEC is intentionally conservative.
 - It does not disable password login automatically.
 - It does not add firewall deny rules automatically.
 - It does not expose a web panel, agent socket, AI endpoint, or remote command API.
+- It preserves unprivileged user namespaces automatically on detected Proxmox, LXC, Docker, Podman, or Kubernetes-style hosts.
 
 The optional AI audit is local-only. It checks for commonly exposed AI/dev service ports such as Ollama, Jupyter, Gradio, Open WebUI, and common development ports. It reports warnings only.
 
