@@ -305,10 +305,16 @@
       padding-left: 20px;
     }
 
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
     .video-card {
       display: block;
       overflow: hidden;
-      margin-top: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #0f172a;
@@ -368,6 +374,7 @@
       .status-strip { grid-template-columns: 1fr; }
       .panel-head { flex-direction: column; }
       .feed-meta { text-align: left; }
+      .video-grid { grid-template-columns: 1fr; }
       h1 { font-size: 36px; }
     }
   </style>
@@ -385,6 +392,7 @@
       <nav class="navlinks" aria-label="ZSEC links">
         <a href="https://github.com/ResearchForumOnline/ZSEC">GitHub</a>
         <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">Video</a>
+        <a href="https://www.youtube.com/shorts/z2keIOqCkio">Short</a>
         <a href="/zsec/feed.json">Feed JSON</a>
       </nav>
     </div>
@@ -400,6 +408,7 @@
           <div class="hero-actions">
             <a class="button primary" href="https://github.com/ResearchForumOnline/ZSEC">Open GitHub</a>
             <a class="button" href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">Watch video</a>
+            <a class="button" href="https://www.youtube.com/shorts/z2keIOqCkio">Watch short</a>
             <a class="button" href="/zsec/feed.json">View advisory feed</a>
           </div>
         </div>
@@ -439,12 +448,18 @@ sudo zsec status</code></pre>
       </section>
 
       <section class="section">
-        <h2>Video Walkthrough</h2>
-        <p>Watch the ZSEC overview and install flow on YouTube.</p>
-        <a class="video-card" href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">
-          <img src="https://img.youtube.com/vi/_ZTn8SGT0VU/hqdefault.jpg" alt="ZSEC Auto Updates video walkthrough thumbnail">
-          <span>Watch ZSEC on YouTube</span>
-        </a>
+        <h2>Videos</h2>
+        <p>Watch the ZSEC overview and the dramatic short on YouTube.</p>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">
+            <img src="https://img.youtube.com/vi/_ZTn8SGT0VU/hqdefault.jpg" alt="ZSEC Auto Updates video walkthrough thumbnail">
+            <span>Full walkthrough</span>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/shorts/z2keIOqCkio">
+            <img src="https://img.youtube.com/vi/z2keIOqCkio/hqdefault.jpg" alt="Dramatic ZSEC YouTube Short thumbnail">
+            <span>Dramatic short</span>
+          </a>
+        </div>
       </section>
 
       <section class="section">

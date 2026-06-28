@@ -9,6 +9,8 @@
   |
   <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">Video</a>
   |
+  <a href="https://www.youtube.com/shorts/z2keIOqCkio">Short</a>
+  |
   <a href="https://talktoai.org/zsec/feed.json">Advisory Feed</a>
   |
   <a href="docs/advisory-feed.md">Feed Design</a>
@@ -29,7 +31,7 @@ Made by [FreeWebPanel.com](https://freewebpanel.com/) and [talktoai.org](https:/
 
 ZSEC is a standalone open-source server utility. It does not depend on FreeWebPanel, does not run AI by default, and does not expose a web panel, socket, or remote command API.
 
-## Video Walkthrough
+## Videos
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">
@@ -39,6 +41,16 @@ ZSEC is a standalone open-source server utility. It does not depend on FreeWebPa
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU"><strong>Watch the ZSEC Auto Updates video walkthrough</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/shorts/z2keIOqCkio">
+    <img src="https://img.youtube.com/vi/z2keIOqCkio/hqdefault.jpg" alt="Watch the dramatic ZSEC YouTube Short" width="360">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/shorts/z2keIOqCkio"><strong>Watch the dramatic ZSEC Short</strong></a>
 </p>
 
 ## Quick Start
