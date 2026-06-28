@@ -349,8 +349,16 @@ ai_surface_audit() {
   [ "$ZSEC_AI_AUDIT" = "1" ] || return 0
   have ss || { warn "ss not found; skipping local AI surface audit"; return 0; }
   local findings
-  findings="$(ss -lntup 2>/dev/null | awk '
-    /:(11434|3000|7860|8888|5000|8000|8080|8090|8501) / && $4 !~ /127\.0\.0\.1|::1/ {print}
+  findings="$(ss -H -lntup 2>/dev/null | awk '
+    {
+      local_addr = $5
+      if (local_addr ~ /(127\.0\.0\.1|\[::1\]|::1|localhost):/) {
+        next
+      }
+      if (local_addr ~ /:(11434|3000|7860|8888|5000|8000|8080|8090|8501)$/) {
+        print
+      }
+    }
   ' || true)"
   if [ -n "$findings" ]; then
     warn "public AI/dev-like service ports detected; review bindings"
