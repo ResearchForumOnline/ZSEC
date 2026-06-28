@@ -15,6 +15,10 @@ ZSEC_DISABLE_UNPRIVILEGED_USERNS="${ZSEC_DISABLE_UNPRIVILEGED_USERNS:-auto}"
 ZSEC_ENABLE_FAIL2BAN="${ZSEC_ENABLE_FAIL2BAN:-1}"
 ZSEC_FIREWALL_GUARD="${ZSEC_FIREWALL_GUARD:-0}"
 ZSEC_AI_AUDIT="${ZSEC_AI_AUDIT:-1}"
+ZSEC_ADVISORY_FEED="${ZSEC_ADVISORY_FEED:-1}"
+ZSEC_ADVISORY_FEED_URL="${ZSEC_ADVISORY_FEED_URL:-https://talktoai.org/zsec/feed.json}"
+ZSEC_ADVISORY_TIMEOUT="${ZSEC_ADVISORY_TIMEOUT:-15}"
+ZSEC_ADVISORY_MAX_ITEMS="${ZSEC_ADVISORY_MAX_ITEMS:-80}"
 ZSEC_TAMPER_LOCK="${ZSEC_TAMPER_LOCK:-0}"
 ZSEC_MIN_FREE_MB="${ZSEC_MIN_FREE_MB:-512}"
 
@@ -40,6 +44,10 @@ for extra in "$ALLOWLIST_DIR"/*.conf; do
   # shellcheck disable=SC1090
   . "$extra"
 done
+
+ADVISORY_FEED_CACHE="${STATE_DIR}/advisory-feed.json"
+ADVISORY_TODO_JSON="${STATE_DIR}/todo.json"
+ADVISORY_TODO_TEXT="${STATE_DIR}/todo.txt"
 
 log() {
   local level="$1"
@@ -368,6 +376,248 @@ ai_surface_audit() {
   fi
 }
 
+advisory_feed_check() {
+  [ "$ZSEC_ADVISORY_FEED" = "1" ] || return 0
+  have python3 || { warn "python3 not found; skipping advisory feed"; return 0; }
+
+  local tmp_feed
+  tmp_feed="${ADVISORY_FEED_CACHE}.tmp"
+  if have curl; then
+    if curl --proto '=https' --tlsv1.2 -fsSL --connect-timeout "$ZSEC_ADVISORY_TIMEOUT" --max-time "$ZSEC_ADVISORY_TIMEOUT" "$ZSEC_ADVISORY_FEED_URL" -o "$tmp_feed"; then
+      mv "$tmp_feed" "$ADVISORY_FEED_CACHE"
+      chmod 0640 "$ADVISORY_FEED_CACHE" 2>/dev/null || true
+      info "advisory feed refreshed from ${ZSEC_ADVISORY_FEED_URL}"
+    else
+      rm -f "$tmp_feed"
+      warn "advisory feed refresh failed; using cached feed if available"
+    fi
+  else
+    warn "curl not found; using cached advisory feed if available"
+  fi
+
+  [ -s "$ADVISORY_FEED_CACHE" ] || { warn "no advisory feed cache available"; return 0; }
+
+  local result
+  if ! result="$(python3 - "$ADVISORY_FEED_CACHE" "$ADVISORY_TODO_JSON" "$ADVISORY_TODO_TEXT" "$ZSEC_ADVISORY_MAX_ITEMS" <<'PY'
+import datetime
+import json
+import os
+import re
+import subprocess
+import sys
+
+feed_path, todo_json_path, todo_text_path, max_items_raw = sys.argv[1:5]
+
+try:
+    max_items = max(1, min(int(max_items_raw), 250))
+except Exception:
+    max_items = 80
+
+def read_os_release():
+    data = {}
+    try:
+        with open("/etc/os-release", "r", encoding="utf-8", errors="replace") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                data[key] = value.strip().strip('"')
+    except OSError:
+        pass
+    return data
+
+def command_lines(command):
+    try:
+        out = subprocess.check_output(command, stderr=subprocess.DEVNULL)
+    except Exception:
+        return []
+    return out.decode("utf-8", "replace").splitlines()
+
+def installed_packages():
+    names = set()
+    for line in command_lines(["dpkg-query", "-W", "-f=${binary:Package}\n"]):
+        line = line.strip().lower()
+        if line:
+            names.add(line.split(":")[0])
+    for line in command_lines(["rpm", "-qa", "--qf", "%{NAME}\n"]):
+        line = line.strip().lower()
+        if line:
+            names.add(line)
+    return names
+
+def public_ports():
+    ports = set()
+    for line in command_lines(["ss", "-H", "-lntup"]):
+        parts = line.split()
+        if len(parts) < 5:
+            continue
+        local_addr = parts[4]
+        if re.search(r"(127\.0\.0\.1|\[::1\]|::1|localhost):", local_addr):
+            continue
+        match = re.search(r":(\d+)$", local_addr)
+        if match:
+            ports.add(match.group(1))
+    return ports
+
+def text_blob(item):
+    values = [
+        item.get("id", ""),
+        item.get("title", ""),
+        item.get("summary", ""),
+    ]
+    values.extend(item.get("tags") or [])
+    affected = item.get("affected") or {}
+    for key in ("vendors", "products", "keywords"):
+        values.extend(affected.get(key) or [])
+    return " ".join(str(value).lower() for value in values if value)
+
+def has_any(blob, words):
+    return any(word in blob for word in words)
+
+try:
+    with open(feed_path, "r", encoding="utf-8", errors="replace") as fh:
+        feed = json.load(fh)
+except Exception as exc:
+    print("invalid advisory feed: %s" % exc)
+    sys.exit(2)
+
+if feed.get("schema") != "zsec.feed.v1" or not isinstance(feed.get("items"), list):
+    print("invalid advisory feed schema")
+    sys.exit(2)
+
+os_release = read_os_release()
+os_words = " ".join([
+    os_release.get("ID", ""),
+    os_release.get("ID_LIKE", ""),
+    os_release.get("NAME", ""),
+    os_release.get("VERSION_ID", ""),
+]).lower()
+packages = installed_packages()
+ports = public_ports()
+kernel_release = command_lines(["uname", "-r"])
+kernel_release = kernel_release[0] if kernel_release else ""
+
+package_markers = {
+    "ssh": ["openssh-server", "openssh-client", "openssh", "sshd"],
+    "openssh": ["openssh-server", "openssh-client", "openssh", "sshd"],
+    "apache": ["apache2", "httpd"],
+    "httpd": ["apache2", "httpd"],
+    "nginx": ["nginx"],
+    "php": ["php", "php-fpm"],
+    "openssl": ["openssl", "libssl3", "openssl-libs"],
+    "curl": ["curl", "libcurl4", "libcurl"],
+    "sudo": ["sudo"],
+    "systemd": ["systemd"],
+    "docker": ["docker", "docker-ce"],
+    "podman": ["podman"],
+    "proxmox": ["pve-manager", "proxmox-ve"],
+    "kernel": ["linux-image", "kernel", "kernel-core", "pve-kernel"],
+    "node": ["nodejs", "node"],
+    "ollama": ["ollama"],
+}
+
+os_markers = {
+    "ubuntu": "ubuntu" in os_words,
+    "debian": "debian" in os_words,
+    "almalinux": "almalinux" in os_words or "rhel" in os_words,
+    "rocky": "rocky" in os_words or "rhel" in os_words,
+    "rhel": "rhel" in os_words or "fedora" in os_words,
+    "linux": True,
+}
+
+matches = []
+watch = 0
+
+for item in feed.get("items", [])[:max_items]:
+    if not isinstance(item, dict):
+        continue
+    blob = text_blob(item)
+    reasons = []
+
+    for marker, enabled in os_markers.items():
+        if enabled and marker in blob:
+            reasons.append("matches OS family: %s" % marker)
+
+    for marker, package_names in package_markers.items():
+        if marker in blob and any(pkg in packages for pkg in package_names):
+            reasons.append("related installed package/service: %s" % marker)
+
+    if has_any(blob, ["linux kernel", "kernel privilege", "kernel flaw"]) and kernel_release:
+        reasons.append("kernel-related advisory for running kernel %s" % kernel_release)
+
+    if has_any(blob, ["ai service", "ollama", "jupyter", "gradio", "open webui", "dev service"]):
+        exposed = sorted(ports.intersection({"11434", "3000", "7860", "8888", "5000", "8000", "8080", "8090", "8501"}))
+        if exposed:
+            reasons.append("public AI/dev-like port(s): %s" % ", ".join(exposed))
+
+    severity = str(item.get("severity", "info")).lower()
+    if reasons:
+        matches.append({
+            "id": item.get("id", "unknown"),
+            "severity": severity,
+            "kind": item.get("kind", "advisory"),
+            "title": item.get("title", "Untitled advisory"),
+            "source_url": (item.get("source") or {}).get("url", ""),
+            "published": item.get("published", ""),
+            "reason": "; ".join(sorted(set(reasons))),
+            "action": item.get("zsec_action", "Review and apply vendor security updates if affected."),
+        })
+    elif severity in ("critical", "high") or item.get("kind") == "vulnerability":
+        watch += 1
+
+severity_order = {"critical": 0, "high": 1, "medium": 2, "low": 3, "info": 4}
+matches = sorted(matches, key=lambda row: (severity_order.get(row.get("severity"), 5), row.get("published", "")))[:50]
+
+summary = {
+    "generated_at": datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+    "feed_generated_at": feed.get("generated_at", ""),
+    "feed_url": feed.get("home_url", ""),
+    "local_os": os_release.get("PRETTY_NAME", os_words),
+    "matches": matches,
+    "watch_count": watch,
+    "policy": "Read-only feed. ZSEC never executes commands from feed data.",
+}
+
+with open(todo_json_path, "w", encoding="utf-8") as fh:
+    json.dump(summary, fh, indent=2, sort_keys=True)
+    fh.write("\n")
+
+lines = [
+    "ZSEC advisory TODOs",
+    "Generated: %s" % summary["generated_at"],
+    "Policy: %s" % summary["policy"],
+    "Local OS: %s" % summary["local_os"],
+    "",
+]
+if not matches:
+    lines.append("No locally relevant feed TODOs found.")
+else:
+    for idx, item in enumerate(matches, 1):
+        lines.append("%d. [%s] %s" % (idx, item.get("severity", "info").upper(), item.get("title", "Untitled advisory")))
+        if item.get("reason"):
+            lines.append("   Reason: %s" % item["reason"])
+        if item.get("action"):
+            lines.append("   Action: %s" % item["action"])
+        if item.get("source_url"):
+            lines.append("   Source: %s" % item["source_url"])
+        lines.append("")
+if watch:
+    lines.append("Additional high-priority feed items kept on watch: %s" % watch)
+
+with open(todo_text_path, "w", encoding="utf-8") as fh:
+    fh.write("\n".join(lines).rstrip() + "\n")
+
+print("matched=%d watch=%d feed_items=%d" % (len(matches), watch, len(feed.get("items", []))))
+PY
+)"; then
+    warn "advisory feed processing failed: ${result}"
+    return 0
+  fi
+  chmod 0640 "$ADVISORY_TODO_JSON" "$ADVISORY_TODO_TEXT" 2>/dev/null || true
+  info "advisory feed processed; ${result}"
+}
+
 tamper_lock_notice() {
   if [ "$ZSEC_TAMPER_LOCK" = "1" ]; then
     if have chattr; then
@@ -389,6 +639,7 @@ run_updates() {
   write_sysctl_hardening
   configure_fail2ban
   ai_surface_audit
+  advisory_feed_check
 
   if is_debian_like; then
     security_updates_debian
@@ -411,6 +662,10 @@ status() {
   fi
   printf '\nLatest log:\n'
   tail -n 40 "$LOG_FILE" 2>/dev/null || true
+  if [ -s "$ADVISORY_TODO_TEXT" ]; then
+    printf '\nLatest advisory TODOs:\n'
+    sed -n '1,80p' "$ADVISORY_TODO_TEXT" 2>/dev/null || true
+  fi
 }
 
 audit_only() {
@@ -420,6 +675,7 @@ audit_only() {
   write_sysctl_hardening
   configure_fail2ban
   ai_surface_audit
+  advisory_feed_check
   info "ZSEC audit completed; dry_run=${DRY_RUN}"
 }
 
@@ -428,6 +684,7 @@ case "$COMMAND" in
   check) run_updates ;;
   audit) audit_only ;;
   lockout-guard) lockout_guard ;;
+  todo) [ -s "$ADVISORY_TODO_TEXT" ] && cat "$ADVISORY_TODO_TEXT" || printf 'No ZSEC advisory TODO file yet. Run: zsec check\n' ;;
   status) status ;;
   version) printf 'ZSEC Auto Updates %s\n' "$ZSEC_VERSION" ;;
   *)
@@ -438,6 +695,7 @@ check          Dry-run security update and audit
 run            Apply security updates and hardening
 audit          Run hardening/audit modules only
 lockout-guard  Back up SSH config and record admin IP
+todo           Show local advisory feed TODOs
 status         Show timer and latest log
 version        Print version
 EOF

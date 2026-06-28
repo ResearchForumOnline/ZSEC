@@ -17,6 +17,7 @@ ZSEC is a standalone open-source server utility. It does not depend on FreeWebPa
 - Configures safe kernel/network hardening sysctls.
 - Configures fail2ban for SSH when available.
 - Audits exposed AI/dev service ports locally without opening any API door.
+- Reads the public ZSEC advisory feed at `https://talktoai.org/zsec/feed.json` and creates local TODOs only.
 - Keeps logs in `/var/log/zsec/zsec.log`.
 
 ## Quick Install
@@ -122,9 +123,26 @@ zsec check          # dry-run security update and audits
 zsec run            # apply security updates and hardening
 zsec audit          # local hardening and exposed-port audit only
 zsec lockout-guard  # refresh SSH backups and admin IP record
+zsec todo           # show local advisory feed TODOs
 zsec status         # show timer and latest log
 zsec version        # print version
 ```
+
+## Advisory Feed
+
+The public ZSEC page is:
+
+```text
+https://talktoai.org/zsec/
+```
+
+The data feed is:
+
+```text
+https://talktoai.org/zsec/feed.json
+```
+
+The feed combines public security signals such as CISA KEV and relevant security news. ZSEC clients treat it as read-only data. It can create local review TODOs in `/var/lib/zsec/todo.txt`, but it cannot run shell commands, change firewall rules, install packages, or override the security-only update policy.
 
 ## Zero Boundary Algebra Note
 

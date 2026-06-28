@@ -1,0 +1,13 @@
+[Unit]
+Description=Build talktoai.org ZSEC advisory feed
+Documentation=https://github.com/ResearchForumOnline/ZSEC
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=talkto
+Group=talkto
+WorkingDirectory=/home/talkto/zsec-feed
+ExecStart=/usr/bin/python3 /home/talkto/zsec-feed/build-feed.py --output /home/talkto/public_html/zsec/feed.json --limit-kev 60 --limit-news 16
+

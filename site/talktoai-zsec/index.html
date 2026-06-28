@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZSEC Auto Updates | TalkToAI</title>
+  <meta name="description" content="ZSEC Auto Updates is a security-only Linux auto updater and read-only advisory feed made by FreeWebPanel.com and talktoai.org.">
+  <link rel="canonical" href="https://talktoai.org/zsec/">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111827;
+      --muted: #5d6778;
+      --line: #d9e1ec;
+      --surface: #f7fafc;
+      --panel: #ffffff;
+      --blue: #0b74de;
+      --green: #008767;
+      --red: #c93632;
+      --amber: #a76500;
+      --shadow: 0 18px 45px rgba(18, 38, 63, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .brand strong { display: block; font-size: 18px; line-height: 1.1; }
+    .brand span { display: block; color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a,
+    .button {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      padding: 0 14px;
+      text-decoration: none;
+      background: white;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    main { padding: 34px 0 54px; }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 22px;
+      align-items: stretch;
+      min-height: calc(100vh - 126px);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: clamp(24px, 4vw, 46px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.96), rgba(255,255,255,.82)),
+        url("/assets/zerotalktoai.jpg") center/cover;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 10px 0 14px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .98;
+      letter-spacing: 0;
+      max-width: 760px;
+    }
+
+    .lead {
+      color: #334155;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric span { color: var(--muted); font-size: 13px; font-weight: 700; }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .panel-head {
+      padding: 20px 22px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .panel-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .feed-meta {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .feed {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      max-height: 64vh;
+      overflow: auto;
+    }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .item-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .item p {
+      color: var(--muted);
+      margin: 8px 0 0;
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: white;
+      font-weight: 800;
+      font-size: 11px;
+      text-transform: uppercase;
+      flex: 0 0 auto;
+    }
+
+    .badge.high,
+    .badge.critical { background: var(--red); }
+    .badge.medium { background: var(--amber); }
+    .badge.info,
+    .badge.low { background: var(--green); }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .section {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      min-width: 0;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    .section p,
+    .section li {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .section ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    code {
+      background: #ecf3fb;
+      color: #0f3f72;
+      border-radius: 4px;
+      padding: 2px 5px;
+      font-size: .95em;
+    }
+
+    pre {
+      margin: 14px 0 0;
+      padding: 14px;
+      overflow: auto;
+      border-radius: 8px;
+      background: #101820;
+      color: #ecfdf5;
+      line-height: 1.45;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      background: white;
+    }
+
+    @media (max-width: 920px) {
+      .dashboard,
+      .details { grid-template-columns: 1fr; }
+      .dashboard { min-height: 0; }
+      .feed { max-height: none; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .navlinks { justify-content: flex-start; }
+      .status-strip { grid-template-columns: 1fr; }
+      .panel-head { flex-direction: column; }
+      .feed-meta { text-align: left; }
+      h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="/">
+        <img src="/talktoai.png" alt="TalkToAI">
+        <span>
+          <strong>ZSEC Auto Updates</strong>
+          <span>security-only updater and advisory feed</span>
+        </span>
+      </a>
+      <nav class="navlinks" aria-label="ZSEC links">
+        <a href="https://github.com/ResearchForumOnline/ZSEC">GitHub</a>
+        <a href="/zsec/feed.json">Feed JSON</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell dashboard">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Made by FreeWebPanel.com and talktoai.org</div>
+          <h1>Security updates only. No remote command channel.</h1>
+          <p class="lead">ZSEC keeps Linux servers patched against active threats while keeping the blast radius small: security packages, SSH lockout guardrails, fail2ban, local exposure checks, and read-only advisory TODOs.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/ResearchForumOnline/ZSEC">Open GitHub</a>
+            <a class="button" href="/zsec/feed.json">View advisory feed</a>
+          </div>
+        </div>
+        <div class="status-strip" aria-label="ZSEC operating policy">
+          <div class="metric"><b>12h</b><span>security check interval</span></div>
+          <div class="metric"><b>0</b><span>remote commands accepted</span></div>
+          <div class="metric"><b>OS</b><span>security packages only</span></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="feed-title">
+        <div class="panel-head">
+          <div>
+            <h2 id="feed-title">Live Security Feed</h2>
+            <p>Normalized CISA KEV and security-news signals for ZSEC review TODOs.</p>
+          </div>
+          <div class="feed-meta" id="feed-meta">Loading feed...</div>
+        </div>
+        <div class="feed" id="feed">
+          <article class="item">
+            <div class="item-top">
+              <h3>Loading current advisories</h3>
+              <span class="badge info">data</span>
+            </div>
+            <p>The public JSON feed is read-only. ZSEC clients create local TODOs from it and continue to apply only OS security updates through apt or dnf.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="shell details">
+      <section class="section">
+        <h2>Install</h2>
+        <p>ZSEC is a standalone open-source project. FreeWebPanel can install it, but ZSEC does not depend on panel code.</p>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/ResearchForumOnline/ZSEC/main/install.sh | sudo bash
+sudo zsec status</code></pre>
+      </section>
+
+      <section class="section">
+        <h2>Safe Automation</h2>
+        <ul>
+          <li>Security-only package updates.</li>
+          <li>No feature upgrades from ZSEC.</li>
+          <li>No AI runtime or API key required.</li>
+          <li>No feed-supplied shell commands.</li>
+          <li>SSH config and authorized keys backed up before hardening.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Feed Use</h2>
+        <p>Servers fetch <code>/zsec/feed.json</code> as data. Matching items become local TODOs in <code>/var/lib/zsec/todo.txt</code>. The feed can warn, but package managers decide security updates.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell">ZSEC Auto Updates is published on GitHub. Security feed sources are public and attribution is preserved in the JSON.</div>
+  </footer>
+
+  <script>
+    const feedEl = document.getElementById('feed');
+    const metaEl = document.getElementById('feed-meta');
+    const severityClass = value => String(value || 'info').toLowerCase().replace(/[^a-z]/g, '') || 'info';
+
+    function text(value, fallback = '') {
+      return value == null || value === '' ? fallback : String(value);
+    }
+
+    function escapeHtml(value) {
+      return text(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function safeUrl(value) {
+      try {
+        const url = new URL(text(value, '/zsec/feed.json'), window.location.origin);
+        return ['https:', 'http:'].includes(url.protocol) ? url.href : '/zsec/feed.json';
+      } catch {
+        return '/zsec/feed.json';
+      }
+    }
+
+    function itemTemplate(item) {
+      const severity = severityClass(item.severity);
+      const source = safeUrl(item.source && item.source.url ? item.source.url : '/zsec/feed.json');
+      const title = escapeHtml(text(item.title, 'Untitled advisory'));
+      const summary = escapeHtml(text(item.summary, text(item.zsec_action, 'Review advisory details in the JSON feed.')));
+      return `
+        <article class="item">
+          <div class="item-top">
+            <h3><a href="${source}" rel="noopener">${title}</a></h3>
+            <span class="badge ${severity}">${severity}</span>
+          </div>
+          <p>${summary}</p>
+        </article>
+      `;
+    }
+
+    fetch('/zsec/feed.json', { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('feed unavailable')))
+      .then(feed => {
+        const items = Array.isArray(feed.items) ? feed.items.slice(0, 12) : [];
+        metaEl.textContent = feed.generated_at ? `Updated ${feed.generated_at}` : 'Feed ready';
+        feedEl.innerHTML = items.length ? items.map(itemTemplate).join('') : itemTemplate({
+          severity: 'info',
+          title: 'No feed items available',
+          summary: 'The updater continues to run security-only package checks even if the advisory feed is empty.'
+        });
+      })
+      .catch(() => {
+        metaEl.textContent = 'Feed unavailable';
+        feedEl.innerHTML = itemTemplate({
+          severity: 'info',
+          title: 'Advisory feed not reachable',
+          summary: 'ZSEC clients fail closed for the feed: no remote actions are accepted, and security-only OS updates still run.'
+        });
+      });
+  </script>
+</body>
+</html>
