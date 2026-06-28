@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T14:32:43Z",
+  "generated_at": "2026-06-28T14:35:50Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -270,6 +270,7 @@
           "cve",
           "kernel",
           "linux",
+          "lpe",
           "news",
           "the-hacker-news"
         ],
@@ -290,6 +291,7 @@
         "cve",
         "kernel",
         "linux",
+        "lpe",
         "news",
         "the-hacker-news"
       ],
@@ -1362,8 +1364,8 @@
           "ai-exposure",
           "cisa-kev",
           "cve",
-          "kernel",
           "known-exploited",
+          "lpe",
           "web"
         ],
         "products": [
@@ -1389,8 +1391,8 @@
         "ai-exposure",
         "cisa-kev",
         "cve",
-        "kernel",
         "known-exploited",
+        "lpe",
         "web"
       ],
       "title": "LiteSpeed cPanel Plugin LiteSpeed cPanel Plugin Privilege Escalation Vulnerability",

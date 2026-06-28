@@ -24,7 +24,8 @@ HOME_URL = "https://talktoai.org/zsec/"
 
 KEYWORD_TAGS = {
     "linux": ["linux", "ubuntu", "debian", "almalinux", "rocky", "rhel", "kernel", "proxmox"],
-    "kernel": ["kernel", "privilege escalation", "local privilege", "lpe"],
+    "kernel": ["kernel"],
+    "lpe": ["privilege escalation", "local privilege", "lpe"],
     "ssh": ["ssh", "openssh", "brute force", "botnet"],
     "web": ["apache", "nginx", "httpd", "php", "wordpress", "web server", "cwp", "panel"],
     "ai-exposure": ["ai", "ollama", "jupyter", "gradio", "open webui", "llm", "model context protocol", "mcp"],
