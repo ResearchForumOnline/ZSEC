@@ -1,0 +1,13 @@
+[Unit]
+Description=Run ZSEC Auto Updates every 12 hours
+Documentation=https://github.com/ResearchForumOnline/ZSEC
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=12h
+RandomizedDelaySec=30min
+Persistent=true
+Unit=zsec.service
+
+[Install]
+WantedBy=timers.target

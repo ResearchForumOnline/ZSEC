@@ -1,0 +1,12 @@
+[Unit]
+Description=ZSEC Auto Updates security-only run
+Documentation=https://github.com/ResearchForumOnline/ZSEC
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/zsec run
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

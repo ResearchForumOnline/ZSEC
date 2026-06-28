@@ -1,0 +1,453 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ZSEC_VERSION="0.1.0"
+CONFIG_DIR="${ZSEC_CONFIG_DIR:-/etc/zsec}"
+CONFIG_FILE="${CONFIG_DIR}/zsec.conf"
+ALLOWLIST_DIR="${CONFIG_DIR}/allowlist.d"
+STATE_DIR="${ZSEC_STATE_DIR:-/var/lib/zsec}"
+LOG_DIR="${ZSEC_LOG_DIR:-/var/log/zsec}"
+BACKUP_DIR="${ZSEC_BACKUP_DIR:-/var/backups/zsec}"
+LOG_FILE="${LOG_DIR}/zsec.log"
+
+ZSEC_APPLY_SYSCTL="${ZSEC_APPLY_SYSCTL:-1}"
+ZSEC_DISABLE_UNPRIVILEGED_USERNS="${ZSEC_DISABLE_UNPRIVILEGED_USERNS:-auto}"
+ZSEC_ENABLE_FAIL2BAN="${ZSEC_ENABLE_FAIL2BAN:-1}"
+ZSEC_FIREWALL_GUARD="${ZSEC_FIREWALL_GUARD:-0}"
+ZSEC_AI_AUDIT="${ZSEC_AI_AUDIT:-1}"
+ZSEC_TAMPER_LOCK="${ZSEC_TAMPER_LOCK:-0}"
+ZSEC_MIN_FREE_MB="${ZSEC_MIN_FREE_MB:-512}"
+
+DRY_RUN=0
+COMMAND="${1:-run}"
+if [ "$COMMAND" = "--dry-run" ]; then
+  DRY_RUN=1
+  COMMAND="${2:-check}"
+fi
+if [ "$COMMAND" = "check" ]; then
+  DRY_RUN=1
+fi
+
+mkdir -p "$CONFIG_DIR" "$ALLOWLIST_DIR" "$STATE_DIR" "$LOG_DIR" "$BACKUP_DIR"
+touch "$LOG_FILE"
+chmod 0750 "$CONFIG_DIR" "$STATE_DIR" "$LOG_DIR" "$BACKUP_DIR" 2>/dev/null || true
+chmod 0640 "$LOG_FILE" 2>/dev/null || true
+
+# shellcheck disable=SC1090
+[ -f "$CONFIG_FILE" ] && . "$CONFIG_FILE"
+for extra in "$ALLOWLIST_DIR"/*.conf; do
+  [ -e "$extra" ] || continue
+  # shellcheck disable=SC1090
+  . "$extra"
+done
+
+log() {
+  local level="$1"
+  shift
+  printf '%s level=%s msg="%s"\n' "$(date -Is)" "$level" "$*" | tee -a "$LOG_FILE" >/dev/null
+}
+
+info() { log "info" "$*"; }
+warn() { log "warn" "$*"; }
+fail() { log "error" "$*"; exit 1; }
+
+need_root() {
+  if [ "${EUID:-$(id -u)}" -ne 0 ]; then
+    fail "ZSEC must run as root"
+  fi
+}
+
+have() { command -v "$1" >/dev/null 2>&1; }
+
+os_id() {
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  printf '%s\n' "${ID:-unknown}"
+}
+
+os_like() {
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  printf '%s %s\n' "${ID:-unknown}" "${ID_LIKE:-}"
+}
+
+is_debian_like() {
+  os_like | grep -Eq '(^| )(ubuntu|debian)( |$)'
+}
+
+is_rhel_like() {
+  os_like | grep -Eq '(^| )(rhel|fedora|centos|almalinux|rocky)( |$)'
+}
+
+active_admin_ip() {
+  if [ -n "${ZSEC_ADMIN_IP:-}" ]; then
+    printf '%s\n' "$ZSEC_ADMIN_IP"
+  elif [ -n "${SSH_CONNECTION:-}" ]; then
+    printf '%s\n' "$SSH_CONNECTION" | awk '{print $1}'
+  fi
+}
+
+ssh_port() {
+  if have sshd; then
+    sshd -T 2>/dev/null | awk '/^port /{print $2; exit}' || true
+  else
+    awk 'tolower($1)=="port"{print $2; exit}' /etc/ssh/sshd_config 2>/dev/null || true
+  fi
+}
+
+free_mb_for() {
+  df -Pm "$1" | awk 'NR==2{print $4}'
+}
+
+preflight() {
+  need_root
+  local free_root
+  free_root="$(free_mb_for /)"
+  if [ "${free_root:-0}" -lt "$ZSEC_MIN_FREE_MB" ]; then
+    fail "not enough free disk on / (${free_root} MB free, need ${ZSEC_MIN_FREE_MB} MB)"
+  fi
+
+  if is_debian_like && pgrep -x apt >/dev/null 2>&1; then
+    fail "apt is already running"
+  fi
+  if is_rhel_like && pgrep -x dnf >/dev/null 2>&1; then
+    fail "dnf is already running"
+  fi
+}
+
+backup_file() {
+  local path="$1"
+  local stamp="$2"
+  [ -e "$path" ] || return 0
+  local dest="${BACKUP_DIR}/${stamp}${path}"
+  mkdir -p "$(dirname "$dest")"
+  cp -a "$path" "$dest"
+}
+
+lockout_guard() {
+  need_root
+  if [ "$DRY_RUN" = "1" ]; then
+    local dry_ip
+    dry_ip="$(active_admin_ip || true)"
+    info "dry-run: would back up SSH config and authorized_keys"
+    [ -n "$dry_ip" ] && info "dry-run: would record admin SSH IP ${dry_ip}"
+    return 0
+  fi
+
+  local stamp
+  stamp="$(date +%Y%m%d-%H%M%S)"
+  backup_file /etc/ssh/sshd_config "$stamp"
+  backup_file /root/.ssh/authorized_keys "$stamp"
+  for key_file in /home/*/.ssh/authorized_keys; do
+    [ -e "$key_file" ] || continue
+    backup_file "$key_file" "$stamp"
+  done
+
+  local ip
+  ip="$(active_admin_ip || true)"
+  if [ -n "$ip" ]; then
+    printf 'ZSEC_ADMIN_IP="%s"\n' "$ip" > "${ALLOWLIST_DIR}/admin-ip.conf"
+    chmod 0600 "${ALLOWLIST_DIR}/admin-ip.conf"
+    info "recorded admin SSH IP ${ip}"
+  fi
+
+  if [ ! -s /root/.ssh/authorized_keys ] && ! find /home -maxdepth 3 -path '*/.ssh/authorized_keys' -size +0c 2>/dev/null | grep -q .; then
+    warn "no authorized_keys files found; avoid SSH changes until key login is confirmed"
+  fi
+}
+
+firewall_guard() {
+  [ "$ZSEC_FIREWALL_GUARD" = "1" ] || return 0
+  local ip port
+  ip="$(active_admin_ip || true)"
+  port="$(ssh_port || true)"
+  port="${port:-22}"
+  [ -n "$ip" ] || { warn "firewall guard enabled but no admin IP detected"; return 0; }
+
+  if have ufw && ufw status 2>/dev/null | grep -qi '^Status: active'; then
+    if [ "$DRY_RUN" = "1" ]; then
+      info "dry-run: would allow SSH from ${ip} on ufw port ${port}"
+    else
+      ufw allow from "$ip" to any port "$port" proto tcp comment "ZSEC admin SSH guard" >/dev/null || true
+      info "ufw admin SSH allow rule checked for ${ip}:${port}"
+    fi
+  elif have firewall-cmd && systemctl is-active firewalld >/dev/null 2>&1; then
+    if [ "$DRY_RUN" = "1" ]; then
+      info "dry-run: would add firewalld SSH rich rule for ${ip}"
+    else
+      firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='${ip}' port port='${port}' protocol='tcp' accept" >/dev/null || true
+      firewall-cmd --reload >/dev/null || true
+      info "firewalld admin SSH allow rule checked for ${ip}:${port}"
+    fi
+  else
+    info "no active supported firewall detected for guard rule"
+  fi
+}
+
+write_sysctl_hardening() {
+  [ "$ZSEC_APPLY_SYSCTL" = "1" ] || return 0
+  local out="/etc/sysctl.d/90-zsec-hardening.conf"
+  local userns_line=""
+
+  if [ "$ZSEC_DISABLE_UNPRIVILEGED_USERNS" = "1" ]; then
+    userns_line="kernel.unprivileged_userns_clone = 0"
+  elif [ "$ZSEC_DISABLE_UNPRIVILEGED_USERNS" = "auto" ]; then
+    if ! have docker && ! have podman && ! systemctl is-active lxc >/dev/null 2>&1; then
+      userns_line="kernel.unprivileged_userns_clone = 0"
+    fi
+  fi
+
+  if [ "$DRY_RUN" = "1" ]; then
+    info "dry-run: would write sysctl hardening to ${out}"
+    return 0
+  fi
+
+  cat > "$out" <<EOF
+# Managed by ZSEC Auto Updates.
+kernel.kptr_restrict = 2
+kernel.dmesg_restrict = 1
+kernel.yama.ptrace_scope = 1
+kernel.unprivileged_bpf_disabled = 1
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+fs.protected_fifos = 2
+fs.protected_regular = 2
+net.ipv4.tcp_syncookies = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+${userns_line}
+EOF
+  sysctl --system >/dev/null || warn "sysctl reload reported warnings"
+  info "sysctl hardening applied"
+}
+
+configure_fail2ban() {
+  [ "$ZSEC_ENABLE_FAIL2BAN" = "1" ] || return 0
+  local admin_ip ignore_line=""
+  admin_ip="$(active_admin_ip || true)"
+  [ -n "$admin_ip" ] && ignore_line="ignoreip = 127.0.0.1/8 ::1 ${admin_ip}"
+
+  if ! have fail2ban-server; then
+    if is_debian_like && have apt-get; then
+      if [ "$DRY_RUN" = "1" ]; then
+        info "dry-run: would install fail2ban"
+        return 0
+      fi
+      apt-get update -y >/dev/null
+      DEBIAN_FRONTEND=noninteractive apt-get install -y fail2ban >/dev/null || { warn "fail2ban install failed"; return 0; }
+    else
+      warn "fail2ban not installed; on Alma/Rocky install it from an approved repo before enabling this jail"
+      return 0
+    fi
+  fi
+
+  if [ "$DRY_RUN" = "1" ]; then
+    info "dry-run: would configure fail2ban sshd jail"
+    return 0
+  fi
+
+  mkdir -p /etc/fail2ban/jail.d
+  cat > /etc/fail2ban/jail.d/zsec-sshd.conf <<EOF
+[sshd]
+enabled = true
+backend = systemd
+maxretry = 5
+findtime = 10m
+bantime = 1h
+${ignore_line}
+EOF
+  systemctl enable --now fail2ban >/dev/null 2>&1 || true
+  systemctl restart fail2ban >/dev/null 2>&1 || true
+  info "fail2ban sshd jail configured"
+}
+
+configure_ubuntu_security_only() {
+  local codename distro_id distro_origin
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  codename="${VERSION_CODENAME:-$(lsb_release -sc 2>/dev/null || true)}"
+  distro_id="${ID:-ubuntu}"
+  case "$distro_id" in
+    ubuntu) distro_origin="Ubuntu" ;;
+    debian) distro_origin="Debian" ;;
+    *) distro_origin="$distro_id" ;;
+  esac
+
+  if [ "$DRY_RUN" = "1" ]; then
+    info "dry-run: would configure unattended-upgrades for ${distro_origin} ${codename} security"
+    return 0
+  fi
+
+  have unattended-upgrade || {
+    apt-get update -y >/dev/null
+    DEBIAN_FRONTEND=noninteractive apt-get install -y unattended-upgrades apt-listchanges >/dev/null
+  }
+
+  cat > /etc/apt/apt.conf.d/52zsec-security-only <<EOF
+Unattended-Upgrade::Origins-Pattern {
+        "origin=${distro_origin},codename=${codename}-security";
+        "origin=${distro_origin}ESMApps,codename=${codename}-apps-security";
+        "origin=${distro_origin}ESM,codename=${codename}-infra-security";
+};
+Unattended-Upgrade::Package-Blacklist {};
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+EOF
+}
+
+debian_security_package_list() {
+  python3 <<'PY'
+import sys
+
+try:
+    import apt
+except Exception as exc:
+    print(f"python-apt unavailable: {exc}", file=sys.stderr)
+    sys.exit(3)
+
+cache = apt.Cache()
+cache.open(None)
+selected = []
+
+for pkg in cache:
+    if not pkg.is_installed or not pkg.is_upgradable:
+        continue
+    candidate = pkg.candidate
+    if not candidate:
+        continue
+    for origin in candidate.origins:
+        archive = (origin.archive or "").lower()
+        label = (origin.label or "").lower()
+        site = (origin.site or "").lower()
+        origin_name = (origin.origin or "").lower()
+        if "security" in archive or "security" in label or ("esm" in origin_name and "security" in archive):
+            selected.append(pkg.name)
+            break
+
+for name in sorted(set(selected)):
+    print(name)
+PY
+}
+
+security_updates_debian() {
+  apt-get update -y >/dev/null
+  local packages=()
+  if ! mapfile -t packages < <(debian_security_package_list); then
+    warn "python-apt security package selection failed; not applying apt upgrades"
+    return 0
+  fi
+
+  if [ "${#packages[@]}" -eq 0 ]; then
+    info "no apt security packages pending"
+    return 0
+  fi
+
+  if [ "$DRY_RUN" = "1" ]; then
+    info "dry-run: apt security packages pending: ${packages[*]}"
+  else
+    DEBIAN_FRONTEND=noninteractive apt-get install --only-upgrade -y "${packages[@]}"
+  fi
+}
+
+security_updates_rhel() {
+  have dnf || fail "dnf not found on RHEL-like system"
+  if [ "$DRY_RUN" = "1" ]; then
+    dnf -q updateinfo list security updates || true
+    info "dry-run: security update check completed"
+  else
+    dnf -y --security upgrade --setopt=install_weak_deps=False || warn "dnf security upgrade reported issues"
+  fi
+}
+
+ai_surface_audit() {
+  [ "$ZSEC_AI_AUDIT" = "1" ] || return 0
+  have ss || { warn "ss not found; skipping local AI surface audit"; return 0; }
+  local findings
+  findings="$(ss -lntup 2>/dev/null | awk '
+    /:(11434|3000|7860|8888|5000|8000|8080|8090|8501) / && $4 !~ /127\.0\.0\.1|::1/ {print}
+  ' || true)"
+  if [ -n "$findings" ]; then
+    warn "public AI/dev-like service ports detected; review bindings"
+    printf '%s\n' "$findings" >> "$LOG_FILE"
+  else
+    info "AI/dev service exposure audit passed"
+  fi
+}
+
+tamper_lock_notice() {
+  if [ "$ZSEC_TAMPER_LOCK" = "1" ]; then
+    if have chattr; then
+      if [ "$DRY_RUN" = "1" ]; then
+        info "dry-run: would set immutable bit on /usr/local/sbin/zsec and ${CONFIG_FILE}"
+      else
+        chattr +i /usr/local/sbin/zsec "$CONFIG_FILE" 2>/dev/null || warn "immutable lock failed"
+      fi
+    else
+      warn "chattr not available for tamper lock"
+    fi
+  fi
+}
+
+run_updates() {
+  preflight
+  lockout_guard
+  firewall_guard
+  write_sysctl_hardening
+  configure_fail2ban
+  ai_surface_audit
+
+  if is_debian_like; then
+    security_updates_debian
+  elif is_rhel_like; then
+    security_updates_rhel
+  else
+    fail "unsupported OS: $(os_id)"
+  fi
+
+  tamper_lock_notice
+  info "ZSEC run completed; dry_run=${DRY_RUN}"
+}
+
+status() {
+  printf 'ZSEC Auto Updates %s\n' "$ZSEC_VERSION"
+  printf 'Config: %s\n' "$CONFIG_FILE"
+  printf 'Log: %s\n' "$LOG_FILE"
+  if have systemctl; then
+    systemctl --no-pager --full status zsec.timer 2>/dev/null || true
+  fi
+  printf '\nLatest log:\n'
+  tail -n 40 "$LOG_FILE" 2>/dev/null || true
+}
+
+audit_only() {
+  preflight
+  lockout_guard
+  firewall_guard
+  write_sysctl_hardening
+  configure_fail2ban
+  ai_surface_audit
+  info "ZSEC audit completed; dry_run=${DRY_RUN}"
+}
+
+case "$COMMAND" in
+  run) run_updates ;;
+  check) run_updates ;;
+  audit) audit_only ;;
+  lockout-guard) lockout_guard ;;
+  status) status ;;
+  version) printf 'ZSEC Auto Updates %s\n' "$ZSEC_VERSION" ;;
+  *)
+    cat <<EOF
+Usage: zsec [check|run|audit|lockout-guard|status|version]
+
+check          Dry-run security update and audit
+run            Apply security updates and hardening
+audit          Run hardening/audit modules only
+lockout-guard  Back up SSH config and record admin IP
+status         Show timer and latest log
+version        Print version
+EOF
+    exit 2
+    ;;
+esac
