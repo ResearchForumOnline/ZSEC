@@ -1,0 +1,57 @@
+name: Repo checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Shell syntax
+        run: bash -n install.sh scripts/install-on-host.sh zsec
+
+      - name: Python compile
+        run: python3 -m py_compile tools/build-feed.py
+
+      - name: Advisory feed JSON
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          feed = json.loads(Path("site/talktoai-zsec/feed.json").read_text(encoding="utf-8"))
+          assert feed.get("schema") == "zsec.feed.v1", "unexpected feed schema"
+          assert isinstance(feed.get("items"), list), "feed items must be a list"
+          print(f"Feed items: {len(feed['items'])}")
+          PY
+
+      - name: Markdown relative links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path.cwd()
+          link_re = re.compile(r'\[[^\]]+\]\(([^)]+)\)|<a\s+[^>]*href="([^"]+)"', re.I)
+          missing = []
+
+          for path in root.rglob("*.md"):
+              if ".git" in path.parts:
+                  continue
+              text = path.read_text(encoding="utf-8", errors="replace")
+              for match in link_re.finditer(text):
+                  target = (match.group(1) or match.group(2) or "").strip()
+                  if not target or target.startswith(("#", "http://", "https://", "mailto:")):
+                      continue
+                  clean = target.split("#", 1)[0].replace("%20", " ")
+                  if clean and not (path.parent / clean).resolve().exists():
+                      missing.append(f"{path.relative_to(root)} -> {target}")
+
+          if missing:
+              raise SystemExit("Missing relative links:\n" + "\n".join(missing))
+          print("Markdown relative links: ok")
+          PY

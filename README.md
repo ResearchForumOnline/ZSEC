@@ -17,6 +17,10 @@
   |
   <a href="docs/freewebpanel-integration.md">FreeWebPanel Integration</a>
   |
+  <a href="docs/OPERATIONS.md">Operations</a>
+  |
+  <a href="docs/ROADMAP.md">Roadmap</a>
+  |
   <a href="SECURITY.md">Security Policy</a>
 </p>
 
@@ -127,6 +131,17 @@ zsec todo           # show local advisory feed TODOs
 zsec status         # show timer, latest log, and TODO preview
 zsec version        # print version
 ```
+
+## Project Docs
+
+- [Operations guide](docs/OPERATIONS.md)
+- [Threat model](docs/threat-model.md)
+- [Advisory feed design](docs/advisory-feed.md)
+- [FreeWebPanel integration](docs/freewebpanel-integration.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 
 ## Files
 

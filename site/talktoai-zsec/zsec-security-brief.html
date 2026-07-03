@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security Updates Without A Remote Command Channel | TalkToAI PDF Brief</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #05090c;
+      --panel: rgba(8, 22, 27, .88);
+      --ink: #f8fdff;
+      --soft: #dcecf2;
+      --muted: #91a7b2;
+      --line: rgba(255,255,255,.16);
+      --accent: #16e8d5;
+      --gold: #f0c95b;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 28rem),
+        radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 24rem),
+        linear-gradient(30deg, rgba(34,246,208,.055) 12%, transparent 12.5%, transparent 87%, rgba(34,246,208,.055) 87.5%),
+        linear-gradient(150deg, rgba(34,246,208,.055) 12%, transparent 12.5%, transparent 87%, rgba(34,246,208,.055) 87.5%),
+        #05090c;
+      background-size: auto, auto, 92px 160px, 92px 160px, auto;
+      line-height: 1.45;
+    }
+    .reader-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px clamp(16px, 4vw, 48px);
+      background: rgba(3, 9, 12, .88);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(14px);
+    }
+    .reader-nav strong { color: white; }
+    .reader-nav a {
+      color: #061012;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 900;
+    }
+    .reader {
+      display: grid;
+      gap: 24px;
+      padding: clamp(18px, 4vw, 52px);
+      place-items: center;
+      perspective: 1600px;
+    }
+    .sheet {
+      width: min(100%, 210mm);
+      min-height: 297mm;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.025)),
+        var(--panel);
+      box-shadow: 0 34px 120px rgba(0,0,0,.48);
+      animation: sheetIn .7s ease both;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .sheet:nth-child(odd) { transform: rotateY(-1.5deg); }
+    .sheet:nth-child(even) { transform: rotateY(1.5deg); }
+    .bg-orbit {
+      position: absolute;
+      inset: -20%;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 58px, rgba(255,255,255,.04) 58px 59px),
+        radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent), transparent 30%),
+        conic-gradient(from 180deg, transparent, color-mix(in srgb, var(--accent) 18%, transparent), transparent, color-mix(in srgb, var(--gold) 14%, transparent), transparent);
+      opacity: .65;
+      animation: orbit 24s linear infinite;
+    }
+    .cover-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 46%;
+      object-fit: cover;
+      opacity: .72;
+      filter: saturate(1.1) contrast(1.06);
+      mask-image: linear-gradient(180deg, #000 0 58%, transparent 100%);
+    }
+    .sheet-inner {
+      position: relative;
+      min-height: 297mm;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 22mm 18mm 14mm;
+    }
+    header, footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    header strong { color: var(--accent); }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 72mm;
+      gap: 12mm;
+      align-items: center;
+    }
+    h1, h2 {
+      margin: 0;
+      color: white;
+      letter-spacing: 0;
+      line-height: .98;
+      text-wrap: balance;
+    }
+    h1 { max-width: 142mm; font-size: 56px; }
+    h2 { font-size: 38px; }
+    .subtitle, .body, .audience {
+      max-width: 138mm;
+      color: var(--soft);
+      font-size: 17px;
+    }
+    .audience {
+      color: var(--gold);
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 950;
+      letter-spacing: .08em;
+    }
+    ul {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+    }
+    li {
+      position: relative;
+      padding: 12px 13px 12px 34px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      color: #edf8fa;
+      background: rgba(255,255,255,.06);
+      font-size: 14px;
+      font-weight: 720;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      left: 13px;
+      top: 18px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 24px var(--accent);
+    }
+    aside { display: grid; gap: 14px; align-content: center; }
+    .diagram {
+      position: relative;
+      width: 70mm;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 36%),
+        radial-gradient(circle at 50% 50%, transparent 0 42%, rgba(255,255,255,.08) 42% 43%, transparent 44%),
+        rgba(0,0,0,.22);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    .diagram b {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      color: #061012;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      border-radius: 999px;
+      padding: 14px 16px;
+      max-width: 48mm;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.1;
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    }
+    .diagram span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform:
+        rotate(calc(var(--i) * 60deg))
+        translate(30mm)
+        rotate(calc(var(--i) * -60deg));
+      width: 22mm;
+      margin-left: -11mm;
+      margin-top: -5mm;
+      text-align: center;
+      color: white;
+      font-size: 8px;
+      font-weight: 950;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      padding: 3px 4px;
+      background: rgba(0,0,0,.34);
+    }
+    .signal {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+    }
+    .signal small {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 950;
+      letter-spacing: .08em;
+      margin-bottom: 5px;
+    }
+    .signal b {
+      color: white;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg) scale(1.02); }
+      to { transform: rotate(360deg) scale(1.02); }
+    }
+    @keyframes sheetIn {
+      from { opacity: 0; transform: translateY(26px) rotateX(4deg); }
+      to { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: inset 0 0 30px color-mix(in srgb, var(--accent) 20%, transparent); }
+      50% { box-shadow: inset 0 0 70px color-mix(in srgb, var(--accent) 38%, transparent), 0 0 44px color-mix(in srgb, var(--accent) 20%, transparent); }
+    }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { width: 210mm; background: #05090c; }
+      .reader-nav { display: none; }
+      .reader { display: block; padding: 0; }
+      .sheet {
+        width: 210mm;
+        min-height: 297mm;
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        page-break-after: always;
+        transform: none !important;
+        animation: none !important;
+      }
+      .sheet:last-child { page-break-after: auto; }
+      .bg-orbit, .diagram { animation: none !important; }
+    }
+    @media (max-width: 760px) {
+      .sheet { min-height: auto; }
+      .sheet-inner { min-height: auto; padding: 28px 18px; }
+      main { grid-template-columns: 1fr; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 31px; }
+      aside { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="reader-nav">
+    <strong>ZSEC security brief</strong>
+    <a href="./zsec-security-brief.pdf">Download PDF</a>
+  </nav>
+  <article class="reader">
+    <section class="sheet cover">
+    <div class="bg-orbit"></div>
+    <img class="cover-art" src="talktoai-investor-cover.png" alt="">
+    <div class="sheet-inner">
+      <header>
+        <span>01 / Promise</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          <p class="audience">For server owners, hosting teams, reviewers, and technical stakeholders who need update discipline without handing control to a remote automation channel.</p>
+          <h1>Security Updates Without A Remote Command Channel</h1>
+          <p class="subtitle">A security-only Linux update helper and advisory feed designed around narrow scope, local control, and clear operational boundaries.</p>
+          <ul><li>Security updates only.</li><li>Read-only advisory feed.</li><li>No AI/API key dependency.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">ZeroThink</span><span style="--i:1">OpenZero</span><span style="--i:2">ZSEC</span><span style="--i:3">Docs</span><span style="--i:4">Course</span><span style="--i:5">Proof</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>Read this as</small>
+            <b>inspection-ready proof</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>1 / 6</span>
+      </footer>
+    </div>
+  </section>
+<section class="sheet ">
+    <div class="bg-orbit"></div>
+    
+    <div class="sheet-inner">
+      <header>
+        <span>02 / Risk Problem</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          
+          <h2>Small servers need disciplined security habits.</h2>
+          <p class="body">Many small VPS and hosting deployments are exposed by outdated packages, weak operational routines, or unclear update policy. ZSEC frames a repeatable security update rhythm.</p>
+          <ul><li>12-hour check interval framing.</li><li>Local exposure checks.</li><li>Backups and access tests before hardening.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">OpenZero</span><span style="--i:1">ZSEC</span><span style="--i:2">Docs</span><span style="--i:3">Course</span><span style="--i:4">Proof</span><span style="--i:5">ZeroThink</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>The point</small>
+            <b>Small servers need disciplined security habits</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>2 / 6</span>
+      </footer>
+    </div>
+  </section>
+<section class="sheet ">
+    <div class="bg-orbit"></div>
+    
+    <div class="sheet-inner">
+      <header>
+        <span>03 / Safety Boundary</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          
+          <h2>A safer updater starts by saying what it does not do.</h2>
+          <p class="body">ZSEC does not replace monitoring, backups, firewall policy, SSH key hygiene, or incident response. The public feed is data, not authority to execute remote commands.</p>
+          <ul><li>No browser-supplied upstream URLs.</li><li>No public secrets.</li><li>No feature-upgrade automation.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">ZSEC</span><span style="--i:1">Docs</span><span style="--i:2">Course</span><span style="--i:3">Proof</span><span style="--i:4">ZeroThink</span><span style="--i:5">OpenZero</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>The point</small>
+            <b>A safer updater starts by saying what it does not do</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>3 / 6</span>
+      </footer>
+    </div>
+  </section>
+<section class="sheet ">
+    <div class="bg-orbit"></div>
+    
+    <div class="sheet-inner">
+      <header>
+        <span>04 / Operational Flow</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          
+          <h2>The workflow is easy to explain.</h2>
+          <p class="body">Install ZSEC, confirm access and backups, run local status checks, review advisory TODOs, apply normal OS security updates, and keep a record of what changed.</p>
+          <ul><li>Normal Linux package managers.</li><li>Local status command.</li><li>Advisory notes for human review.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">Docs</span><span style="--i:1">Course</span><span style="--i:2">Proof</span><span style="--i:3">ZeroThink</span><span style="--i:4">OpenZero</span><span style="--i:5">ZSEC</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>The point</small>
+            <b>The workflow is easy to explain</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>4 / 6</span>
+      </footer>
+    </div>
+  </section>
+<section class="sheet ">
+    <div class="bg-orbit"></div>
+    
+    <div class="sheet-inner">
+      <header>
+        <span>05 / Ecosystem Fit</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          
+          <h2>ZSEC strengthens the wider TalkToAI operating stack.</h2>
+          <p class="body">OpenZero, FreeWebPanel, ZeroThink, and public service pages all benefit from a security posture that is easy to explain and bounded enough for users to trust.</p>
+          <ul><li>Hosting operators get a safer habit.</li><li>Reviewers see boundaries clearly.</li><li>Users see why security is part of the ecosystem.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">Course</span><span style="--i:1">Proof</span><span style="--i:2">ZeroThink</span><span style="--i:3">OpenZero</span><span style="--i:4">ZSEC</span><span style="--i:5">Docs</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>The point</small>
+            <b>ZSEC strengthens the wider TalkToAI operating stack</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>5 / 6</span>
+      </footer>
+    </div>
+  </section>
+<section class="sheet ">
+    <div class="bg-orbit"></div>
+    
+    <div class="sheet-inner">
+      <header>
+        <span>06 / Next Reading</span>
+        <strong>ZSEC security brief</strong>
+      </header>
+      <main>
+        <div class="copy">
+          
+          <h2>Inspect the live page, GitHub, and feed.</h2>
+          <p class="body">ZSEC is strongest when people can inspect the public page, source, install command, and feed boundaries directly.</p>
+          <ul><li>Open the ZSEC page.</li><li>Read the GitHub source.</li><li>Review the feed JSON as data, not commands.</li></ul>
+        </div>
+        <aside>
+          <div class="diagram" aria-hidden="true">
+    <span style="--i:0">Proof</span><span style="--i:1">ZeroThink</span><span style="--i:2">OpenZero</span><span style="--i:3">ZSEC</span><span style="--i:4">Docs</span><span style="--i:5">Course</span>
+    <b>Security</b>
+  </div>
+          <div class="signal">
+            <small>The point</small>
+            <b>Inspect the live page, GitHub, and feed</b>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <span>TalkToAI public brief</span>
+        <span>6 / 6</span>
+      </footer>
+    </div>
+  </section>
+  </article>
+</body>
+</html>
