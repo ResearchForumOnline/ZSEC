@@ -38,6 +38,16 @@ ZSEC is a standalone open-source server utility. It does not depend on FreeWebPa
 ## Videos
 
 <p align="center">
+  <a href="https://www.youtube.com/watch?v=R52hsRdCmSM">
+    <img src="https://img.youtube.com/vi/R52hsRdCmSM/hqdefault.jpg" alt="Watch the TalkToAI ecosystem overview on YouTube" width="640">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=R52hsRdCmSM"><strong>Watch the TalkToAI ecosystem overview</strong></a>
+</p>
+
+<p align="center">
   <a href="https://www.youtube.com/watch?v=_ZTn8SGT0VU">
     <img src="https://img.youtube.com/vi/_ZTn8SGT0VU/hqdefault.jpg" alt="Watch the ZSEC Auto Updates video walkthrough on YouTube" width="640">
   </a>
