@@ -10,6 +10,7 @@ ZSEC is a small Linux security utility for security-only updates, SSH guardrails
 | GitHub repository | <https://github.com/ResearchForumOnline/ZSEC> |
 | Source ZIP | <https://github.com/ResearchForumOnline/ZSEC/archive/refs/heads/main.zip> |
 | GitHub releases | <https://github.com/ResearchForumOnline/ZSEC/releases> |
+| Current release | <https://github.com/ResearchForumOnline/ZSEC/releases/tag/v0.1.0> |
 | Advisory feed | <https://talktoai.org/zsec/feed.json> |
 | Operations guide | [OPERATIONS.md](OPERATIONS.md) |
 
@@ -37,6 +38,20 @@ sudo bash install.sh
 - fail2ban changes;
 - AI/dev exposure check changes;
 - advisory feed format changes.
+
+## Current Public Release
+
+### v0.1.0
+
+- Security-only Linux update runner.
+- Systemd timer with randomized delay.
+- SSH config and authorized-key backup guardrails.
+- fail2ban direction for SSH when available.
+- Conservative sysctl hardening.
+- Container and virtualization host detection.
+- AI/dev public-port exposure warnings.
+- Read-only advisory feed cache and local TODO output.
+- Public docs, operations guide, threat model, and FreeWebPanel integration notes.
 
 ## Search-Friendly Summary
 
