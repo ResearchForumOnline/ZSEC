@@ -6,7 +6,7 @@
 * [Security Policy](SECURITY.md)
 * [.github](.github/README.md)
   * [PULL\_REQUEST\_TEMPLATE](.github/PULL_REQUEST_TEMPLATE.md)
-  * [ISSUE\_TEMPLATE](.github/ISSUE_TEMPLATE/README.md)
+  * [ISSUE\_TEMPLATE](.github/issue_template/README.md)
     * [\[Bug\]:](.github/ISSUE_TEMPLATE/bug_report.md)
     * [\[Feature\]:](.github/ISSUE_TEMPLATE/feature_request.md)
 * [docs](docs/README.md)
