@@ -83,6 +83,19 @@ cd ZSEC
 sudo bash install.sh
 ```
 
+## Downloads And Releases
+
+| Need | Link |
+| --- | --- |
+| Latest GitHub source archive | [Download ZIP](https://github.com/ResearchForumOnline/ZSEC/archive/refs/heads/main.zip) |
+| GitHub releases | [ZSEC releases](https://github.com/ResearchForumOnline/ZSEC/releases) |
+| Install script | [install.sh](install.sh) |
+| Operations guide | [docs/OPERATIONS.md](docs/OPERATIONS.md) |
+| Advisory feed design | [docs/advisory-feed.md](docs/advisory-feed.md) |
+| Public ZSEC page | [talktoai.org/zsec](https://talktoai.org/zsec/) |
+
+ZSEC is designed to be found by server owners searching for security-only Linux updates, unattended security updates, SSH lockout protection, fail2ban setup, server hardening script, AI server exposure checks, Ollama public port warning, and safe Linux update automation.
+
 ## What ZSEC Does
 
 | Area | Behavior |
