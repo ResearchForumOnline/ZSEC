@@ -3,12 +3,11 @@ Description=Refresh talktoai.org ZSEC advisory feed every 6 hours
 Documentation=https://github.com/ResearchForumOnline/ZSEC
 
 [Timer]
-OnBootSec=5min
-OnUnitActiveSec=6h
+OnCalendar=*-*-* 00,06,12,18:00:00
 RandomizedDelaySec=20min
+AccuracySec=1min
 Persistent=true
 Unit=talktoai-zsec-feed.service
 
 [Install]
 WantedBy=timers.target
-
