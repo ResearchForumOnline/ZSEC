@@ -1,7 +1,7 @@
 [Unit]
 Description=ZSEC Auto Updates security-only run
 Documentation=https://github.com/ResearchForumOnline/ZSEC
-After=network-online.target
+After=network-online.target apt-daily.service apt-daily-upgrade.service
 Wants=network-online.target
 
 [Service]

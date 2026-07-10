@@ -21,6 +21,7 @@ ZSEC_ADVISORY_TIMEOUT="${ZSEC_ADVISORY_TIMEOUT:-15}"
 ZSEC_ADVISORY_MAX_ITEMS="${ZSEC_ADVISORY_MAX_ITEMS:-80}"
 ZSEC_TAMPER_LOCK="${ZSEC_TAMPER_LOCK:-0}"
 ZSEC_MIN_FREE_MB="${ZSEC_MIN_FREE_MB:-512}"
+ZSEC_PACKAGE_LOCK_WAIT_SECONDS="${ZSEC_PACKAGE_LOCK_WAIT_SECONDS:-180}"
 
 DRY_RUN=0
 COMMAND="${1:-run}"
@@ -133,12 +134,48 @@ preflight() {
     fail "not enough free disk on / (${free_root} MB free, need ${ZSEC_MIN_FREE_MB} MB)"
   fi
 
-  if is_debian_like && pgrep -x apt >/dev/null 2>&1; then
-    fail "apt is already running"
+}
+
+package_manager_busy() {
+  if is_debian_like; then
+    if have fuser; then
+      fuser \
+        /var/lib/dpkg/lock-frontend \
+        /var/lib/dpkg/lock \
+        /var/lib/apt/lists/lock \
+        /var/cache/apt/archives/lock >/dev/null 2>&1
+      return $?
+    fi
+    pgrep -x 'apt|apt-get|dpkg|unattended-upgr' >/dev/null 2>&1
+    return $?
   fi
-  if is_rhel_like && pgrep -x dnf >/dev/null 2>&1; then
-    fail "dnf is already running"
+
+  if is_rhel_like; then
+    pgrep -x 'dnf|dnf5|rpm' >/dev/null 2>&1
+    return $?
   fi
+
+  return 1
+}
+
+wait_for_package_manager() {
+  local max_wait="$ZSEC_PACKAGE_LOCK_WAIT_SECONDS"
+  local waited=0
+  local step=5
+
+  [[ "$max_wait" =~ ^[0-9]+$ ]] || max_wait=180
+  while package_manager_busy; do
+    if [ "$waited" -ge "$max_wait" ]; then
+      warn "package manager stayed busy for ${waited}s; deferring package work until the next timer run"
+      return 1
+    fi
+    [ "$waited" -eq 0 ] && info "package manager busy; waiting up to ${max_wait}s"
+    sleep "$step"
+    waited=$((waited + step))
+  done
+
+  [ "$waited" -gt 0 ] && info "package manager lock cleared after ${waited}s"
+  return 0
 }
 
 backup_file() {
@@ -637,9 +674,16 @@ run_updates() {
   lockout_guard
   firewall_guard
   write_sysctl_hardening
-  configure_fail2ban
   ai_surface_audit
   advisory_feed_check
+
+  if ! wait_for_package_manager; then
+    tamper_lock_notice
+    info "ZSEC run completed with package work deferred; dry_run=${DRY_RUN}"
+    return 0
+  fi
+
+  configure_fail2ban
 
   if is_debian_like; then
     security_updates_debian
@@ -673,9 +717,13 @@ audit_only() {
   lockout_guard
   firewall_guard
   write_sysctl_hardening
-  configure_fail2ban
   ai_surface_audit
   advisory_feed_check
+  if wait_for_package_manager; then
+    configure_fail2ban
+  else
+    warn "package-dependent audit work deferred"
+  fi
   info "ZSEC audit completed; dry_run=${DRY_RUN}"
 }
 

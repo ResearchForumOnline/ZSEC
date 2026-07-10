@@ -7,6 +7,7 @@ Notable public ZSEC repository updates are tracked here.
 - Replaced reboot-fragile monotonic timers with persistent calendar schedules.
 - Added automated checks for timer syntax, persistence, and schedule definitions.
 - Kept the randomized delay so a fleet does not update every host simultaneously.
+- Added a bounded package-manager lock wait and clean deferral path so overlapping OS update jobs do not leave ZSEC failed.
 
 ## 2026-07-04
 
