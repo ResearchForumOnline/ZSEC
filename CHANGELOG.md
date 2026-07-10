@@ -2,6 +2,12 @@
 
 Notable public ZSEC repository updates are tracked here.
 
+## 2026-07-10
+
+- Replaced reboot-fragile monotonic timers with persistent calendar schedules.
+- Added automated checks for timer syntax, persistence, and schedule definitions.
+- Kept the randomized delay so a fleet does not update every host simultaneously.
+
 ## 2026-07-04
 
 - Rebuilt the GitHub front page so the README works as a polished project landing page with install steps, release links, a clear security boundary, supported systems, videos, and docs.

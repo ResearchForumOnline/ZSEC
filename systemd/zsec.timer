@@ -3,9 +3,9 @@ Description=Run ZSEC Auto Updates every 12 hours
 Documentation=https://github.com/ResearchForumOnline/ZSEC
 
 [Timer]
-OnBootSec=15min
-OnUnitActiveSec=12h
+OnCalendar=*-*-* 00,12:00:00
 RandomizedDelaySec=30min
+AccuracySec=1min
 Persistent=true
 Unit=zsec.service
 

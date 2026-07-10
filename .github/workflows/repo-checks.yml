@@ -9,10 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Shell syntax
-        run: bash -n install.sh scripts/install-on-host.sh zsec
+        run: bash -n install.sh scripts/install-on-host.sh tests/test-systemd-timers.sh zsec
+
+      - name: Persistent timer schedules
+        run: bash tests/test-systemd-timers.sh
 
       - name: Python compile
         run: python3 -m py_compile tools/build-feed.py
