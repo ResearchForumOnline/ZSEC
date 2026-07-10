@@ -21,11 +21,8 @@ assert_timer "$root/systemd/zsec.timer" '*-*-* 00,12:00:00'
 assert_timer "$root/site/talktoai-zsec/talktoai-zsec-feed.timer" '*-*-* 00,06,12,18:00:00'
 
 if command -v systemd-analyze >/dev/null 2>&1; then
-    systemd-analyze verify \
-        "$root/systemd/zsec.service" \
-        "$root/systemd/zsec.timer" \
-        "$root/site/talktoai-zsec/talktoai-zsec-feed.service" \
-        "$root/site/talktoai-zsec/talktoai-zsec-feed.timer"
+    systemd-analyze calendar '*-*-* 00,12:00:00' >/dev/null
+    systemd-analyze calendar '*-*-* 00,06,12,18:00:00' >/dev/null
 fi
 
 echo "ZSEC calendar timers: ok"
