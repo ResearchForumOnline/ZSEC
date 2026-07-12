@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T10:02:54Z",
+  "generated_at": "2026-07-12T12:28:21Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -18,7 +18,7 @@
       },
       "id": "zsec:public-ai-dev-port-review",
       "kind": "zsec-todo",
-      "published": "2026-07-05",
+      "published": "2026-07-12",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -47,7 +47,7 @@
       },
       "id": "zsec:ssh-botnet-watch",
       "kind": "zsec-todo",
-      "published": "2026-07-05",
+      "published": "2026-07-12",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -65,65 +65,6 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:u-s-government-entity-paid-kairos-1-million-in-data-theft-extortion-case",
-      "kind": "news",
-      "published": "2026-07-04",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/us-government-entity-paid-kairos-group.html"
-      },
-      "summary": "A U.S. government entity paid about $1 million to keep stolen files from being leaked, according to a new case study by Rakesh Krishnan for Ransom-ISAC, built on a leaked negotiation chat and the blockchain trail the payment left. The odd part: the group that took the money calls itself Kairos, but it may not be a ransomware gang at all. Krishnan found no s...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "U.S. Government Entity Paid Kairos $1 Million in Data-Theft Extortion Case",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "news",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:north-korean-hackers-publish-108-malicious-packages-and-extensions-in-polinrider-campaign",
-      "kind": "news",
-      "published": "2026-07-04",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/north-korean-hackers-publish-108.html"
-      },
-      "summary": "The North Korean threat actors linked to the Contagious Interview campaign have been observed publishing 108 unique packages and web browser extensions spanning npm, Packagist, Go, and Google Chrome as part of an ongoing activity referred to as PolinRider. \"The campaign remains active, and new malicious packages are likely to continue appearing as threat ac...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "the-hacker-news"
-      ],
-      "title": "North Korean Hackers Publish 108 Malicious Packages and Extensions in PolinRider Campaign",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "cve",
-          "kernel",
           "linux",
           "news",
           "the-hacker-news"
@@ -131,25 +72,142 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:new-bad-epoll-linux-kernel-flaw-lets-unprivileged-users-gain-root-hits-android",
+      "id": "thn:compromised-jscrambler-8-14-0-npm-release-drops-rust-infostealer-during-install",
       "kind": "news",
-      "published": "2026-07-03",
-      "severity": "high",
+      "published": "2026-07-11",
+      "severity": "medium",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/new-bad-epoll-linux-kernel-flaw-lets.html"
+        "url": "https://thehackernews.com/2026/07/compromised-jscrambler-8140-npm-release.html"
       },
-      "summary": "A newly disclosed Linux kernel flaw called Bad Epoll (CVE-2026-46242) lets an ordinary user with no special access take full control of a machine as root. It affects Linux desktops, servers, and Android, and a fix is out. Bad Epoll sits in the same small stretch of kernel code where Anthropic's most powerful AI model, Mythos, recently found a different bug....",
+      "summary": "The jscrambler npm package was compromised, and simply installing its 8.14.0 release runs an infostealer on your machine. Published on July 11, 2026, the malicious version carries a preinstall hook that drops and executes a native binary, one build each for Windows, macOS, and Linux. Socket flagged the release six minutes after it was published. If you or o...",
       "tags": [
-        "ai-exposure",
-        "cve",
-        "kernel",
         "linux",
         "news",
         "the-hacker-news"
       ],
-      "title": "New \"Bad Epoll\" Linux Kernel Flaw Lets Unprivileged Users Gain Root, Hits Android",
+      "title": "Compromised jscrambler 8.14.0 npm Release Drops Rust Infostealer During Install",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "rce",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:hackers-weaponize-balochistan-police-portal-in-multi-group-espionage-campaigns",
+      "kind": "news",
+      "published": "2026-07-11",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/hackers-weaponize-balochistan-police.html"
+      },
+      "summary": "Cybersecurity researchers have disclosed details of sustained cyber espionage activity against several Pakistani law enforcement organizations undertaken by suspected China- and India-aligned threat actors between February 2024 and April 2026. \"At Balochistan Police, the compromised assets included servers hosting web applications that manage police and cit...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "rce",
+        "the-hacker-news"
+      ],
+      "title": "Hackers Weaponize Balochistan Police Portal in Multi-Group Espionage Campaigns",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:critical-zimbra-flaw-could-let-crafted-emails-run-malicious-code-in-user-sessions",
+      "kind": "news",
+      "published": "2026-07-11",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/critical-zimbra-flaw-could-let-crafted_0483473395.html"
+      },
+      "summary": "Zimbra is urging customers to apply updates to address a critical security vulnerability impacting the Classic Web Client that could result in arbitrary code execution. The vulnerability has been described as a case of stored cross-site scripting (XSS) that could allow specially crafted emails to execute malicious scripts in a user's session. It has yet to...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Critical Zimbra Flaw Could Let Crafted Emails Run Malicious Code in User Sessions",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Forms"
+        ],
+        "vendors": [
+          "Balbooa"
+        ]
+      },
+      "cves": [
+        "CVE-2026-56291"
+      ],
+      "id": "cisa-kev:CVE-2026-56291",
+      "kind": "vulnerability",
+      "published": "2026-07-10",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://www.balbooa.com/joomla-forms ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-u...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Balbooa Forms Balbooa Forms Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "iCagenda"
+        ],
+        "vendors": [
+          "iCagenda"
+        ]
+      },
+      "cves": [
+        "CVE-2026-48939"
+      ],
+      "id": "cisa-kev:CVE-2026-48939",
+      "kind": "vulnerability",
+      "published": "2026-07-10",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://www.icagenda.com/#download ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-upd...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "iCagenda iCagenda iCagenda Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -157,56 +215,112 @@
           "ai-exposure",
           "credential",
           "news",
-          "ransomware",
           "the-hacker-news"
         ],
         "products": [],
         "vendors": []
       },
-      "id": "thn:new-avalon-malware-framework-packs-crownx-ransomware-capabilities",
+      "id": "thn:laser-attack-resets-tangem-wallet-passwords-on-cards-that-can-t-be-patched",
       "kind": "news",
-      "published": "2026-07-03",
-      "severity": "high",
+      "published": "2026-07-10",
+      "severity": "medium",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/new-avalon-malware-framework-packs.html"
+        "url": "https://thehackernews.com/2026/07/laser-attack-resets-tangem-wallet.html"
       },
-      "summary": "Cybersecurity researchers have discovered a previously undocumented modular malware framework codenamed Avalon that's distributed by means of a multi-stage phishing chain capable of bypassing traditional security controls. Avalon combines credential collection, lateral movement, remote access, recovery disruption, and ransomware execution, bringing together...",
+      "summary": "Researchers at Ledger's Donjon security team have shown that a precisely timed laser pulse, aimed at the chip inside a Tangem crypto wallet card, can reset the card's password to anything the attacker picks. No old password. No backup card. Once it is reset, whoever did it controls the wallet and can move the coins out. This is not an emergency for most own...",
       "tags": [
         "ai-exposure",
         "credential",
         "news",
-        "ransomware",
         "the-hacker-news"
       ],
-      "title": "New Avalon Malware Framework Packs CrownX Ransomware Capabilities",
+      "title": "Laser Attack Resets Tangem Wallet Passwords on Cards That Can't Be Patched",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
+          "ai-exposure",
           "credential",
+          "lpe",
           "news",
           "the-hacker-news"
         ],
         "products": [],
         "vendors": []
       },
-      "id": "thn:north-korea-linked-npm-packages-mimic-rollup-polyfills-to-steal-developer-secrets",
+      "id": "thn:researcher-details-whatsapp-to-host-attack-chain-using-three-openclaw-flaws",
       "kind": "news",
-      "published": "2026-07-03",
+      "published": "2026-07-10",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/researcher-details-whatsapp-to-host.html"
+      },
+      "summary": "Details have emerged about three now-patched security flaws in the OpenClaw personal artificial intelligence (AI) assistant that, if successfully exploited, could enable credential theft, privilege escalation, and arbitrary code execution on the host. A brief description of the high-severity vulnerabilities is as follows - GHSA-hjr6-g723-hmfm (CVSS score: 8...",
+      "tags": [
+        "ai-exposure",
+        "credential",
+        "lpe",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Researcher Details WhatsApp-to-Host Attack Chain Using Three OpenClaw Flaws",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:new-modbeacon-rat-uses-grpc-streaming-for-encrypted-c2-traffic",
+      "kind": "news",
+      "published": "2026-07-10",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/new-modbeacon-rat-uses-grpc-streaming.html"
+      },
+      "summary": "The China-linked cybercrime group known as Silver Fox has been attributed to a new Rust-based remote access trojan (RAR) called MODBEACON. Chinese cybersecurity company QiAnXin said that while the threat cluster may appear like a low-sophistication, high-activity operation that propagates malware via counterfeit installers using SEO poisoning techniques, it...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "New MODBEACON RAT Uses gRPC Streaming for Encrypted C2 Traffic",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "news",
+          "the-hacker-news",
+          "web"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:exposed-hacker-server-reveals-wp-shellstorm-backdooring-thousands-of-wordpress-sites",
+      "kind": "news",
+      "published": "2026-07-10",
       "severity": "info",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/north-korea-linked-npm-packages-mimic.html"
+        "url": "https://thehackernews.com/2026/07/exposed-hacker-server-reveals-wp.html"
       },
-      "summary": "Threat actors with ties to North Korea have been linked to a fresh set of malicious npm packages that masquerade as Rollup polyfill tooling to facilitate remote access and data theft. According to JFrog, the packages \"rollup-packages-polyfill-core\" and \"rollup-runtime-polyfill-core\" mimic the legitimate \"rollup-plugin-polyfill-node\" project, down to the des...",
+      "summary": "A cybercrime crew left one of its own servers wide open on the internet for three weeks, and it exposed the operation's inner workings: the hacking tools, the activity logs, and target lists naming more than 1.4 million websites. Far fewer were actually broken into, but the exposed files showed researchers how a mass site-hacking operation runs from the ins...",
       "tags": [
-        "credential",
         "news",
-        "the-hacker-news"
+        "the-hacker-news",
+        "web"
       ],
-      "title": "North Korea-Linked npm Packages Mimic Rollup Polyfills to Steal Developer Secrets",
+      "title": "Exposed Hacker Server Reveals WP-SHELLSTORM Backdooring Thousands of WordPress Sites",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
@@ -219,233 +333,27 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:armored-likho-targets-government-agencies-power-sector-with-busysnake-stealer",
+      "id": "thn:study-of-281-free-android-vpn-apps-finds-traffic-leaks-unencrypted-data-and-tracking",
       "kind": "news",
-      "published": "2026-07-03",
+      "published": "2026-07-10",
       "severity": "medium",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/armored-likho-targets-government.html"
+        "url": "https://thehackernews.com/2026/07/study-of-281-free-android-vpn-apps.html"
       },
-      "summary": "A previously undocumented threat actor known as Armored Likho has been attributed to cyber attacks targeting government agencies and the electric power sector across Russia, Brazil, and Kazakhstan. \"Armored Likho blends financially motivated campaigns targeting private individuals with targeted cyber espionage aimed at organizations,\" Kaspersky said in a te...",
+      "summary": "Researchers ran 281 of the most popular free VPN apps on the Google Play Store through a new testing system and found that many fail at the basics people install a VPN for, i.e., keeping their traffic private and secure. The apps flagged with at least one problem have been installed more than 2.4 billion times. The problems are basic, not sophisticated. 29...",
       "tags": [
         "ai-exposure",
         "news",
         "the-hacker-news"
       ],
-      "title": "Armored Likho Targets Government Agencies, Power Sector with BusySnake Stealer",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "credential",
-          "news",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:pamstealer-uses-fake-maccy-sites-and-pam-checks-to-steal-mac-login-passwords",
-      "kind": "news",
-      "published": "2026-07-03",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/pamstealer-uses-fake-maccy-sites-and.html"
-      },
-      "summary": "Cybersecurity researchers have flagged a new macOS information stealer called PamStealer that employs a series of clever tricks to infect systems and siphon sensitive data. The stealer, discovered by Jamf Threat Labs, is distributed as a compiled AppleScript (.scpt) file impersonating Maccy, a legitimate open-source clipboard manager. It has been codenamed...",
-      "tags": [
-        "credential",
-        "news",
-        "rce",
-        "the-hacker-news"
-      ],
-      "title": "PamStealer Uses Fake Maccy Sites and PAM Checks to Steal Mac Login Passwords",
+      "title": "Study of 281 Free Android VPN Apps Finds Traffic Leaks, Unencrypted Data, and Tracking",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
           "ai-exposure",
-          "news",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:google-disrupts-netnut-residential-proxy-network-spanning-2-million-home-devices",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/google-disrupts-netnut-residential.html"
-      },
-      "summary": "Google has significantly degraded NetNut, one of the biggest networks that turns home devices into rented relays for other people's traffic. Working with the FBI, Lumen, and others, Google's Threat Intelligence Group (GTIG) said this week it had reduced the network's pool of usable devices by millions. Google identifies NetNut, also tracked as Popa, as a ne...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "the-hacker-news"
-      ],
-      "title": "Google Disrupts NetNut Residential Proxy Network Spanning 2 Million Home Devices",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "credential",
-          "cve",
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:ransomware-groups-turn-to-citrix-bleed-2-byovd-and-supply-chain-credentials",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/ransomware-groups-turn-to-citrix-bleed.html"
-      },
-      "summary": "Threat actors associated with the Anubis ransomware operation have been observed exploiting the Citrix Bleed 2 (CVE-2025-5777) vulnerability to obtain initial access. \"Although tactics differ between affiliates, common patterns emerged in tradecraft through use of legitimate Remote Management and Monitoring (RMM) tooling, credential access, and hands-on-key...",
-      "tags": [
-        "ai-exposure",
-        "credential",
-        "cve",
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "Ransomware Groups Turn to Citrix Bleed 2, BYOVD, and Supply Chain Credentials",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:threatsday-ai-compute-hijacking-apple-email-flaw-bluehammer-ransomware-14-stories",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/threatsday-ai-compute-hijacking-apple.html"
-      },
-      "summary": "This week\u2019s security news is mostly about weak spots. Browsers, bots, sandboxes, AI systems, and email flows all show the same problem in different ways. Everything looks normal until someone tests a small gap and finds a way through. This is not one big break. It is small permissions, weak checks, open systems, and normal tools doing things they were allow...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "ThreatsDay: AI Compute Hijacking, Apple Email Flaw, BlueHammer Ransomware + 14 Stories",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "news",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:toddycat-linked-umbrij-malware-abuses-oauth-to-access-gmail-via-google-api",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/toddycat-linked-umbrij-malware-abuses.html"
-      },
-      "summary": "The threat actor known as ToddyCat has been attributed to a new malware called Umbrij that's designed to gain surreptitious access to a victim's email correspondence via the Google API. \"In this campaign, the attackers focused their attention on corporate email communications hosted on Gmail, targeting access compromise via APIs,\" Kaspersky said in a detail...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "the-hacker-news"
-      ],
-      "title": "ToddyCat-Linked Umbrij Malware Abuses OAuth to Access Gmail via Google API",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "news",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:identity-lifecycle-management-wasn-t-built-for-ai-agents",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/identity-lifecycle-management.html"
-      },
-      "summary": "Identity lifecycle management was architected around a person with an employment record, a manager, and a departure date. AI agents have none of those. As autonomous principals proliferate across enterprise environments, the governance model built for humans develops structural blind spots that traditional IGA tools weren't designed to detect. This guide co...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "the-hacker-news"
-      ],
-      "title": "Identity Lifecycle Management Wasn't Built for AI Agents",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "credential",
-          "news",
-          "ransomware",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:ai-agent-exploits-langflow-rce-to-automate-database-ransomware-attack",
-      "kind": "news",
-      "published": "2026-07-02",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/ai-agent-exploits-langflow-rce-to.html"
-      },
-      "summary": "Security firm Sysdig says it has found what it believes is the first ransomware attack run from start to finish by an AI agent. Its Threat Research Team calls the operator JADEPUFFER and says a large language model handled the whole job: breaking in, stealing credentials, moving deeper into the network, then encrypting and wiping a company's production data...",
-      "tags": [
-        "ai-exposure",
-        "credential",
-        "news",
-        "ransomware",
-        "rce",
-        "the-hacker-news"
-      ],
-      "title": "AI Agent Exploits Langflow RCE to Automate Database Ransomware Attack",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "credential",
           "news",
           "ransomware",
           "the-hacker-news",
@@ -454,25 +362,210 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:fortibleed-credential-theft-linked-to-inc-and-lynx-ransomware-operations",
+      "id": "thn:hackers-use-fake-microsoft-entra-passkey-enrollment-to-gain-microsoft-365-access",
       "kind": "news",
-      "published": "2026-07-02",
-      "severity": "high",
+      "published": "2026-07-10",
+      "severity": "medium",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/fortibleed-credential-theft-linked-to.html"
+        "url": "https://thehackernews.com/2026/07/hackers-use-fake-microsoft-entra.html"
       },
-      "summary": "The recently discovered financially-motivated FortiBleed campaign has been attributed to INC and Lynx ransomware operations, indicating that the verified, stolen credentials were intended for follow-on intrusions. \"An operator tied to FortiBleed's infrastructure was found actively working negotiation panels for both groups, tying mass FortiGate credential t...",
+      "summary": "A threat actor has been targeting organizations spanning multiple sectors with voice-based fake security requests that prompt Microsoft 365 users to enroll a new Entra passkey with an aim to carry out data extortion attacks. The threat actor, tracked by Okta under the moniker O-UNC-066, has deployed a panel-controlled phishing kit that's capable of targetin...",
       "tags": [
         "ai-exposure",
-        "credential",
         "news",
         "ransomware",
         "the-hacker-news",
         "web"
       ],
-      "title": "FortiBleed Credential Theft Linked to INC and Lynx Ransomware Operations",
+      "title": "Hackers Use Fake Microsoft Entra Passkey Enrollment to Gain Microsoft 365 Access",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:attackers-exploit-ill-bloom-vulnerability-to-drain-over-5-million-from-cryptocurrency-wall",
+      "kind": "news",
+      "published": "2026-07-10",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/attackers-exploit-ill-bloom.html"
+      },
+      "summary": "Security firm Coinspect has disclosed a crypto wallet flaw it calls Ill Bloom, and attackers are already using it. The flaw is in how some wallet software generated its recovery phrase, the words that control the money. When that phrase is made with weak randomness, an attacker can work it out and take everything it controls. The firm has confirmed one coor...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Attackers Exploit 'Ill Bloom' Vulnerability to Drain Over $5 Million From Cryptocurrency Wallets",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "ransomware",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:ransomware-negotiator-gets-70-months-in-prison-for-aiding-blackcat-attacks",
+      "kind": "news",
+      "published": "2026-07-10",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/ransomware-negotiator-gets-70-months-in.html"
+      },
+      "summary": "A 41-year-old former ransomware negotiator has been sentenced to nearly six years (i.e., 70 months) in prison in the U.S. for their role in conspiring with the now-defunct BlackCat ransomware operators to extort multiple victims and working with two other cybersecurity professionals to target additional victims in 2023. In a sentencing memorandum, federal p...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "ransomware",
+        "the-hacker-news"
+      ],
+      "title": "Ransomware Negotiator Gets 70 Months in Prison for Aiding BlackCat Attacks",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "SP Page Builder"
+        ],
+        "vendors": [
+          "JoomShaper"
+        ]
+      },
+      "cves": [
+        "CVE-2026-48908"
+      ],
+      "id": "cisa-kev:CVE-2026-48908",
+      "kind": "vulnerability",
+      "published": "2026-07-07",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://extensions.joomla.org/extension/sp-page-builder/ ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-pri...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "JoomShaper SP Page Builder JoomShaper SP Page Builder Unrestricted Upload of File with Dangerous Type Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Langflow"
+        ],
+        "vendors": [
+          "Langflow"
+        ]
+      },
+      "cves": [
+        "CVE-2026-55255"
+      ],
+      "id": "cisa-kev:CVE-2026-55255",
+      "kind": "vulnerability",
+      "published": "2026-07-07",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://github.com/langflow-ai/langflow/security/advisories/GHSA-qrpv-q767-xqq2 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-impl...",
+      "tags": [
+        "ai-exposure",
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Langflow Langflow Langflow Authorization Bypass Through User-Controlled Key Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Page Builder"
+        ],
+        "vendors": [
+          "Joomlack"
+        ]
+      },
+      "cves": [
+        "CVE-2026-56290"
+      ],
+      "id": "cisa-kev:CVE-2026-56290",
+      "kind": "vulnerability",
+      "published": "2026-07-07",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://www.joomlack.fr/en/joomla-extensions/page-builder-ck ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Joomlack Page Builder Joomlack Page Builder Improper Access Control Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "ColdFusion"
+        ],
+        "vendors": [
+          "Adobe"
+        ]
+      },
+      "cves": [
+        "CVE-2026-48282"
+      ],
+      "id": "cisa-kev:CVE-2026-48282",
+      "kind": "vulnerability",
+      "published": "2026-07-07",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "https://helpx.adobe.com/security/products/coldfusion/apsb26-68.html ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-g...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Adobe ColdFusion Adobe ColdFusion Path Traversal Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -2381,212 +2474,6 @@
       ],
       "title": "Microsoft Defender Microsoft Defender Insufficient Granularity of Access Control Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "Catalyst SD-WAN Manger"
-        ],
-        "vendors": [
-          "Cisco"
-        ]
-      },
-      "cves": [
-        "CVE-2026-20122"
-      ],
-      "id": "cisa-kev:CVE-2026-20122",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "CISA Mitigation Instructions: https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems ; https://www.cisa.gov/news-events/directives/supplemental-direction-ed-26-03-hunt-and-hardening-guidance-cisco-sd-wan-systems ; https://sec.cloudapps...",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Cisco Catalyst SD-WAN Manger Cisco Catalyst SD-WAN Manager Incorrect Use of Privileged APIs Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "Catalyst SD-WAN Manager"
-        ],
-        "vendors": [
-          "Cisco"
-        ]
-      },
-      "cves": [
-        "CVE-2026-20133"
-      ],
-      "id": "cisa-kev:CVE-2026-20133",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "CISA Mitigation Instructions: https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems ; https://www.cisa.gov/news-events/directives/supplemental-direction-ed-26-03-hunt-and-hardening-guidance-cisco-sd-wan-systems ; https://sec.cloudapps...",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Cisco Catalyst SD-WAN Manager Cisco Catalyst SD-WAN Manager Exposure of Sensitive Information to an Unauthorized Actor Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Kentico Xperience"
-        ],
-        "vendors": [
-          "Kentico"
-        ]
-      },
-      "cves": [
-        "CVE-2025-2749"
-      ],
-      "id": "cisa-kev:CVE-2025-2749",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "https://devnet.kentico.com/download/hotfixes ; https://nvd.nist.gov/vuln/detail/CVE-2025-2749",
-      "tags": [
-        "ai-exposure",
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Kentico Kentico Xperience Kentico Xperience Path Traversal Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "NG/MF"
-        ],
-        "vendors": [
-          "PaperCut"
-        ]
-      },
-      "cves": [
-        "CVE-2023-27351"
-      ],
-      "id": "cisa-kev:CVE-2023-27351",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "https://www.papercut.com/kb/Main/PO-1216-and-PO-1219 ; https://nvd.nist.gov/vuln/detail/CVE-2023-27351",
-      "tags": [
-        "ai-exposure",
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "PaperCut NG/MF PaperCut NG/MF Improper Authentication Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Zimbra Collaboration Suite (ZCS)"
-        ],
-        "vendors": [
-          "Synacor"
-        ]
-      },
-      "cves": [
-        "CVE-2025-48700"
-      ],
-      "id": "cisa-kev:CVE-2025-48700",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories ; https://nvd.nist.gov/vuln/detail/CVE-2025-48700",
-      "tags": [
-        "ai-exposure",
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Synacor Zimbra Collaboration Suite (ZCS) Synacor Zimbra Collaboration Suite (ZCS) Cross-site Scripting Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "credential",
-          "known-exploited"
-        ],
-        "products": [
-          "Catalyst SD-WAN Manager"
-        ],
-        "vendors": [
-          "Cisco"
-        ]
-      },
-      "cves": [
-        "CVE-2026-20128"
-      ],
-      "id": "cisa-kev:CVE-2026-20128",
-      "kind": "vulnerability",
-      "published": "2026-04-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "CISA Mitigation Instructions: https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems ; https://www.cisa.gov/news-events/directives/supplemental-direction-ed-26-03-hunt-and-hardening-guidance-cisco-sd-wan-systems ; https://sec.cloudapps...",
-      "tags": [
-        "cisa-kev",
-        "credential",
-        "known-exploited"
-      ],
-      "title": "Cisco Catalyst SD-WAN Manager Cisco Catalyst SD-WAN Manager Storing Passwords in a Recoverable Format Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     }
   ],
   "policy": {
@@ -2603,7 +2490,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 14,
+      "items": 11,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
