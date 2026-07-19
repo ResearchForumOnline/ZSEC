@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T20:06:29Z",
+  "generated_at": "2026-07-19T20:11:43Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -95,8 +95,8 @@
       "affected": {
         "keywords": [
           "ai-exposure",
+          "botnet",
           "news",
-          "ssh",
           "the-hacker-news"
         ],
         "products": [],
@@ -113,8 +113,8 @@
       "summary": "A Go botnet called NadMesh turned up in early July hunting exposed AI services, and the operator's own dashboard claims 3,811 unique AWS keys. A Shodan harvester keeps the scan queue stocked with ComfyUI, Ollama, n8n, Open WebUI, Langflow, and Gradio: the image generators, local model runners, and workflow builders that teams stand up fast and firewall late...",
       "tags": [
         "ai-exposure",
+        "botnet",
         "news",
-        "ssh",
         "the-hacker-news"
       ],
       "title": "New NadMesh Botnet Hunts Exposed AI Services for Cloud Keys and Kubernetes Tokens",

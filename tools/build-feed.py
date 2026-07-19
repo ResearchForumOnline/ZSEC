@@ -26,7 +26,8 @@ KEYWORD_TAGS = {
     "linux": ["linux", "ubuntu", "debian", "almalinux", "rocky", "rhel", "kernel", "proxmox"],
     "kernel": ["kernel"],
     "lpe": ["privilege escalation", "local privilege", "lpe"],
-    "ssh": ["ssh", "openssh", "brute force", "botnet"],
+    "ssh": ["ssh", "openssh", "brute force"],
+    "botnet": ["botnet"],
     "web": ["apache", "nginx", "httpd", "php", "wordpress", "web server", "cwp", "panel"],
     "ai-exposure": ["ai", "ollama", "jupyter", "gradio", "open webui", "llm", "model context protocol", "mcp"],
     "ransomware": ["ransomware", "extortion"],
@@ -34,7 +35,7 @@ KEYWORD_TAGS = {
     "credential": ["credential", "password", "token", "secret", "ssh key"],
 }
 
-RELEVANT_NEWS_TAGS = {"linux", "kernel", "ssh", "web", "ai-exposure", "rce", "credential", "ransomware"}
+RELEVANT_NEWS_TAGS = {"linux", "kernel", "ssh", "botnet", "web", "ai-exposure", "rce", "credential", "ransomware"}
 AI_SECURITY_TERMS = [
     "attack",
     "botnet",

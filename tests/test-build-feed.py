@@ -41,6 +41,16 @@ class FeedClassificationTests(unittest.TestCase):
         tags = BUILD_FEED.tags_for_text(title)
         self.assertTrue(BUILD_FEED.news_is_relevant(title, "", tags))
 
+    def test_generic_botnet_is_not_mislabeled_as_ssh(self):
+        tags = BUILD_FEED.tags_for_text("Botnet hunts exposed web services")
+        self.assertIn("botnet", tags)
+        self.assertNotIn("ssh", tags)
+
+    def test_ssh_botnet_retains_both_tags(self):
+        tags = BUILD_FEED.tags_for_text("SSH botnet brute-forces OpenSSH servers")
+        self.assertIn("botnet", tags)
+        self.assertIn("ssh", tags)
+
 
 if __name__ == "__main__":
     unittest.main()
