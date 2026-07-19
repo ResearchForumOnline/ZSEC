@@ -30,7 +30,8 @@ Run what is available on your machine:
 
 ```bash
 bash -n install.sh scripts/install-on-host.sh zsec
-python -m py_compile tools/build-feed.py
+python -m py_compile tools/build-feed.py tests/test-build-feed.py
+python tests/test-build-feed.py
 ```
 
 If changing systemd files, review:

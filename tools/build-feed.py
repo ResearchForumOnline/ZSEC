@@ -30,9 +30,25 @@ KEYWORD_TAGS = {
     "web": ["apache", "nginx", "httpd", "php", "wordpress", "web server", "cwp", "panel"],
     "ai-exposure": ["ai", "ollama", "jupyter", "gradio", "open webui", "llm", "model context protocol", "mcp"],
     "ransomware": ["ransomware", "extortion"],
-    "rce": ["remote code execution", "rce", "command injection"],
+    "rce": ["remote code execution", "code execution", "run code", "execute code", "rce", "command injection"],
     "credential": ["credential", "password", "token", "secret", "ssh key"],
 }
+
+RELEVANT_NEWS_TAGS = {"linux", "kernel", "ssh", "web", "ai-exposure", "rce", "credential", "ransomware"}
+AI_SECURITY_TERMS = [
+    "attack",
+    "botnet",
+    "compromise",
+    "credential",
+    "exploit",
+    "exposed",
+    "malware",
+    "secret",
+    "token",
+    "unauthenticated",
+    "vulnerability",
+    "zero-day",
+]
 
 
 def utc_now():
@@ -54,11 +70,20 @@ def clean_text(value, limit=520):
     return value
 
 
+def contains_keyword(blob, keyword):
+    pattern = re.escape(keyword)
+    if keyword[0].isalnum():
+        pattern = r"(?<![a-z0-9])" + pattern
+    if keyword[-1].isalnum():
+        pattern += r"(?![a-z0-9])"
+    return re.search(pattern, blob) is not None
+
+
 def tags_for_text(*values):
     blob = " ".join(value or "" for value in values).lower()
     tags = set()
     for tag, words in KEYWORD_TAGS.items():
-        if any(word in blob for word in words):
+        if any(contains_keyword(blob, word) for word in words):
             tags.add(tag)
     if "cve-" in blob:
         tags.add("cve")
@@ -67,13 +92,23 @@ def tags_for_text(*values):
 
 def severity_for_text(*values):
     blob = " ".join(value or "" for value in values).lower()
-    if any(word in blob for word in ["actively exploited", "known exploited", "rce", "remote code execution", "kernel", "openssh"]):
+    if any(contains_keyword(blob, word) for word in ["actively exploited", "known exploited", "rce", "remote code execution", "code execution", "run code", "execute code", "kernel", "openssh"]):
         return "high"
-    if any(word in blob for word in ["ransomware", "botnet", "privilege escalation", "credential"]):
+    if any(contains_keyword(blob, word) for word in ["ransomware", "botnet", "privilege escalation", "credential"]):
         return "high"
-    if any(word in blob for word in ["linux", "ssh", "apache", "nginx", "php", "ai"]):
+    if any(contains_keyword(blob, word) for word in ["linux", "ssh", "apache", "nginx", "php", "ai"]):
         return "medium"
     return "info"
+
+
+def news_is_relevant(title, summary, tags):
+    relevant_tags = set(tags).intersection(RELEVANT_NEWS_TAGS)
+    if not relevant_tags:
+        return False
+    if relevant_tags == {"ai-exposure"}:
+        blob = " ".join([title or "", summary or ""]).lower()
+        return any(contains_keyword(blob, word) for word in AI_SECURITY_TERMS)
+    return True
 
 
 def parse_rss_date(value):
@@ -119,7 +154,7 @@ def build_cisa_items(limit):
             "kind": "vulnerability",
             "severity": "high",
             "title": title or cve,
-            "summary": notes or clean_text(vuln.get("shortDescription"), 280),
+            "summary": clean_text(vuln.get("shortDescription"), 280) or notes,
             "published": clean_text(vuln.get("dateAdded"), 32),
             "cves": [cve] if cve else [],
             "affected": {
@@ -151,7 +186,7 @@ def build_thn_items(limit):
         summary = clean_text(node.findtext("description"), 360)
         published = parse_rss_date(node.findtext("pubDate"))
         tags = sorted(set(["news", "the-hacker-news"] + tags_for_text(title, summary)))
-        if not set(tags).intersection({"linux", "kernel", "ssh", "web", "ai-exposure", "rce", "credential", "ransomware"}):
+        if not news_is_relevant(title, summary, tags):
             continue
         items.append({
             "id": "thn:%s" % re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:90],
