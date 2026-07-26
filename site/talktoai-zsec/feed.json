@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T20:11:43Z",
+  "generated_at": "2026-07-26T20:02:01Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -18,7 +18,7 @@
       },
       "id": "zsec:public-ai-dev-port-review",
       "kind": "zsec-todo",
-      "published": "2026-07-19",
+      "published": "2026-07-26",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -47,7 +47,7 @@
       },
       "id": "zsec:ssh-botnet-watch",
       "kind": "zsec-todo",
-      "published": "2026-07-19",
+      "published": "2026-07-26",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -65,86 +65,88 @@
     {
       "affected": {
         "keywords": [
+          "cve",
           "news",
           "rce",
-          "the-hacker-news",
-          "web"
+          "the-hacker-news"
         ],
         "products": [],
         "vendors": []
       },
-      "id": "thn:new-wp2shell-wordpress-core-flaw-lets-unauthenticated-attackers-run-code",
+      "id": "thn:fastjson-1-x-rce-vulnerability-targeted-in-attacks-with-no-patched-available",
       "kind": "news",
-      "published": "2026-07-17",
+      "published": "2026-07-25",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/new-wp2shell-wordpress-core-flaw-lets.html"
+        "url": "https://thehackernews.com/2026/07/fastjson-1x-rce-vulnerability-targeted.html"
       },
-      "summary": "Updated July 18, 2026: the two flaws now carry CVE IDs, the full mechanism has been published, a persistent-object-cache condition has surfaced, and a working proof-of-concept is public. The story below reflects all of it. An anonymous HTTP request can run code on a WordPress site. The bug is in core, so a bare install with zero plugins is exploitable. Ever...",
+      "summary": "Security firms ThreatBook and Imperva say attackers are targeting a critical flaw in Fastjson, Alibaba's JSON library for Java. In affected Spring Boot applications, a malicious JSON request can execute code without authentication, with the privileges of the Java process. Tracked as CVE-2026-16723, the vulnerability carries an Alibaba-assigned CVSS score of...",
       "tags": [
+        "cve",
         "news",
         "rce",
-        "the-hacker-news",
-        "web"
+        "the-hacker-news"
       ],
-      "title": "New wp2shell WordPress Core Flaw Lets Unauthenticated Attackers Run Code",
+      "title": "Fastjson 1.x RCE Vulnerability Targeted in Attacks With No Patched Available",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
           "ai-exposure",
-          "botnet",
           "news",
+          "rce",
           "the-hacker-news"
         ],
         "products": [],
         "vendors": []
       },
-      "id": "thn:new-nadmesh-botnet-hunts-exposed-ai-services-for-cloud-keys-and-kubernetes-tokens",
+      "id": "thn:researcher-publishes-gitlab-rce-poc-letting-authenticated-users-run-commands-as-git",
       "kind": "news",
-      "published": "2026-07-17",
+      "published": "2026-07-25",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/new-nadmesh-botnet-hunts-exposed-ai.html"
+        "url": "https://thehackernews.com/2026/07/researcher-publishes-gitlab-rce-poc.html"
       },
-      "summary": "A Go botnet called NadMesh turned up in early July hunting exposed AI services, and the operator's own dashboard claims 3,811 unique AWS keys. A Shodan harvester keeps the scan queue stocked with ComfyUI, Ollama, n8n, Open WebUI, Langflow, and Gradio: the image generators, local model runners, and workflow builders that teams stand up fast and firewall late...",
+      "summary": "Security researchers at depthfirst published working exploit code on July 24 for a GitLab flaw that GitLab patched six weeks earlier, on June 10. It runs commands as git on any self-managed 18.11.3 server that has not taken the update. Any authenticated user who can push to a project can run it. The attacker commits a crafted Jupyter notebook and opens its...",
       "tags": [
         "ai-exposure",
-        "botnet",
         "news",
+        "rce",
         "the-hacker-news"
       ],
-      "title": "New NadMesh Botnet Hunts Exposed AI Services for Cloud Keys and Kubernetes Tokens",
+      "title": "Researcher Publishes GitLab RCE PoC Letting Authenticated Users Run Commands as Git",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
-          "credential",
           "news",
+          "ransomware",
+          "rce",
           "the-hacker-news"
         ],
         "products": [],
         "vendors": []
       },
-      "id": "thn:fake-coding-tests-deliver-ottercookie-aligned-malware-hidden-in-svg-flag-images",
+      "id": "thn:cl0p-affiliates-target-internet-exposed-ptc-windchill-and-flexplm-with-unauthenticated-rce",
       "kind": "news",
-      "published": "2026-07-17",
+      "published": "2026-07-25",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/north-korea-linked-hackers-hide.html"
+        "url": "https://thehackernews.com/2026/07/cl0p-affiliates-target-internet-exposed.html"
       },
-      "summary": "North Korean threat actors linked to the Contagious Interview campaign have been observed employing steganography in SVG image files to conceal malicious payloads as part of a campaign using fake job postings and coding challenges. \"Any user who ran the project ended up with a four-stage payload aligned with OtterCookie: a browser credential and crypto wall...",
+      "summary": "Threat actors linked to the Cl0p (aka Chubby Scorpius, FIN11, Graceful Spider, and Lace Tempest) ransomware campaign are exploiting flaws in internet-exposed PTC Windmill and FlexPLM deployments as part of a new data extortion campaign. \"Attackers chain a pre-authentication information disclosure in the FlexPLM WSDL endpoint with a server-side flaw in the W...",
       "tags": [
-        "credential",
         "news",
+        "ransomware",
+        "rce",
         "the-hacker-news"
       ],
-      "title": "Fake Coding Tests Deliver OtterCookie-Aligned Malware Hidden in SVG Flag Images",
+      "title": "Cl0p Affiliates Target Internet-Exposed PTC Windchill and FlexPLM with Unauthenticated RCE",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
@@ -157,27 +159,134 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:armenia-detains-russian-tourist-on-u-s-warrant-for-revil-hacker-lawyers-say-wrong-man",
+      "id": "thn:devman-raas-portal-centralizes-payload-builds-victim-management-and-affiliate-payouts",
       "kind": "news",
-      "published": "2026-07-17",
+      "published": "2026-07-25",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/armenia-detains-russian-tourist-on-us.html"
+        "url": "https://thehackernews.com/2026/07/devman-raas-portal-centralizes-payload.html"
       },
-      "summary": "Armenia has held a Russian tourist named Aleksandr Ermakov in a detention center since June 28, on a U.S. extradition request for a REvil ransomware suspect named Aleksandr Ermakov. His wife, Maria Yurova, told REN TV that border officers pulled him out of the departure hall at Yerevan's Zvartnots airport, held up a phone with a photo of him off his VKontak...",
+      "summary": "The operators of the DevMan ransomware-as-a-service (RaaS) scheme are maintaining a dedicated web platform that offers affiliates the ability to build payloads, oversee earnings, and manage various aspects related to victims. Swiss cybersecurity company PRODAFT is tracking the centrally administered RaaS operation under the name Funky Mantis. \"The portal co...",
       "tags": [
         "news",
         "ransomware",
         "the-hacker-news"
       ],
-      "title": "Armenia Detains Russian Tourist on U.S. Warrant for REvil Hacker, Lawyers Say Wrong Man",
+      "title": "DevMan RaaS Portal Centralizes Payload Builds, Victim Management, and Affiliate Payouts",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
-          "cve",
+          "credential",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:certighost-exploit-lets-low-privileged-active-directory-users-impersonate-a-domain-control",
+      "kind": "news",
+      "published": "2026-07-24",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/certighost-exploit-lets-low-privileged.html"
+      },
+      "summary": "Researchers H0j3n and Aniq Fakhrul published a working exploit on July 24 that lets a low-privileged Active Directory user obtain a certificate for a Domain Controller and authenticate as that machine. They codenamed the flaw Certighost. Because Domain Controller accounts carry directory replication rights, the resulting Kerberos credential can retrieve the...",
+      "tags": [
+        "credential",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Certighost Exploit Lets Low-Privileged Active Directory Users Impersonate a Domain Controller",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:chatgpt-agentforger-flaw-could-deploy-rogue-workspace-agents-via-a-phishing-link",
+      "kind": "news",
+      "published": "2026-07-24",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/chatgpt-agentforger-flaw-could-deploy.html"
+      },
+      "summary": "Cybersecurity researchers have disclosed a critical vulnerability in OpenAI's ChatGPT Workspace Agents that could have allowed a single phishing link to stealthily build, authorize, and deploy an autonomous artificial intelligence (AI) agent inside a victim's organization. The vulnerability has been codenamed AgentForger by Zenity Labs. The issue has since...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "ChatGPT AgentForger Flaw Could Deploy Rogue Workspace Agents via a Phishing Link",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "linux",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:bing-images-flaws-let-crafted-svgs-run-commands-as-system-on-microsoft-s-servers",
+      "kind": "news",
+      "published": "2026-07-24",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/bing-images-flaws-let-crafted-svgs-run.html"
+      },
+      "summary": "A crafted SVG submitted to Bing's image search ran commands as NT AUTHORITY\\SYSTEM on Microsoft's production image-processing workers, and as root on the Linux machines in the same fleet. XBOW's testing got the same result on workers across different hosts and network ranges, so the problem sat in Bing's image tier, not on one bad machine. Microsoft issued...",
+      "tags": [
+        "linux",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Bing Images Flaws Let Crafted SVGs Run Commands as SYSTEM on Microsoft's Servers",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:nodebb-patches-eight-ai-found-flaws-exposing-admin-access-and-private-chats",
+      "kind": "news",
+      "published": "2026-07-24",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/07/nodebb-patches-eight-ai-found-flaws.html"
+      },
+      "summary": "Eight security flaws in NodeBB went public on Wednesday, along with the code to exploit them. Aikido Security rates all eight as high severity and says its AI pentest agents found them in a six-hour review of the forum software's source code. Every version before 4.14.0 is affected. NodeBB has fixed them all, and administrators should be on 4.14.2. The simp...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "NodeBB Patches Eight AI-Found Flaws Exposing Admin Access and Private Chats",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
           "news",
           "rce",
           "the-hacker-news"
@@ -185,23 +294,222 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:cisa-adds-exploited-sharepoint-rce-zero-day-cve-2026-58644-to-kev",
+      "id": "thn:kimi-k3-agents-found-redis-zero-days-and-built-rce-exploit-researchers-say",
       "kind": "news",
-      "published": "2026-07-17",
+      "published": "2026-07-24",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/cisa-adds-exploited-sharepoint-rce-zero.html"
+        "url": "https://thehackernews.com/2026/07/kimi-k3-agents-found-redis-zero-days.html"
       },
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday added a newly patched security flaw impacting Microsoft SharePoint Server to its Known Exploited Vulnerabilities (KEV) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the fixes by July 19, 2026. The vulnerability in question is CVE-2026-58644 (CVSS sco...",
+      "summary": "Redis shipped seven security releases on July 23 after researchers published authenticated RCE PoCs for stock Redis 6.2.22, 7.4.9, 8.6.4, and 8.8.0. All four chains require RESTORE. The Streams chains also need EVAL and XGROUP; the 8.8.0 chain needs EVAL and the bundled RedisBloom module. Redis says the underlying memory flaws may lead to remote code execut...",
       "tags": [
-        "cve",
         "news",
         "rce",
         "the-hacker-news"
       ],
-      "title": "CISA Adds Exploited SharePoint RCE Zero-Day CVE-2026-58644 to KEV",
+      "title": "Kimi K3 Agents Found Redis Zero-Days and Built RCE Exploit, Researchers Say",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "SmartConsole"
+        ],
+        "vendors": [
+          "Check Point"
+        ]
+      },
+      "cves": [
+        "CVE-2026-16232"
+      ],
+      "id": "cisa-kev:CVE-2026-16232",
+      "kind": "vulnerability",
+      "published": "2026-07-22",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Check Point SmartConsole contains an improper authentication vulnerability which could allow an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Check Point SmartConsole Check Point SmartConsole Improper Authentication Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "cve",
+          "known-exploited"
+        ],
+        "products": [
+          "SharePoint"
+        ],
+        "vendors": [
+          "Microsoft"
+        ]
+      },
+      "cves": [
+        "CVE-2026-50522"
+      ],
+      "id": "cisa-kev:CVE-2026-50522",
+      "kind": "vulnerability",
+      "published": "2026-07-22",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Microsoft SharePoint contains a deserialization of untrusted data vulnerability which could allow an unauthorized attacker to execute code over a network.",
+      "tags": [
+        "cisa-kev",
+        "cve",
+        "known-exploited"
+      ],
+      "title": "Microsoft SharePoint Microsoft SharePoint Deserialization of Untrusted Data Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited",
+          "web"
+        ],
+        "products": [
+          "Core"
+        ],
+        "vendors": [
+          "WordPress"
+        ]
+      },
+      "cves": [
+        "CVE-2026-60137"
+      ],
+      "id": "cisa-kev:CVE-2026-60137",
+      "kind": "vulnerability",
+      "published": "2026-07-21",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "WordPress Core contains a SQL injection vulnerability when a plugin or theme passes untrusted input to the parameter. This vulnerability can be chained with CVE-2026-63030 to allow an unauthenticated attacker to gain remote code execution on default WordPress installations.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited",
+        "web"
+      ],
+      "title": "WordPress Core WordPress Core SQL Injection Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited",
+          "web"
+        ],
+        "products": [
+          "Core"
+        ],
+        "vendors": [
+          "WordPress"
+        ]
+      },
+      "cves": [
+        "CVE-2026-63030"
+      ],
+      "id": "cisa-kev:CVE-2026-63030",
+      "kind": "vulnerability",
+      "published": "2026-07-21",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited",
+        "web"
+      ],
+      "title": "WordPress Core WordPress Core Interpretation Conflict Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Langflow"
+        ],
+        "vendors": [
+          "Langflow"
+        ]
+      },
+      "cves": [
+        "CVE-2026-0770"
+      ],
+      "id": "cisa-kev:CVE-2026-0770",
+      "kind": "vulnerability",
+      "published": "2026-07-21",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Langflow contains an inclusion of functionality from untrusted control sphere vulnerability that allows remote attackers to execute arbitrary code on affected installations.",
+      "tags": [
+        "ai-exposure",
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Langflow Langflow Langflow Inclusion of Functionality from Untrusted Control Sphere Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "DD-WRT"
+        ],
+        "vendors": [
+          "DD-WRT"
+        ]
+      },
+      "cves": [
+        "CVE-2021-27137"
+      ],
+      "id": "cisa-kev:CVE-2021-27137",
+      "kind": "vulnerability",
+      "published": "2026-07-21",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "DD-WRT contains a stack-based buffer overflow vulnerability that could allow an unauthenticated attacker to overflow an internal buffer used by UPnP and trigger a code execution vulnerability.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "DD-WRT DD-WRT DD-WRT Stack-Based Buffer Overflow Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -304,33 +612,6 @@
       ],
       "title": "Fortinet FortiSandbox Fortinet FortiSandbox OS Command Injection Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:threatsday-game-cheat-spyware-24-hour-ransomware-chrome-sync-stalking-12-more-stories",
-      "kind": "news",
-      "published": "2026-07-16",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/threatsday-game-cheat-spyware-24-hour.html"
-      },
-      "summary": "A lot of this week\u2019s trouble starts with something that looks close enough. A familiar repo. A useful installer. A harmless sync setting. Then the handoff goes bad, the box starts talking to someone else, and the damage moves faster than the explanation. Old bugs are back, weak defaults are earning their keep, and some attack paths are so plain they barely...",
-      "tags": [
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "ThreatsDay: Game Cheat Spyware, 24-Hour Ransomware, Chrome Sync Stalking + 12 More Stories",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
@@ -2023,208 +2304,6 @@
       ],
       "title": "Microsoft Defender Microsoft Defender Link Following Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Defender"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2026-45498"
-      ],
-      "id": "cisa-kev:CVE-2026-45498",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Defender contains an unspecified vulnerability that allows for denial of service.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Defender Microsoft Defender Denial of Service Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Microsoft"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2026-42897"
-      ],
-      "id": "cisa-kev:CVE-2026-42897",
-      "kind": "vulnerability",
-      "published": "2026-05-15",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Exchange Server contains a cross-site scripting vulnerability during web page generation in Outlook Web Access and when certain interaction conditions are met, arbitrary JavaScript can be executed in the browser context.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Microsoft Microsoft Exchange Server Cross-Site Scripting Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "Catalyst SD-WAN"
-        ],
-        "vendors": [
-          "Cisco"
-        ]
-      },
-      "cves": [
-        "CVE-2026-20182"
-      ],
-      "id": "cisa-kev:CVE-2026-20182",
-      "kind": "vulnerability",
-      "published": "2026-05-14",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Cisco Catalyst SD-WAN Controller & Manager contain an authentication bypass vulnerability that allows an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system.",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Cisco Catalyst SD-WAN Cisco Catalyst SD-WAN Controller Authentication Bypass Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "LiteLLM"
-        ],
-        "vendors": [
-          "BerriAI"
-        ]
-      },
-      "cves": [
-        "CVE-2026-42208"
-      ],
-      "id": "cisa-kev:CVE-2026-42208",
-      "kind": "vulnerability",
-      "published": "2026-05-08",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "BerriAI LiteLLM contains a SQL injection vulnerability that allows an attacker to read data from the proxy's database and potentially modify it, leading to unauthorized access to the proxy and the credentials it manages.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "BerriAI LiteLLM BerriAI LiteLLM SQL Injection Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Endpoint Manager Mobile (EPMM)"
-        ],
-        "vendors": [
-          "Ivanti"
-        ]
-      },
-      "cves": [
-        "CVE-2026-6973"
-      ],
-      "id": "cisa-kev:CVE-2026-6973",
-      "kind": "vulnerability",
-      "published": "2026-05-07",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Ivanti Endpoint Manager Mobile (EPMM) contains an improper input validation vulnerability that allows a remotely authenticated user with administrative access to achieve remote code execution.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Ivanti Endpoint Manager Mobile (EPMM) Ivanti Endpoint Manager Mobile (EPMM) Improper Input Validation Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "PAN-OS"
-        ],
-        "vendors": [
-          "Palo Alto Networks"
-        ]
-      },
-      "cves": [
-        "CVE-2026-0300"
-      ],
-      "id": "cisa-kev:CVE-2026-0300",
-      "kind": "vulnerability",
-      "published": "2026-05-06",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Palo Alto Networks PAN-OS contains an out-of-bounds write vulnerability in the User-ID Authentication Portal (aka Captive Portal) service that can allow an unauthenticated attacker to execute arbitrary code with root privileges on the PA-Series and VM-Series firewalls by sending...",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Palo Alto Networks PAN-OS Palo Alto Networks PAN-OS Out-of-bounds Write Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     }
   ],
   "policy": {
@@ -2241,7 +2320,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 6,
+      "items": 9,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
