@@ -512,6 +512,9 @@ def text_blob(item):
 def has_any(blob, words):
     return any(word in blob for word in words)
 
+def has_marker(blob, marker):
+    return re.search(r"(?<![a-z0-9])%s(?![a-z0-9])" % re.escape(marker), blob) is not None
+
 try:
     with open(feed_path, "r", encoding="utf-8", errors="replace") as fh:
         feed = json.load(fh)
@@ -573,17 +576,21 @@ for item in feed.get("items", [])[:max_items]:
     reasons = []
 
     for marker, enabled in os_markers.items():
-        if enabled and marker in blob:
+        if enabled and has_marker(blob, marker):
             reasons.append("matches OS family: %s" % marker)
 
     for marker, package_names in package_markers.items():
-        if marker in blob and any(pkg in packages for pkg in package_names):
+        if has_marker(blob, marker) and any(pkg in packages for pkg in package_names):
             reasons.append("related installed package/service: %s" % marker)
 
     if has_any(blob, ["linux kernel", "kernel privilege", "kernel flaw"]) and kernel_release:
         reasons.append("kernel-related advisory for running kernel %s" % kernel_release)
 
-    if has_any(blob, ["ai service", "ollama", "jupyter", "gradio", "open webui", "dev service"]):
+    item_tags = set(item.get("tags") or [])
+    exposure_context = has_any(blob, ["exposed", "internet-facing", "publicly accessible", "unauthenticated"])
+    ai_service_context = has_any(blob, ["ai service", "ollama", "jupyter", "gradio", "open webui", "dev service"])
+    port_review = item.get("id") == "zsec:public-ai-dev-port-review"
+    if port_review or ("ai-exposure" in item_tags and exposure_context and ai_service_context):
         exposed = sorted(ports.intersection({"11434", "3000", "7860", "8888", "5000", "8000", "8080", "8090", "8501"}))
         if exposed:
             reasons.append("public AI/dev-like port(s): %s" % ", ".join(exposed))

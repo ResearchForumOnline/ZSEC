@@ -22,6 +22,15 @@ class FeedClassificationTests(unittest.TestCase):
         self.assertIn("ai-exposure", tags)
         self.assertIn("rce", tags)
 
+    def test_ai_found_vulnerability_is_not_ai_exposure(self):
+        tags = BUILD_FEED.tags_for_text("NodeBB patches eight AI-found vulnerabilities")
+        self.assertNotIn("ai-exposure", tags)
+        self.assertIn("web", tags)
+
+    def test_jupyter_file_format_is_not_ai_exposure(self):
+        tags = BUILD_FEED.tags_for_text("GitLab exploit uses a crafted Jupyter notebook")
+        self.assertNotIn("ai-exposure", tags)
+
     def test_source_word_does_not_imply_rce_severity(self):
         severity = BUILD_FEED.severity_for_text("Open source project publishes an advisory")
         self.assertEqual("info", severity)
@@ -50,6 +59,18 @@ class FeedClassificationTests(unittest.TestCase):
         tags = BUILD_FEED.tags_for_text("SSH botnet brute-forces OpenSSH servers")
         self.assertIn("botnet", tags)
         self.assertIn("ssh", tags)
+
+    def test_linux_only_vendor_internal_story_is_excluded(self):
+        title = "Bing Images flaw runs commands on Microsoft servers"
+        summary = "The issue reached root on Linux machines in Microsoft's fleet."
+        tags = BUILD_FEED.tags_for_text(title, summary)
+        self.assertEqual(["linux"], tags)
+        self.assertFalse(BUILD_FEED.news_is_relevant(title, summary, tags))
+
+    def test_linux_titled_story_is_included(self):
+        title = "Linux kernel flaw is actively exploited"
+        tags = BUILD_FEED.tags_for_text(title)
+        self.assertTrue(BUILD_FEED.news_is_relevant(title, "", tags))
 
 
 if __name__ == "__main__":

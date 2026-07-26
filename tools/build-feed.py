@@ -28,8 +28,21 @@ KEYWORD_TAGS = {
     "lpe": ["privilege escalation", "local privilege", "lpe"],
     "ssh": ["ssh", "openssh", "brute force"],
     "botnet": ["botnet"],
-    "web": ["apache", "nginx", "httpd", "php", "wordpress", "web server", "cwp", "panel"],
-    "ai-exposure": ["ai", "ollama", "jupyter", "gradio", "open webui", "llm", "model context protocol", "mcp"],
+    "web": ["apache", "nginx", "httpd", "php", "wordpress", "nodebb", "web server", "cwp", "panel"],
+    "ai-exposure": [
+        "ai service",
+        "ai model",
+        "ai agent",
+        "ai platform",
+        "artificial intelligence service",
+        "chatgpt",
+        "ollama",
+        "gradio",
+        "open webui",
+        "llm",
+        "model context protocol",
+        "mcp",
+    ],
     "ransomware": ["ransomware", "extortion"],
     "rce": ["remote code execution", "code execution", "run code", "execute code", "rce", "command injection"],
     "credential": ["credential", "password", "token", "secret", "ssh key"],
@@ -106,6 +119,9 @@ def news_is_relevant(title, summary, tags):
     relevant_tags = set(tags).intersection(RELEVANT_NEWS_TAGS)
     if not relevant_tags:
         return False
+    if relevant_tags == {"linux"}:
+        title_blob = (title or "").lower()
+        return any(contains_keyword(title_blob, word) for word in KEYWORD_TAGS["linux"])
     if relevant_tags == {"ai-exposure"}:
         blob = " ".join([title or "", summary or ""]).lower()
         return any(contains_keyword(blob, word) for word in AI_SECURITY_TERMS)

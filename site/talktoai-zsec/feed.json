@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T20:02:01Z",
+  "generated_at": "2026-07-26T20:06:46Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -94,7 +94,6 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
           "news",
           "rce",
           "the-hacker-news"
@@ -112,7 +111,6 @@
       },
       "summary": "Security researchers at depthfirst published working exploit code on July 24 for a GitLab flaw that GitLab patched six weeks earlier, on June 10. It runs commands as git on any self-managed 18.11.3 server that has not taken the update. Any authenticated user who can push to a project can run it. The attacker commits a crafted Jupyter notebook and opens its...",
       "tags": [
-        "ai-exposure",
         "news",
         "rce",
         "the-hacker-news"
@@ -233,36 +231,9 @@
     {
       "affected": {
         "keywords": [
-          "linux",
           "news",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:bing-images-flaws-let-crafted-svgs-run-commands-as-system-on-microsoft-s-servers",
-      "kind": "news",
-      "published": "2026-07-24",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/bing-images-flaws-let-crafted-svgs-run.html"
-      },
-      "summary": "A crafted SVG submitted to Bing's image search ran commands as NT AUTHORITY\\SYSTEM on Microsoft's production image-processing workers, and as root on the Linux machines in the same fleet. XBOW's testing got the same result on workers across different hosts and network ranges, so the problem sat in Bing's image tier, not on one bad machine. Microsoft issued...",
-      "tags": [
-        "linux",
-        "news",
-        "the-hacker-news"
-      ],
-      "title": "Bing Images Flaws Let Crafted SVGs Run Commands as SYSTEM on Microsoft's Servers",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "ai-exposure",
-          "news",
-          "the-hacker-news"
+          "the-hacker-news",
+          "web"
         ],
         "products": [],
         "vendors": []
@@ -277,9 +248,9 @@
       },
       "summary": "Eight security flaws in NodeBB went public on Wednesday, along with the code to exploit them. Aikido Security rates all eight as high severity and says its AI pentest agents found them in a six-hour review of the forum software's source code. Every version before 4.14.0 is affected. NodeBB has fixed them all, and administrators should be on 4.14.2. The simp...",
       "tags": [
-        "ai-exposure",
         "news",
-        "the-hacker-news"
+        "the-hacker-news",
+        "web"
       ],
       "title": "NodeBB Patches Eight AI-Found Flaws Exposing Admin Access and Private Chats",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
@@ -448,7 +419,6 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
           "cisa-kev",
           "known-exploited"
         ],
@@ -472,7 +442,6 @@
       },
       "summary": "Langflow contains an inclusion of functionality from untrusted control sphere vulnerability that allows remote attackers to execute arbitrary code on affected installations.",
       "tags": [
-        "ai-exposure",
         "cisa-kev",
         "known-exploited"
       ],
@@ -940,7 +909,6 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
           "cisa-kev",
           "known-exploited"
         ],
@@ -964,7 +932,6 @@
       },
       "summary": "Langflow contains an authorization bypass through user-controlled key vulnerability which allows an authenticated attacker to execute any flow belonging to another user by specifying the victim's flow ID in the request.",
       "tags": [
-        "ai-exposure",
         "cisa-kev",
         "known-exploited"
       ],
@@ -2038,7 +2005,6 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
           "cisa-kev",
           "known-exploited"
         ],
@@ -2062,7 +2028,6 @@
       },
       "summary": "Langflow contains an origin validation error vulnerability in which an overly permissive CORS configuration combined with a refresh token cookie configured as SameSite=None allows a malicious webpage to perform cross-origin requests that include credentials and successfully call...",
       "tags": [
-        "ai-exposure",
         "cisa-kev",
         "known-exploited"
       ],
@@ -2320,7 +2285,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 9,
+      "items": 8,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
