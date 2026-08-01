@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZSEC Auto Updates | Security-Only Linux Updates</title>
-  <meta name="description" content="ZSEC Auto Updates is a security-only Linux update helper and read-only advisory feed from TalkToAI and FreeWebPanel. No remote command channel, no AI runtime, no feature-upgrade automation.">
+  <title>ZSEC Security | Server Updates + Endpoint Shield Preview</title>
+  <meta name="description" content="ZSEC pairs security-only Linux server updates with ZSEC Shield, a deterministic no-AI on-demand scanner preview for Windows 10/11, macOS, and Linux.">
   <link rel="canonical" href="https://talktoai.org/zsec/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://talktoai.org/zsec/">
-  <meta property="og:title" content="ZSEC Auto Updates">
-  <meta property="og:description" content="Security-only Linux updates, lockout-aware SSH guardrails, fail2ban direction, local exposure checks, and a read-only advisory feed.">
+  <meta property="og:title" content="ZSEC Security">
+  <meta property="og:description" content="Security-only Linux server updates plus a deterministic, no-AI endpoint scanner preview for Windows, macOS, and Linux.">
   <meta property="og:image" content="https://talktoai.org/talktoai.png">
   <meta name="theme-color" content="#061012">
   <style>
@@ -165,6 +165,7 @@
       background: linear-gradient(135deg, var(--gold), #ffe48c);
       border-color: transparent;
     }
+    [id] { scroll-margin-top: 96px; }
     main { padding: 34px 0 62px; }
     .dashboard {
       display: grid;
@@ -1142,12 +1143,13 @@
       <a class="brand" href="/">
         <img src="/talktoai.png" alt="TalkToAI">
         <span>
-          <strong>ZSEC Auto Updates</strong>
-          <span>security-only updater and advisory feed</span>
+          <strong>ZSEC Security</strong>
+          <span>server updates + endpoint shield preview</span>
         </span>
       </a>
       <nav class="navlinks" aria-label="ZSEC links">
         <a href="https://github.com/ResearchForumOnline/ZSEC">GitHub</a>
+        <a href="#shield">Shield Preview</a>
         <a href="#install">Install</a>
         <a href="#feed">Live Feed</a>
         <a href="#brief">PDF Brief</a>
@@ -1189,6 +1191,27 @@
           <li><span>Primary job</span><b>Security updates</b></li>
         </ul>
       </section>
+    </div>
+
+    <div class="shell command-grid" id="shield">
+      <section class="command-card">
+        <p class="eyebrow">New • ZSEC Shield preview</p>
+        <h2>Deterministic endpoint scanning for Windows 10/11, macOS, and Linux.</h2>
+        <p class="muted">ZSEC Shield is the separate endpoint-security lane: local SHA-256 and exact-byte checks, Ed25519-signed data-only rule feeds, structured reports, read-only host inventory, and explicitly opt-in recoverable quarantine. It uses no AI model, API key, telemetry service, or cloud file upload.</p>
+        <div class="copy-row">
+          <a class="button primary" href="https://github.com/ResearchForumOnline/ZSEC-Shield">Open ZSEC Shield</a>
+          <a class="button" href="https://github.com/ResearchForumOnline/ZSEC-Shield/actions">View cross-platform CI</a>
+        </div>
+      </section>
+      <aside class="command-card">
+        <p class="eyebrow">Honest capability boundary</p>
+        <div class="check-grid">
+          <div class="check"><strong>On demand</strong><span>Scans paths selected by the operator; no kernel interception.</span></div>
+          <div class="check"><strong>Fail closed</strong><span>Invalid, expired, oversized, or rolled-back feeds are rejected.</span></div>
+          <div class="check"><strong>Recoverable</strong><span>Quarantine is opt-in, hash-verified, and restore never overwrites.</span></div>
+          <div class="check"><strong>Preview</strong><span>Not yet a complete, certified, or real-time antivirus product.</span></div>
+        </div>
+      </aside>
     </div>
 
     <div class="shell command-grid" id="brief">
