@@ -92,10 +92,18 @@ zsec version        # print version
 | -------------------- | --------------------------------------------------------------------------------------- |
 | Latest source ZIP    | [Download ZIP](https://github.com/ResearchForumOnline/ZSEC/archive/refs/heads/main.zip) |
 | GitHub releases      | [ZSEC releases](https://github.com/ResearchForumOnline/ZSEC/releases)                   |
+| ZSEC Shield v0.1.2 prerelease | [Release page](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/tag/v0.1.2) |
+| ZSEC Shield Windows x64 | [Download ZIP](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-windows-x86_64.zip) |
+| ZSEC Shield macOS arm64 | [Download tar.gz](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-macos-arm64.tar.gz) |
+| ZSEC Shield Linux x86_64 | [Download tar.gz](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-linux-x86_64.tar.gz) |
+| ZSEC Shield checksums | [SHA256SUMS.txt](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/SHA256SUMS.txt) |
 | Install script       | [install.sh](install.sh)                                                                |
 | Operations guide     | [docs/OPERATIONS.md](docs/OPERATIONS.md)                                                |
 | Advisory feed design | [docs/advisory-feed.md](docs/advisory-feed.md)                                          |
 | Public website       | [talktoai.org/zsec](https://talktoai.org/zsec/)                                         |
+
+ZSEC Shield v0.1.2 is a separate immutable GitHub prerelease. Its native archives
+are unsigned preview builds; checksums verify downloaded bytes, not publisher identity.
 
 ## Supported Systems
 
