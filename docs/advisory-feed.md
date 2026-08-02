@@ -30,6 +30,8 @@ The feed builder currently uses:
 
 The feed builder lives at `tools/build-feed.py`.
 
+Each item preserves its public source URL and a bounded summary. Feed generation applies token-boundary and security-context filters to reduce generic Linux, AI, Jupyter, Node and port-number false positives.
+
 ## Client Behavior
 
 ZSEC downloads the feed with `curl`, validates `schema: zsec.feed.v1`, then uses local package, OS, kernel, and listening-port context to decide which items deserve a TODO.
@@ -39,3 +41,8 @@ Package updates still come only from the operating system package manager:
 - Debian/Ubuntu/Proxmox/ZeroMint-like systems: apt security candidate selection
 - AlmaLinux/Rocky/RHEL-like systems: `dnf --security upgrade`
 
+## Applicability And Failure Behaviour
+
+Feed matches are deliberately conservative review prompts. A generic product name, port or CVE does not prove exposure on a host. Operators must confirm listening scope, firewall reachability, installed software and affected versions.
+
+If the feed is unavailable, malformed or has the wrong schema, the client must not infer or execute replacement actions. Security-package checks remain local; remote instructions remain disabled.

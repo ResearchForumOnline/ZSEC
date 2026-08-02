@@ -13,6 +13,7 @@ PUBLIC_FILES = (
 REPORT_PAGE = ROOT / "site" / "talktoai-report-ai" / "index.html"
 PRIVACY_PAGE = ROOT / "site" / "talktoai-privacy" / "index.html"
 ZSEC_PAGE = ROOT / "site" / "talktoai-zsec" / "index.html"
+ZSEC_DOCS_PAGE = ROOT / "site" / "talktoai-docs-zsec" / "index.html"
 RELEASE_URL = "https://github.com/ResearchForumOnline/ZSEC-Shield/releases/tag/v0.1.2"
 ASSET_URLS = (
     "https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/"
@@ -93,6 +94,24 @@ class PublicReleaseLinkTests(unittest.TestCase):
         self.assertIn('href="/report-ai/"', privacy)
         self.assertNotIn("ZERO-ONE-Desktop", privacy)
         self.assertNotIn("zero-one-store-release", privacy)
+
+    def test_modern_zsec_pages_preserve_truthful_security_boundaries(self):
+        product = ZSEC_PAGE.read_text(encoding="utf-8")
+        docs = ZSEC_DOCS_PAGE.read_text(encoding="utf-8")
+        for text in (product, docs):
+            lowered = text.lower()
+            self.assertIn("no remote command", lowered)
+            self.assertIn("unsigned", lowered)
+            self.assertIn("not certified antivirus", lowered)
+            self.assertIn("https://github.com/ResearchForumOnline/ZSEC", text)
+            self.assertIn("https://docs.talktoai.org/zsec/", text)
+            self.assertIn("og-zsec.png", text)
+
+        self.assertIn("prefers-reduced-motion", product)
+        self.assertIn("prefers-contrast", product)
+        self.assertIn("zsec.feed.v1", docs)
+        self.assertNotIn("Take TalkToAI Quiz", docs)
+        self.assertNotIn("Start Course", docs)
 
 
 if __name__ == "__main__":

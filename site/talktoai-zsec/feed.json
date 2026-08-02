@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T20:06:46Z",
+  "generated_at": "2026-08-02T14:10:36Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -18,7 +18,7 @@
       },
       "id": "zsec:public-ai-dev-port-review",
       "kind": "zsec-todo",
-      "published": "2026-07-26",
+      "published": "2026-08-02",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -47,7 +47,7 @@
       },
       "id": "zsec:ssh-botnet-watch",
       "kind": "zsec-todo",
-      "published": "2026-07-26",
+      "published": "2026-08-02",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -73,214 +73,123 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:fastjson-1-x-rce-vulnerability-targeted-in-attacks-with-no-patched-available",
+      "id": "thn:adobe-campaign-classic-cvss-10-0-flaw-could-run-code-without-user-interaction",
       "kind": "news",
-      "published": "2026-07-25",
+      "published": "2026-08-01",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/fastjson-1x-rce-vulnerability-targeted.html"
+        "url": "https://thehackernews.com/2026/08/adobe-campaign-classic-cvss-100-flaw.html"
       },
-      "summary": "Security firms ThreatBook and Imperva say attackers are targeting a critical flaw in Fastjson, Alibaba's JSON library for Java. In affected Spring Boot applications, a malicious JSON request can execute code without authentication, with the privileges of the Java process. Tracked as CVE-2026-16723, the vulnerability carries an Alibaba-assigned CVSS score of...",
+      "summary": "Adobe has released security updates to address a maximum-severity security flaw in Campaign Classic (ACC), its enterprise-focused marketing automation platform, that could result in arbitrary code execution. The vulnerability, tracked as CVE-2026-48449, carries a severity score of 10.0 on the CVSS scoring system. It has been described as a case of incorrect...",
       "tags": [
         "cve",
         "news",
         "rce",
         "the-hacker-news"
       ],
-      "title": "Fastjson 1.x RCE Vulnerability Targeted in Attacks With No Patched Available",
+      "title": "Adobe Campaign Classic CVSS 10.0 Flaw Could Run Code Without User Interaction",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
         "keywords": [
-          "news",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:researcher-publishes-gitlab-rce-poc-letting-authenticated-users-run-commands-as-git",
-      "kind": "news",
-      "published": "2026-07-25",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/researcher-publishes-gitlab-rce-poc.html"
-      },
-      "summary": "Security researchers at depthfirst published working exploit code on July 24 for a GitLab flaw that GitLab patched six weeks earlier, on June 10. It runs commands as git on any self-managed 18.11.3 server that has not taken the update. Any authenticated user who can push to a project can run it. The attacker commits a crafted Jupyter notebook and opens its...",
-      "tags": [
-        "news",
-        "rce",
-        "the-hacker-news"
-      ],
-      "title": "Researcher Publishes GitLab RCE PoC Letting Authenticated Users Run Commands as Git",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "ransomware",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:cl0p-affiliates-target-internet-exposed-ptc-windchill-and-flexplm-with-unauthenticated-rce",
-      "kind": "news",
-      "published": "2026-07-25",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/cl0p-affiliates-target-internet-exposed.html"
-      },
-      "summary": "Threat actors linked to the Cl0p (aka Chubby Scorpius, FIN11, Graceful Spider, and Lace Tempest) ransomware campaign are exploiting flaws in internet-exposed PTC Windmill and FlexPLM deployments as part of a new data extortion campaign. \"Attackers chain a pre-authentication information disclosure in the FlexPLM WSDL endpoint with a server-side flaw in the W...",
-      "tags": [
-        "news",
-        "ransomware",
-        "rce",
-        "the-hacker-news"
-      ],
-      "title": "Cl0p Affiliates Target Internet-Exposed PTC Windchill and FlexPLM with Unauthenticated RCE",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:devman-raas-portal-centralizes-payload-builds-victim-management-and-affiliate-payouts",
-      "kind": "news",
-      "published": "2026-07-25",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/devman-raas-portal-centralizes-payload.html"
-      },
-      "summary": "The operators of the DevMan ransomware-as-a-service (RaaS) scheme are maintaining a dedicated web platform that offers affiliates the ability to build payloads, oversee earnings, and manage various aspects related to victims. Swiss cybersecurity company PRODAFT is tracking the centrally administered RaaS operation under the name Funky Mantis. \"The portal co...",
-      "tags": [
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "DevMan RaaS Portal Centralizes Payload Builds, Victim Management, and Affiliate Payouts",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
+          "cisa-kev",
           "credential",
-          "news",
-          "the-hacker-news"
+          "known-exploited"
         ],
-        "products": [],
-        "vendors": []
+        "products": [
+          "Secure Firewall Management Center (FMC)"
+        ],
+        "vendors": [
+          "Cisco"
+        ]
       },
-      "id": "thn:certighost-exploit-lets-low-privileged-active-directory-users-impersonate-a-domain-control",
-      "kind": "news",
-      "published": "2026-07-24",
+      "cves": [
+        "CVE-2026-20316"
+      ],
+      "id": "cisa-kev:CVE-2026-20316",
+      "kind": "vulnerability",
+      "published": "2026-07-29",
       "severity": "high",
       "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/certighost-exploit-lets-low-privileged.html"
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "Researchers H0j3n and Aniq Fakhrul published a working exploit on July 24 that lets a low-privileged Active Directory user obtain a certificate for a Domain Controller and authenticate as that machine. They codenamed the flaw Certighost. Because Domain Controller accounts carry directory replication rights, the resulting Kerberos credential can retrieve the...",
+      "summary": "Cisco Secure Firewall Management Center (FMC) formerly known as Firepower Management Center contains a use of hard-coded password vulnerability that could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive...",
       "tags": [
+        "cisa-kev",
         "credential",
-        "news",
-        "the-hacker-news"
+        "known-exploited"
       ],
-      "title": "Certighost Exploit Lets Low-Privileged Active Directory Users Impersonate a Domain Controller",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+      "title": "Cisco Secure Firewall Management Center (FMC) Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
-          "news",
-          "the-hacker-news"
+          "cisa-kev",
+          "known-exploited"
         ],
-        "products": [],
-        "vendors": []
+        "products": [
+          "FortiOS"
+        ],
+        "vendors": [
+          "Fortinet"
+        ]
       },
-      "id": "thn:chatgpt-agentforger-flaw-could-deploy-rogue-workspace-agents-via-a-phishing-link",
-      "kind": "news",
-      "published": "2026-07-24",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/chatgpt-agentforger-flaw-could-deploy.html"
-      },
-      "summary": "Cybersecurity researchers have disclosed a critical vulnerability in OpenAI's ChatGPT Workspace Agents that could have allowed a single phishing link to stealthily build, authorize, and deploy an autonomous artificial intelligence (AI) agent inside a victim's organization. The vulnerability has been codenamed AgentForger by Zenity Labs. The issue has since...",
-      "tags": [
-        "ai-exposure",
-        "news",
-        "the-hacker-news"
+      "cves": [
+        "CVE-2025-68686"
       ],
-      "title": "ChatGPT AgentForger Flaw Could Deploy Rogue Workspace Agents via a Phishing Link",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "the-hacker-news",
-          "web"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:nodebb-patches-eight-ai-found-flaws-exposing-admin-access-and-private-chats",
-      "kind": "news",
-      "published": "2026-07-24",
-      "severity": "medium",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/nodebb-patches-eight-ai-found-flaws.html"
-      },
-      "summary": "Eight security flaws in NodeBB went public on Wednesday, along with the code to exploit them. Aikido Security rates all eight as high severity and says its AI pentest agents found them in a six-hour review of the forum software's source code. Every version before 4.14.0 is affected. NodeBB has fixed them all, and administrators should be on 4.14.2. The simp...",
-      "tags": [
-        "news",
-        "the-hacker-news",
-        "web"
-      ],
-      "title": "NodeBB Patches Eight AI-Found Flaws Exposing Admin Access and Private Chats",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:kimi-k3-agents-found-redis-zero-days-and-built-rce-exploit-researchers-say",
-      "kind": "news",
-      "published": "2026-07-24",
+      "id": "cisa-kev:CVE-2025-68686",
+      "kind": "vulnerability",
+      "published": "2026-07-27",
       "severity": "high",
       "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/07/kimi-k3-agents-found-redis-zero-days.html"
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "Redis shipped seven security releases on July 23 after researchers published authenticated RCE PoCs for stock Redis 6.2.22, 7.4.9, 8.6.4, and 8.8.0. All four chains require RESTORE. The Streams chains also need EVAL and XGROUP; the 8.8.0 chain needs EVAL and the bundled RedisBloom module. Redis says the underlying memory flaws may lead to remote code execut...",
+      "summary": "Fortinet FortiOS contains an exposure of sensitive information to an unauthorized actor vulnerability. This may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP...",
       "tags": [
-        "news",
-        "rce",
-        "the-hacker-news"
+        "cisa-kev",
+        "known-exploited"
       ],
-      "title": "Kimi K3 Agents Found Redis Zero-Days and Built RCE Exploit, Researchers Say",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+      "title": "Fortinet FortiOS Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited",
+          "rce"
+        ],
+        "products": [
+          "VeloCloud Orchestrator"
+        ],
+        "vendors": [
+          "Arista"
+        ]
+      },
+      "cves": [
+        "CVE-2026-16812"
+      ],
+      "id": "cisa-kev:CVE-2026-16812",
+      "kind": "vulnerability",
+      "published": "2026-07-27",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Arista VeloCloud Orchestrator On-Prem contains an OS command injection vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of t...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited",
+        "rce"
+      ],
+      "title": "Arista VeloCloud Orchestrator Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -2167,108 +2076,6 @@
       ],
       "title": "Adobe Acrobat and Reader Adobe Acrobat and Reader Heap-Based Buffer Overflow Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Internet Explorer"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2010-0249"
-      ],
-      "id": "cisa-kev:CVE-2010-0249",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Internet Explorer contains an use-after-free vulnerability that could allow remote attackers to execute arbitrary code by accessing a pointer associated with a deleted object. The impacted product could be end-of-life (EoL) and/or end-of-service (EoS). Users should dis...",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Internet Explorer Microsoft Internet Explorer Use-After-Free Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Internet Explorer"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2010-0806"
-      ],
-      "id": "cisa-kev:CVE-2010-0806",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Internet Explorer contains an use-after-free vulnerability that could allow remote attackers to execute arbitrary code via vectors involving access to an invalid pointer after the deletion of an object. The impacted product could be end-of-life (EoL) and/or end-of-serv...",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Internet Explorer Microsoft Internet Explorer Use-After-Free Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Defender"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2026-41091"
-      ],
-      "id": "cisa-kev:CVE-2026-41091",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Defender contains a link following vulnerability that allows an authorized attacker to elevate privileges locally.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Defender Microsoft Defender Link Following Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     }
   ],
   "policy": {
@@ -2285,7 +2092,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 8,
+      "items": 1,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
