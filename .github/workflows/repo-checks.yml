@@ -24,10 +24,13 @@ jobs:
           bash tests/test-package-lock-policy.sh
 
       - name: Python compile
-        run: python3 -m py_compile tools/build-feed.py tests/test-build-feed.py
+        run: python3 -m py_compile tools/build-feed.py tests/test-build-feed.py tests/test-public-release-links.py
 
       - name: Feed classification tests
         run: python3 tests/test-build-feed.py
+
+      - name: Public release links
+        run: python3 tests/test-public-release-links.py
 
       - name: Advisory feed JSON
         run: |

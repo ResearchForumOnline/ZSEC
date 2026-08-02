@@ -1195,12 +1195,15 @@
 
     <div class="shell command-grid" id="shield">
       <section class="command-card">
-        <p class="eyebrow">New • ZSEC Shield preview</p>
-        <h2>Deterministic endpoint scanning for Windows 10/11, macOS, and Linux.</h2>
-        <p class="muted">ZSEC Shield is the separate endpoint-security lane: local SHA-256 and exact-byte checks, Ed25519-signed data-only rule feeds, structured reports, read-only host inventory, and explicitly opt-in recoverable quarantine. It uses no AI model, API key, telemetry service, or cloud file upload.</p>
+        <p class="eyebrow">Immutable prerelease • ZSEC Shield v0.1.2</p>
+        <h2>Download the deterministic endpoint-scanner preview for Windows, macOS, or Linux.</h2>
+        <p class="muted">ZSEC Shield v0.1.2 is the separate endpoint-security lane: local SHA-256 and exact-byte checks, Ed25519-signed data-only rule feeds, structured reports, read-only host inventory, and explicitly opt-in recoverable quarantine. GitHub marks this prerelease immutable and provides a verified release attestation covering the published tag and assets.</p>
         <div class="copy-row">
-          <a class="button primary" href="https://github.com/ResearchForumOnline/ZSEC-Shield">Open ZSEC Shield</a>
-          <a class="button" href="https://github.com/ResearchForumOnline/ZSEC-Shield/actions">View cross-platform CI</a>
+          <a class="button primary" href="https://github.com/ResearchForumOnline/ZSEC-Shield/releases/tag/v0.1.2">Review v0.1.2 prerelease</a>
+          <a class="button gold" href="https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-windows-x86_64.zip">Windows x64 ZIP</a>
+          <a class="button" href="https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-macos-arm64.tar.gz">macOS arm64</a>
+          <a class="button" href="https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/zsec-shield-0.1.2-linux-x86_64.tar.gz">Linux x86_64</a>
+          <a class="button" href="https://github.com/ResearchForumOnline/ZSEC-Shield/releases/download/v0.1.2/SHA256SUMS.txt">SHA-256 checksums</a>
         </div>
       </section>
       <aside class="command-card">
@@ -1209,7 +1212,9 @@
           <div class="check"><strong>On demand</strong><span>Scans paths selected by the operator; no kernel interception.</span></div>
           <div class="check"><strong>Fail closed</strong><span>Invalid, expired, oversized, or rolled-back feeds are rejected.</span></div>
           <div class="check"><strong>Recoverable</strong><span>Quarantine is opt-in, hash-verified, and restore never overwrites.</span></div>
-          <div class="check"><strong>Preview</strong><span>Not yet a complete, certified, or real-time antivirus product.</span></div>
+          <div class="check"><strong>Unsigned preview</strong><span>No Authenticode, Apple Developer ID/notarization, or Linux package signature.</span></div>
+          <div class="check"><strong>Immutable release</strong><span>Published v0.1.2 assets and its associated tag cannot be replaced.</span></div>
+          <div class="check"><strong>Not full antivirus</strong><span>No real-time interception, memory scanner, cloud reputation, or clean-host guarantee.</span></div>
         </div>
       </aside>
     </div>
@@ -1358,7 +1363,7 @@ sudo zsec status</code></pre>
   <footer>
     <div class="shell footer-grid">
       <span>ZSEC Auto Updates is published on GitHub. Security feed sources are public and attribution is preserved in the JSON.</span>
-      <span><a href="https://github.com/ResearchForumOnline/ZSEC">GitHub</a> / <a href="/zsec/feed.json">Feed JSON</a> / <a href="https://docs.talktoai.org/zsec/">Docs</a> / <a href="https://docs.talktoai.org/contact/">Support</a> / <a href="https://github.com/ResearchForumOnline/ZSEC-Shield/security/policy">Security</a> / <a href="/privacy">Privacy</a> / <a href="/terms">Terms</a></span>
+      <span><a href="https://github.com/ResearchForumOnline/ZSEC">GitHub</a> / <a href="/zsec/feed.json">Feed JSON</a> / <a href="https://docs.talktoai.org/zsec/">Docs</a> / <a href="/report-ai/">Report AI output</a> / <a href="https://docs.talktoai.org/contact/">Support</a> / <a href="https://github.com/ResearchForumOnline/ZSEC-Shield/security/policy">Security</a> / <a href="/privacy">Privacy</a> / <a href="/terms">Terms</a></span>
     </div>
   </footer>
 
