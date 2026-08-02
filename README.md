@@ -6,11 +6,13 @@
 
 <p align="center"><a href="https://talktoai.org/zsec/"><img src="https://img.shields.io/badge/website-talktoai.org%2Fzsec-19f2b4?style=for-the-badge" alt="Website"></a> <a href="https://github.com/ResearchForumOnline/ZSEC/releases"><img src="https://img.shields.io/github/v/release/ResearchForumOnline/ZSEC?include_prereleases&#x26;style=for-the-badge" alt="GitHub release"></a> <a href="https://github.com/ResearchForumOnline/ZSEC/actions"><img src="https://img.shields.io/github/actions/workflow/status/ResearchForumOnline/ZSEC/repo-checks.yml?branch=main&#x26;label=checks&#x26;style=for-the-badge" alt="Repo checks"></a> <a href="LICENSE/"><img src="https://img.shields.io/github/license/ResearchForumOnline/ZSEC?style=for-the-badge" alt="License"></a></p>
 
-<p align="center"><a href="docs/OPERATIONS.md">Operations</a> | <a href="docs/DOWNLOADS_AND_RELEASES.md">Downloads</a> | <a href="docs/advisory-feed.md">Advisory Feed</a> | <a href="docs/threat-model.md">Threat Model</a> | <a href="docs/freewebpanel-integration.md">FreeWebPanel</a> | <a href="SECURITY.md">Security</a></p>
+<p align="center"><a href="https://docs.talktoai.org/zsec/">Live Docs</a> | <a href="docs/OPERATIONS.md">Operations</a> | <a href="docs/DOWNLOADS_AND_RELEASES.md">Downloads</a> | <a href="docs/advisory-feed.md">Advisory Feed</a> | <a href="docs/threat-model.md">Threat Model</a> | <a href="docs/freewebpanel-integration.md">FreeWebPanel</a> | <a href="SECURITY.md">Security</a></p>
 
 ZSEC is a small open-source utility for Linux servers that need predictable security maintenance without turning a public feed, web panel, or AI system into a control plane.
 
 It has one clear purpose: keep a real server patched, safer to access over SSH, easier to inspect, and harder to accidentally expose.
+
+The public [ZSEC product page](https://talktoai.org/zsec/) now separates the two reviewed lanes clearly: the Linux server updater and the independently released ZSEC Shield endpoint-scanner preview. The [live operations documentation](https://docs.talktoai.org/zsec/) is the shortest path from evaluation to safe installation and recovery planning.
 
 ## Install
 

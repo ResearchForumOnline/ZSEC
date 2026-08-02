@@ -4,10 +4,16 @@ ZSEC is designed for operators who want a small, deterministic baseline for Linu
 
 ## Install
 
+Recommended review-first install:
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ResearchForumOnline/ZSEC/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/ResearchForumOnline/ZSEC/main/install.sh -o zsec-install.sh
+less zsec-install.sh
+sudo bash zsec-install.sh
 sudo zsec status
 ```
+
+The one-line pipe-to-shell form is available for experienced operators, but it is not the recommended first install path for a root-level security utility.
 
 Clone install:
 
@@ -35,6 +41,8 @@ Confirm:
 - the current admin SSH IP was recorded when available
 - security update candidates are reported correctly
 - exposed AI/dev ports are expected or closed
+- a second administrative session or provider console is available before SSH-related work
+- a provider snapshot or other tested recovery path exists before broad deployment
 
 ## Normal Operation
 
@@ -85,3 +93,9 @@ When investigating a server issue:
 5. Use `/var/backups/zsec` for SSH config reference if needed.
 
 ZSEC should make server state easier to inspect, not harder.
+
+## Recovery Boundary
+
+ZSEC preserves SSH reference copies under `/var/backups/zsec`, but those files are not a complete disaster-recovery system. Keep provider snapshots and application/database backups outside the server where practical. Use the distribution package manager's history and transaction records when evaluating package rollback.
+
+An exposed-port, package-name, or CVE TODO is a review signal. Confirm the local service inventory, firewall path, installed vendor/version and advisory applicability before describing it as a confirmed vulnerability.

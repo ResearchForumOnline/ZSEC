@@ -37,3 +37,11 @@ ZSEC should not become a hidden automation platform. It should remain:
 - deterministic at runtime
 - independent of AI services
 - independent of web-panel control channels
+
+## Endpoint Shield
+
+- Keep ZSEC Shield a separate deterministic, no-AI component with versioned status and report contracts.
+- Add trusted publisher signing before describing public binaries as production-ready.
+- Keep on-demand scanning and quarantine consent explicit; do not silently add background scanning.
+- Evaluate real-time protection only through a separately designed, tested and independently reviewed architecture.
+- Do not claim antivirus certification, guaranteed detection or Store approval without external evidence.

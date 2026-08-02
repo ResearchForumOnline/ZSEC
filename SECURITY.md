@@ -44,6 +44,8 @@ ZSEC must not:
 - require AI, an API key, or a local model to run
 - silently switch from security updates to feature upgrades
 
+The separate [ZSEC Shield v0.1.2 prerelease](https://github.com/ResearchForumOnline/ZSEC-Shield/releases/tag/v0.1.2) is deterministic and no-AI, but its published native archives are unsigned. It must not be described as certified antivirus, real-time protection, guaranteed detection, or Store-approved software. Verify authenticated checksums, test in a safe environment, and keep operating-system protection enabled.
+
 ZSEC may:
 
 - apply OS security updates through apt or dnf
