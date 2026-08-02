@@ -20,7 +20,7 @@ Best-effort support:
 
 Please do not publish exploit details publicly before the maintainer has had a fair chance to review them.
 
-Report security issues through the repository issue tracker if the issue is not sensitive. If sensitive details are involved, contact the maintainer through the public project links on [talktoai.org](https://talktoai.org/).
+Report non-sensitive issues through the repository issue tracker. For sensitive vulnerability details, email [admin@talktoai.org](mailto:admin@talktoai.org) with the subject `ZSEC security report`. Do not open a public issue containing exploit details or private data.
 
 Useful report details:
 
