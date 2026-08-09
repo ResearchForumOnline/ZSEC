@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T20:03:25Z",
+  "generated_at": "2026-08-09T20:03:17Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -18,7 +18,7 @@
       },
       "id": "zsec:public-ai-dev-port-review",
       "kind": "zsec-todo",
-      "published": "2026-08-02",
+      "published": "2026-08-09",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -47,7 +47,7 @@
       },
       "id": "zsec:ssh-botnet-watch",
       "kind": "zsec-todo",
-      "published": "2026-08-02",
+      "published": "2026-08-09",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -73,23 +73,393 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:adobe-campaign-classic-cvss-10-0-flaw-could-run-code-without-user-interaction",
+      "id": "thn:progress-kemp-loadmaster-flaw-hits-cisa-kev-after-792-reported-exploit-attempts",
       "kind": "news",
-      "published": "2026-08-01",
+      "published": "2026-08-08",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/08/adobe-campaign-classic-cvss-100-flaw.html"
+        "url": "https://thehackernews.com/2026/08/progress-kemp-loadmaster-flaw-hits-cisa.html"
       },
-      "summary": "Adobe has released security updates to address a maximum-severity security flaw in Campaign Classic (ACC), its enterprise-focused marketing automation platform, that could result in arbitrary code execution. The vulnerability, tracked as CVE-2026-48449, carries a severity score of 10.0 on the CVSS scoring system. It has been described as a case of incorrect...",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a critical-severity security flaw impacting Progress Kemp LoadMaster to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation in the wild. The vulnerability, tracked as CVE-2026-8037 (CVSS score: 9.6), is a command injection flaw that could...",
       "tags": [
         "cve",
         "news",
         "rce",
         "the-hacker-news"
       ],
-      "title": "Adobe Campaign Classic CVSS 10.0 Flaw Could Run Code Without User Interaction",
+      "title": "Progress Kemp LoadMaster Flaw Hits CISA KEV After 792 Reported Exploit Attempts",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "cve",
+          "known-exploited",
+          "rce"
+        ],
+        "products": [
+          "LoadMaster"
+        ],
+        "vendors": [
+          "Progress"
+        ]
+      },
+      "cves": [
+        "CVE-2026-8037"
+      ],
+      "id": "cisa-kev:CVE-2026-8037",
+      "kind": "vulnerability",
+      "published": "2026-08-07",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Progress LoadMaster contains a command injection vulnerability that allows an un-authenticated attacker to execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints.",
+      "tags": [
+        "cisa-kev",
+        "cve",
+        "known-exploited",
+        "rce"
+      ],
+      "title": "Progress LoadMaster Progress LoadMaster Command Injection Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "news",
+          "ransomware",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:unc6671-vishing-attacks-target-personal-phones-to-steal-saas-data",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "info",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/unc6671-vishing-attacks-target-personal.html"
+      },
+      "summary": "A recent wave of cyber attacks targeting financial services, private equity, and professional services has been attributed to a data extortion group known as UNC6671. \"UNC6671 continues to rely on voice phishing (vishing) to target enterprise employees, posing as IT help desk staff facilitating mandatory, urgent security migrations. Significantly, the threa...",
+      "tags": [
+        "news",
+        "ransomware",
+        "the-hacker-news"
+      ],
+      "title": "UNC6671 Vishing Attacks Target Personal Phones to Steal SaaS Data",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cve",
+          "news",
+          "rce",
+          "the-hacker-news",
+          "web"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:new-wordpress-pre-auth-xss-could-lead-to-php-code-execution-patch-asap",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html"
+      },
+      "summary": "WordPress has fixed a pre-authentication reflected cross-site scripting (XSS) flaw in its login screen that affects every version of the content management system. pwn.ai demonstrated how the flaw can be chained into PHP code execution on the server when a logged-in administrator interacts with an attacker-controlled page. Tracked as CVE-2026-64638 (CVSS sc...",
+      "tags": [
+        "cve",
+        "news",
+        "rce",
+        "the-hacker-news",
+        "web"
+      ],
+      "title": "New WordPress Pre-Auth XSS Could Lead to PHP Code Execution - Patch ASAP",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "linux",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:18-year-old-linux-sctp-flaw-could-let-local-users-gain-root-and-escape-containers",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html"
+      },
+      "summary": "A use-after-free bug in Linux's SCTP networking code can be turned into full root on a host, and Tencent researchers say they used it to escape a container and reach the machine underneath. The flaw has existed since 2008. The fix already shipped: stable kernels 7.1.6, 6.18.42, 6.12.101 and 6.6.148, released August 3, close it. Anyone running an older kerne...",
+      "tags": [
+        "linux",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "18-Year-Old Linux SCTP Flaw Could Let Local Users Gain Root and Escape Containers",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "news",
+          "the-hacker-news",
+          "web"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:ai-assisted-http-terminator-finds-novel-http-desync-techniques-and-apache-zero-day",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "medium",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html"
+      },
+      "summary": "PortSwigger says HTTP Terminator, an artificial intelligence (AI)-assisted research system built by James Kettle, generated and proved new HTTP desynchronization techniques after exploring 30,000 candidate desync vectors. PortSwigger said a separate human-guided discovery cascade also exposed a zero-day in Apache Traffic Server. Kettle said HTTP Terminator...",
+      "tags": [
+        "news",
+        "the-hacker-news",
+        "web"
+      ],
+      "title": "AI-Assisted HTTP Terminator Finds Novel HTTP Desync Techniques and Apache Zero-Day",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "credential",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:malware-can-abuse-windows-hello-for-business-keys-for-persistent-entra-id-access",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "info",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/malware-can-abuse-windows-hello-for.html"
+      },
+      "summary": "Entra ID researcher Dirk-jan Mollema demonstrated that malware already running in a signed-in Windows session can silently use the victim's Windows Hello for Business key to authenticate to Microsoft Entra ID. The attacker can then establish longer-term cloud access, register a device it controls, obtain a Primary Refresh Token (PRT), and add further authen...",
+      "tags": [
+        "credential",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Malware Can Abuse Windows Hello for Business Keys for Persistent Entra ID Access",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "news",
+          "rce",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:claude-code-and-gemini-cli-flaws-let-a-github-issue-reach-ci-workflow-secrets",
+      "kind": "news",
+      "published": "2026-08-07",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/08/claude-code-and-gemini-cli-flaws-let.html"
+      },
+      "summary": "A GitHub issue opened by an account with no repository privileges was enough to execute code on the CI runners behind Anthropic's and Google's own coding-agent repositories. On OpenAI's, it was enough to hijack the next agent run. Novee Security ran the attack against each vendor's agent in the configuration that the vendor ships by default, and presented t...",
+      "tags": [
+        "news",
+        "rce",
+        "the-hacker-news"
+      ],
+      "title": "Claude Code and Gemini CLI Flaws Let a GitHub Issue Reach CI Workflow Secrets",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "cve",
+          "known-exploited"
+        ],
+        "products": [
+          "TeamCity"
+        ],
+        "vendors": [
+          "JetBrains"
+        ]
+      },
+      "cves": [
+        "CVE-2026-63077"
+      ],
+      "id": "cisa-kev:CVE-2026-63077",
+      "kind": "vulnerability",
+      "published": "2026-08-05",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "JetBrains TeamCity contains a deserialization of untrusted data vulnerability that could allow unauthenticated remote code execution via the agent polling protocol.",
+      "tags": [
+        "cisa-kev",
+        "cve",
+        "known-exploited"
+      ],
+      "title": "JetBrains TeamCity JetBrains TeamCity Deserialization of Untrusted Data Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "cve",
+          "known-exploited"
+        ],
+        "products": [
+          "N-central"
+        ],
+        "vendors": [
+          "N-able"
+        ]
+      },
+      "cves": [
+        "CVE-2026-18556"
+      ],
+      "id": "cisa-kev:CVE-2026-18556",
+      "kind": "vulnerability",
+      "published": "2026-08-04",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "N-able N-central contains an authentication bypass using an alternate path or channel that allows for authentication bypass.",
+      "tags": [
+        "cisa-kev",
+        "cve",
+        "known-exploited"
+      ],
+      "title": "N-able N-central N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited",
+          "web"
+        ],
+        "products": [
+          "Tomcat"
+        ],
+        "vendors": [
+          "Apache"
+        ]
+      },
+      "cves": [
+        "CVE-2026-34486"
+      ],
+      "id": "cisa-kev:CVE-2026-34486",
+      "kind": "vulnerability",
+      "published": "2026-08-04",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Apache Tomcat contains a missing encryption of sensitive data vulnerability that allows the bypass of the EncryptInterceptor. This vulnerability can be chained with CVE\u20112025\u201124813.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited",
+        "web"
+      ],
+      "title": "Apache Tomcat Apache Tomcat Missing Encryption of Sensitive Data Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Langflow"
+        ],
+        "vendors": [
+          "IBM"
+        ]
+      },
+      "cves": [
+        "CVE-2026-9198"
+      ],
+      "id": "cisa-kev:CVE-2026-9198",
+      "kind": "vulnerability",
+      "published": "2026-08-04",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Langflow contains a code injection vulnerability that allows unauthenticated attackers to achieve full remote code execution on default Langflow deployments.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "IBM Langflow IBM Langflow Code Injection Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "cve",
+          "known-exploited"
+        ],
+        "products": [
+          "N-central"
+        ],
+        "vendors": [
+          "N-able"
+        ]
+      },
+      "cves": [
+        "CVE-2026-18577"
+      ],
+      "id": "cisa-kev:CVE-2026-18577",
+      "kind": "vulnerability",
+      "published": "2026-08-03",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "N-able N-central contains an authentication bypass using an alternate path or channel allows for authentication bypass and account takeover in N-central. This vulnerability is the result of an incomplete patch for CVE-2026-18556.",
+      "tags": [
+        "cisa-kev",
+        "cve",
+        "known-exploited"
+      ],
+      "title": "N-able N-central N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -1876,206 +2246,6 @@
       ],
       "title": "LiteSpeed cPanel Plugin LiteSpeed cPanel Plugin Privilege Escalation Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Core"
-        ],
-        "vendors": [
-          "Drupal"
-        ]
-      },
-      "cves": [
-        "CVE-2026-9082"
-      ],
-      "id": "cisa-kev:CVE-2026-9082",
-      "kind": "vulnerability",
-      "published": "2026-05-22",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Drupal Core contains a SQL injection vulnerability that could allow for privilege escalation and remote code execution via specially crafted requests sent with the database abstraction API.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Drupal Core Drupal Core SQL Injection Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "Langflow"
-        ],
-        "vendors": [
-          "Langflow"
-        ]
-      },
-      "cves": [
-        "CVE-2025-34291"
-      ],
-      "id": "cisa-kev:CVE-2025-34291",
-      "kind": "vulnerability",
-      "published": "2026-05-21",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Langflow contains an origin validation error vulnerability in which an overly permissive CORS configuration combined with a refresh token cookie configured as SameSite=None allows a malicious webpage to perform cross-origin requests that include credentials and successfully call...",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Langflow Langflow Langflow Origin Validation Error Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Apex One"
-        ],
-        "vendors": [
-          "Trend Micro"
-        ]
-      },
-      "cves": [
-        "CVE-2026-34926"
-      ],
-      "id": "cisa-kev:CVE-2026-34926",
-      "kind": "vulnerability",
-      "published": "2026-05-21",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Trend Micro Apex One (on-premise) contains a directory traversal vulnerability that could allow a pre-authenticated local attacker to modify a key table on the server to inject malicious code to deploy to agents on affected installations.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Trend Micro Apex One Trend Micro Apex One (On-Premise) Directory Traversal Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "Windows"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2008-4250"
-      ],
-      "id": "cisa-kev:CVE-2008-4250",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft Windows contains a buffer overflow vulnerability in the Windows Server Service that allows remote attackers to execute arbitrary code via a crafted RPC request that triggers an overflow during path canonicalization.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft Windows Microsoft Windows Buffer Overflow Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "DirectX"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2009-1537"
-      ],
-      "id": "cisa-kev:CVE-2009-1537",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft DirectX contains a NULL byte overwrite vulnerability in the QuickTime Movie Parser Filter in quartz.dll in DirectShow which could allow remote attackers to execute arbitrary code via a crafted QuickTime media file.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft DirectX Microsoft DirectX NULL Byte Overwrite Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "Acrobat and Reader"
-        ],
-        "vendors": [
-          "Adobe"
-        ]
-      },
-      "cves": [
-        "CVE-2009-3459"
-      ],
-      "id": "cisa-kev:CVE-2009-3459",
-      "kind": "vulnerability",
-      "published": "2026-05-20",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Adobe Acrobat and Reader contain a heap-based buffer overflow vulnerability which could allow remote attackers to execute arbitrary code via a crafted PDF file that triggers memory corruption.",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Adobe Acrobat and Reader Adobe Acrobat and Reader Heap-Based Buffer Overflow Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     }
   ],
   "policy": {
@@ -2092,7 +2262,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 1,
+      "items": 7,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
