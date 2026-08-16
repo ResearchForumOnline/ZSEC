@@ -573,6 +573,7 @@ for item in feed.get("items", [])[:max_items]:
     if not isinstance(item, dict):
         continue
     blob = text_blob(item)
+    item_tags = set(item.get("tags") or [])
     reasons = []
 
     for marker, enabled in os_markers.items():
@@ -580,13 +581,14 @@ for item in feed.get("items", [])[:max_items]:
             reasons.append("matches OS family: %s" % marker)
 
     for marker, package_names in package_markers.items():
+        if item.get("kind") == "news" and marker in ("ssh", "openssh") and "ssh" not in item_tags:
+            continue
         if has_marker(blob, marker) and any(pkg in packages for pkg in package_names):
             reasons.append("related installed package/service: %s" % marker)
 
     if has_any(blob, ["linux kernel", "kernel privilege", "kernel flaw"]) and kernel_release:
         reasons.append("kernel-related advisory for running kernel %s" % kernel_release)
 
-    item_tags = set(item.get("tags") or [])
     exposure_context = has_any(blob, ["exposed", "internet-facing", "publicly accessible", "unauthenticated"])
     ai_service_context = has_any(blob, ["ai service", "ollama", "jupyter", "gradio", "open webui", "dev service"])
     port_review = item.get("id") == "zsec:public-ai-dev-port-review"

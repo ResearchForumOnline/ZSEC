@@ -16,12 +16,13 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Shell syntax
-        run: bash -n install.sh scripts/install-on-host.sh tests/test-systemd-timers.sh tests/test-package-lock-policy.sh zsec
+        run: bash -n install.sh scripts/install-on-host.sh tests/test-systemd-timers.sh tests/test-package-lock-policy.sh tests/test-advisory-match-policy.sh zsec
 
       - name: Persistent timer schedules
         run: |
           bash tests/test-systemd-timers.sh
           bash tests/test-package-lock-policy.sh
+          bash tests/test-advisory-match-policy.sh
 
       - name: Python compile
         run: python3 -m py_compile tools/build-feed.py tests/test-build-feed.py tests/test-public-release-links.py
