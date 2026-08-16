@@ -60,6 +60,13 @@ class FeedClassificationTests(unittest.TestCase):
         self.assertIn("botnet", tags)
         self.assertIn("ssh", tags)
 
+    def test_stolen_ssh_keys_do_not_imply_ssh_service_exposure(self):
+        title = "Malicious package contains credential-stealing code"
+        summary = "The malware harvested cloud keys, SSH keys, and database passwords."
+        tags = BUILD_FEED.news_tags_for_text(title, summary)
+        self.assertIn("credential", tags)
+        self.assertNotIn("ssh", tags)
+
     def test_linux_only_vendor_internal_story_is_excluded(self):
         title = "Bing Images flaw runs commands on Microsoft servers"
         summary = "The issue reached root on Linux machines in Microsoft's fleet."

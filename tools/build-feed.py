@@ -104,6 +104,22 @@ def tags_for_text(*values):
     return sorted(tags)
 
 
+def news_tags_for_text(title, summary):
+    tags = set(tags_for_text(title, summary))
+    title_blob = (title or "").lower()
+    summary_blob = (summary or "").lower()
+    ssh_service_context = any(
+        contains_keyword(title_blob, word)
+        for word in KEYWORD_TAGS["ssh"]
+    ) or any(
+        contains_keyword(summary_blob, word)
+        for word in ["openssh", "ssh server", "ssh service", "ssh daemon", "brute force"]
+    )
+    if "ssh" in tags and not ssh_service_context:
+        tags.remove("ssh")
+    return sorted(tags)
+
+
 def severity_for_text(*values):
     blob = " ".join(value or "" for value in values).lower()
     if any(contains_keyword(blob, word) for word in ["actively exploited", "known exploited", "rce", "remote code execution", "code execution", "run code", "execute code", "kernel", "openssh"]):
@@ -202,7 +218,7 @@ def build_thn_items(limit):
         link = clean_text(node.findtext("link"), 260)
         summary = clean_text(node.findtext("description"), 360)
         published = parse_rss_date(node.findtext("pubDate"))
-        tags = sorted(set(["news", "the-hacker-news"] + tags_for_text(title, summary)))
+        tags = sorted(set(["news", "the-hacker-news"] + news_tags_for_text(title, summary)))
         if not news_is_relevant(title, summary, tags):
             continue
         items.append({

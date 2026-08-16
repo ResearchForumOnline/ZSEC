@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T20:02:51Z",
+  "generated_at": "2026-08-16T20:05:49Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -98,7 +98,6 @@
         "keywords": [
           "credential",
           "news",
-          "ssh",
           "the-hacker-news"
         ],
         "products": [],
@@ -116,7 +115,6 @@
       "tags": [
         "credential",
         "news",
-        "ssh",
         "the-hacker-news"
       ],
       "title": "Malicious LiteLLM Releases Tied to Trivy Hack May Have Exposed 2,100+ Organizations",
