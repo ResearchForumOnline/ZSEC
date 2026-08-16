@@ -23,7 +23,7 @@ THN_RSS_URL = "https://feeds.feedburner.com/TheHackersNews"
 HOME_URL = "https://talktoai.org/zsec/"
 
 KEYWORD_TAGS = {
-    "linux": ["linux", "ubuntu", "debian", "almalinux", "rocky", "rhel", "kernel", "proxmox"],
+    "linux": ["linux", "ubuntu", "debian", "almalinux", "rocky", "rhel", "proxmox"],
     "kernel": ["kernel"],
     "lpe": ["privilege escalation", "local privilege", "lpe"],
     "ssh": ["ssh", "openssh", "brute force"],
@@ -119,7 +119,7 @@ def news_is_relevant(title, summary, tags):
     relevant_tags = set(tags).intersection(RELEVANT_NEWS_TAGS)
     if not relevant_tags:
         return False
-    if relevant_tags == {"linux"}:
+    if relevant_tags.issubset({"linux", "kernel"}):
         title_blob = (title or "").lower()
         return any(contains_keyword(title_blob, word) for word in KEYWORD_TAGS["linux"])
     if relevant_tags == {"ai-exposure"}:

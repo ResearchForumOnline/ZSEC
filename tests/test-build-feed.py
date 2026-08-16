@@ -72,6 +72,13 @@ class FeedClassificationTests(unittest.TestCase):
         tags = BUILD_FEED.tags_for_text(title)
         self.assertTrue(BUILD_FEED.news_is_relevant(title, "", tags))
 
+    def test_windows_kernel_story_is_not_tagged_as_linux_or_included(self):
+        title = "Microsoft patches Windows kernel driver flaw"
+        tags = BUILD_FEED.tags_for_text(title)
+        self.assertNotIn("linux", tags)
+        self.assertIn("kernel", tags)
+        self.assertFalse(BUILD_FEED.news_is_relevant(title, "", tags))
+
 
 if __name__ == "__main__":
     unittest.main()
