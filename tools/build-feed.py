@@ -10,8 +10,11 @@ import datetime
 import email.utils
 import html
 import json
+import os
 import re
+import stat
 import sys
+import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -31,6 +34,7 @@ KEYWORD_TAGS = {
     "web": ["apache", "nginx", "httpd", "php", "wordpress", "nodebb", "web server", "cwp", "panel"],
     "ai-exposure": [
         "ai service",
+        "ai services",
         "ai model",
         "ai agent",
         "ai platform",
@@ -134,6 +138,8 @@ def severity_for_text(*values):
 def news_is_relevant(title, summary, tags):
     relevant_tags = set(tags).intersection(RELEVANT_NEWS_TAGS)
     if not relevant_tags:
+        return False
+    if relevant_tags == {"botnet"}:
         return False
     if relevant_tags.issubset({"linux", "kernel"}):
         title_blob = (title or "").lower()
@@ -286,15 +292,39 @@ def static_zsec_items():
     ]
 
 
-def main():
+def write_feed(feed, output):
+    output = os.path.abspath(output)
+    output_dir = os.path.dirname(output)
+    output_mode = stat.S_IMODE(os.stat(output).st_mode) if os.path.exists(output) else 0o644
+    fd, temp_path = tempfile.mkstemp(prefix=".zsec-feed-", suffix=".json.tmp", dir=output_dir)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(feed, fh, indent=2, sort_keys=True)
+            fh.write("\n")
+        os.chmod(temp_path, output_mode)
+        os.replace(temp_path, output)
+    finally:
+        if os.path.exists(temp_path):
+            os.unlink(temp_path)
+
+
+def main(argv=None):
     parser = argparse.ArgumentParser(description="Build talktoai.org/zsec advisory feed")
     parser.add_argument("--output", default="site/talktoai-zsec/feed.json")
     parser.add_argument("--limit-kev", type=int, default=60)
     parser.add_argument("--limit-news", type=int, default=16)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     cisa_items, cisa_source = build_cisa_items(args.limit_kev)
     thn_items, thn_source = build_thn_items(args.limit_news)
+    sources = [cisa_source, thn_source]
+    failed_sources = [source for source in sources if source.get("status") != "ok"]
+    if failed_sources:
+        for source in failed_sources:
+            print("required source failed: %s: %s" % (source.get("name", "unknown"), source.get("error", "unknown error")), file=sys.stderr)
+        print("feed not written; existing output preserved", file=sys.stderr)
+        return 1
+
     items = static_zsec_items() + cisa_items + thn_items
     items = sorted(items, key=lambda row: row.get("published", ""), reverse=True)
 
@@ -307,15 +337,14 @@ def main():
             "auto_update_scope": "OS security packages only",
             "client_behavior": "Create local TODOs and warnings only.",
         },
-        "sources": [cisa_source, thn_source],
+        "sources": sources,
         "items": items,
     }
 
-    with open(args.output, "w", encoding="utf-8") as fh:
-        json.dump(feed, fh, indent=2, sort_keys=True)
-        fh.write("\n")
+    write_feed(feed, args.output)
     print("wrote %s with %d items" % (args.output, len(items)))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
