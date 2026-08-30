@@ -128,7 +128,7 @@ def severity_for_text(*values):
     blob = " ".join(value or "" for value in values).lower()
     if any(contains_keyword(blob, word) for word in ["actively exploited", "known exploited", "rce", "remote code execution", "code execution", "run code", "execute code", "kernel", "openssh"]):
         return "high"
-    if any(contains_keyword(blob, word) for word in ["ransomware", "botnet", "privilege escalation", "credential"]):
+    if any(contains_keyword(blob, word) for word in ["ransomware", "extortion", "botnet", "privilege escalation", "credential"]):
         return "high"
     if any(contains_keyword(blob, word) for word in ["linux", "ssh", "apache", "nginx", "php", "ai"]):
         return "medium"

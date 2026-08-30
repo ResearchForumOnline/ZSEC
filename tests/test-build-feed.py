@@ -39,6 +39,10 @@ class FeedClassificationTests(unittest.TestCase):
         severity = BUILD_FEED.severity_for_text("Open source project publishes an advisory")
         self.assertEqual("info", severity)
 
+    def test_extortion_language_gets_ransomware_severity(self):
+        severity = BUILD_FEED.severity_for_text("Attackers made an extortion demand after stealing data")
+        self.assertEqual("high", severity)
+
     def test_run_code_wording_is_rce(self):
         tags = BUILD_FEED.tags_for_text("Unauthenticated attackers can run code")
         self.assertIn("rce", tags)
