@@ -48,6 +48,14 @@ class FeedClassificationTests(unittest.TestCase):
         self.assertIn("rce", tags)
         self.assertEqual("high", BUILD_FEED.severity_for_text("Unauthenticated attackers can run code"))
 
+    def test_authentication_bypass_language_is_high_severity(self):
+        for wording in [
+            "Attackers gain access without authentication",
+            "An authentication bypass affects the management interface",
+        ]:
+            with self.subTest(wording=wording):
+                self.assertEqual("high", BUILD_FEED.severity_for_text(wording))
+
     def test_non_security_ai_policy_news_is_excluded(self):
         title = "Regulator issues new rules for rival AI assistants"
         tags = BUILD_FEED.tags_for_text(title)

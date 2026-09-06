@@ -126,7 +126,7 @@ def news_tags_for_text(title, summary):
 
 def severity_for_text(*values):
     blob = " ".join(value or "" for value in values).lower()
-    if any(contains_keyword(blob, word) for word in ["actively exploited", "known exploited", "rce", "remote code execution", "code execution", "run code", "execute code", "kernel", "openssh"]):
+    if any(contains_keyword(blob, word) for word in ["actively exploited", "known exploited", "unauthenticated", "without authentication", "authentication bypass", "rce", "remote code execution", "code execution", "run code", "execute code", "kernel", "openssh"]):
         return "high"
     if any(contains_keyword(blob, word) for word in ["ransomware", "extortion", "botnet", "privilege escalation", "credential"]):
         return "high"
