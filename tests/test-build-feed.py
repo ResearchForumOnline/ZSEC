@@ -90,6 +90,13 @@ class FeedClassificationTests(unittest.TestCase):
         self.assertIn("credential", tags)
         self.assertNotIn("ssh", tags)
 
+    def test_vendor_router_ssh_flaw_does_not_match_openssh_servers(self):
+        title = "Attackers hijack MikroTik routers through internet-exposed SSH"
+        summary = "The vendor's remote-access service allows administrative control."
+        tags = BUILD_FEED.news_tags_for_text(title, summary)
+        self.assertNotIn("ssh", tags)
+        self.assertFalse(BUILD_FEED.news_is_relevant(title, summary, tags))
+
     def test_linux_only_vendor_internal_story_is_excluded(self):
         title = "Bing Images flaw runs commands on Microsoft servers"
         summary = "The issue reached root on Linux machines in Microsoft's fleet."

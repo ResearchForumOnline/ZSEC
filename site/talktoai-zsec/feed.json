@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T20:02:26Z",
+  "generated_at": "2026-09-06T20:05:03Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -61,33 +61,6 @@
       ],
       "title": "Keep SSH brute-force protection active",
       "zsec_action": "Keep fail2ban active, keep SSH keys backed up, and keep the admin IP allowlist current."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "ssh",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:attackers-hijack-mikrotik-routers-through-internet-exposed-ssh-without-authentication",
-      "kind": "news",
-      "published": "2026-09-06",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/09/attackers-hijack-mikrotik-routers.html"
-      },
-      "summary": "Attackers are exploiting MikroTik routers with their Secure Shell (SSH) remote-access service, which is reachable from the internet, to gain full administrative control without authentication, according to CERT Polska's attack warning, published on September 5. Successful attacks date to at least September 2. The Hacker News\u2019s September 6 review of the warn...",
-      "tags": [
-        "news",
-        "ssh",
-        "the-hacker-news"
-      ],
-      "title": "Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
@@ -2202,7 +2175,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 5,
+      "items": 4,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"

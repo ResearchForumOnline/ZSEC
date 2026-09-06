@@ -114,7 +114,7 @@ def news_tags_for_text(title, summary):
     summary_blob = (summary or "").lower()
     ssh_service_context = any(
         contains_keyword(title_blob, word)
-        for word in KEYWORD_TAGS["ssh"]
+        for word in ["openssh", "ssh server", "ssh service", "ssh daemon", "brute force"]
     ) or any(
         contains_keyword(summary_blob, word)
         for word in ["openssh", "ssh server", "ssh service", "ssh daemon", "brute force"]
