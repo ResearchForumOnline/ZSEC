@@ -178,6 +178,12 @@ wait_for_package_manager() {
   return 0
 }
 
+apt_get() {
+  local lock_wait="$ZSEC_PACKAGE_LOCK_WAIT_SECONDS"
+  [[ "$lock_wait" =~ ^[0-9]+$ ]] || lock_wait=180
+  apt-get -o "DPkg::Lock::Timeout=${lock_wait}" "$@"
+}
+
 backup_file() {
   local path="$1"
   local stamp="$2"
@@ -298,8 +304,8 @@ configure_fail2ban() {
         info "dry-run: would install fail2ban"
         return 0
       fi
-      apt-get update -y >/dev/null
-      DEBIAN_FRONTEND=noninteractive apt-get install -y fail2ban >/dev/null || { warn "fail2ban install failed"; return 0; }
+      apt_get update -y >/dev/null || { warn "apt metadata refresh stayed unavailable; deferring fail2ban install"; return 0; }
+      DEBIAN_FRONTEND=noninteractive apt_get install -y fail2ban >/dev/null || { warn "fail2ban install failed"; return 0; }
     else
       warn "fail2ban not installed; on Alma/Rocky install it from an approved repo before enabling this jail"
       return 0
@@ -361,7 +367,10 @@ PY
 }
 
 security_updates_debian() {
-  apt-get update -y >/dev/null
+  if ! apt_get update -y >/dev/null; then
+    warn "apt metadata refresh stayed unavailable; deferring security package work until the next timer run"
+    return 0
+  fi
   local packages=()
   if ! mapfile -t packages < <(debian_security_package_list); then
     warn "python-apt security package selection failed; not applying apt upgrades"
@@ -376,7 +385,10 @@ security_updates_debian() {
   if [ "$DRY_RUN" = "1" ]; then
     info "dry-run: apt security packages pending: ${packages[*]}"
   else
-    DEBIAN_FRONTEND=noninteractive apt-get install --only-upgrade -y "${packages[@]}"
+    if ! DEBIAN_FRONTEND=noninteractive apt_get install --only-upgrade -y "${packages[@]}"; then
+      warn "apt security upgrade stayed unavailable; deferring remaining package work until the next timer run"
+      return 0
+    fi
   fi
 }
 
@@ -574,6 +586,11 @@ for item in feed.get("items", [])[:max_items]:
         continue
     blob = text_blob(item)
     item_tags = set(item.get("tags") or [])
+    affected = item.get("affected") or {}
+    affected_products = " ".join(str(value).lower() for value in (affected.get("products") or []))
+    affected_vendors = " ".join(str(value).lower() for value in (affected.get("vendors") or []))
+    structured_product = bool(affected_products or affected_vendors)
+    structured_linux_kernel = has_any(affected_products, ["linux kernel", "linux-image", "kernel-core"])
     reasons = []
 
     for marker, enabled in os_markers.items():
@@ -583,10 +600,12 @@ for item in feed.get("items", [])[:max_items]:
     for marker, package_names in package_markers.items():
         if item.get("kind") == "news" and marker in ("ssh", "openssh") and "ssh" not in item_tags:
             continue
+        if marker == "kernel" and structured_product and not structured_linux_kernel:
+            continue
         if has_marker(blob, marker) and any(pkg in packages for pkg in package_names):
             reasons.append("related installed package/service: %s" % marker)
 
-    if has_any(blob, ["linux kernel", "kernel privilege", "kernel flaw"]) and kernel_release:
+    if (not structured_product or structured_linux_kernel) and has_any(blob, ["linux kernel", "kernel privilege", "kernel flaw"]) and kernel_release:
         reasons.append("kernel-related advisory for running kernel %s" % kernel_release)
 
     exposure_context = has_any(blob, ["exposed", "internet-facing", "publicly accessible", "unauthenticated"])
