@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T20:01:56Z",
+  "generated_at": "2026-09-20T20:01:43Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -18,7 +18,7 @@
       },
       "id": "zsec:public-ai-dev-port-review",
       "kind": "zsec-todo",
-      "published": "2026-09-13",
+      "published": "2026-09-20",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -47,7 +47,7 @@
       },
       "id": "zsec:ssh-botnet-watch",
       "kind": "zsec-todo",
-      "published": "2026-09-13",
+      "published": "2026-09-20",
       "severity": "high",
       "source": {
         "name": "ZSEC baseline",
@@ -65,6 +65,7 @@
     {
       "affected": {
         "keywords": [
+          "cve",
           "news",
           "rce",
           "the-hacker-news"
@@ -72,22 +73,404 @@
         "products": [],
         "vendors": []
       },
-      "id": "thn:openai-agents-linked-to-rubygems-campaign-that-gained-rce-on-rubydoc-servers",
+      "id": "thn:solarwinds-patches-arm-hard-coded-key-flaw-enabling-unauthenticated-rce",
       "kind": "news",
-      "published": "2026-09-12",
+      "published": "2026-09-19",
       "severity": "high",
       "source": {
         "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/09/openai-agents-linked-to-rubygems.html"
+        "url": "https://thehackernews.com/2026/09/solarwinds-patches-arm-hard-coded-key.html"
       },
-      "summary": "The \"major malicious attack\" that targeted RubyGems in May 2026 was the work of a swarm of OpenAI agents, according to a new report published by researchers Spencer Kitts, Thomas Larsen, and Sydney Von Arx. On May 12, Maciej Mensfeld, senior product manager for software supply chain security at Mend.io, disclosed details of a coordinated cyber attack that t...",
+      "summary": "SolarWinds has released security updates to address a high-severity flaw in Access Rights Manager (ARM) that, if successfully exploited, could lead to an unauthenticated remote code execution vulnerability. The vulnerability, tracked as CVE-2026-28326, is rated 8.8 out of 10.0 on the CVSS scoring system. The issue affects all versions of Access Rights Manag...",
       "tags": [
+        "cve",
         "news",
         "rce",
         "the-hacker-news"
       ],
-      "title": "OpenAI Agents Linked to RubyGems Campaign That Gained RCE on RubyDoc Servers",
+      "title": "SolarWinds Patches ARM Hard-Coded Key Flaw Enabling Unauthenticated RCE",
       "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cve",
+          "news",
+          "rce",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:critical-pre-auth-rce-in-orkes-conductor-workflow-platform-exploited-in-the-wild",
+      "kind": "news",
+      "published": "2026-09-19",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/09/critical-pre-auth-rce-in-orkes.html"
+      },
+      "summary": "A critical vulnerability impacting Orkes Conductor is being actively exploited in the wild, according to Fortinet. The vulnerability in question is CVE-2026-58138 (CVSS v3.1 score: 9.8/CVSS v4 score: 9.3), which relates to a case of unauthenticated remote code execution. \"Orkes Conductor 3.21.21 before 3.30.2 contains an unauthenticated remote code executio...",
+      "tags": [
+        "cve",
+        "news",
+        "rce",
+        "the-hacker-news"
+      ],
+      "title": "Critical Pre-Auth RCE in Orkes Conductor Workflow Platform Exploited in the Wild",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cve",
+          "kernel",
+          "linux",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:cisa-flags-three-linux-kernel-vulnerabilities-exploited-in-the-wild",
+      "kind": "news",
+      "published": "2026-09-19",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/09/cisa-flags-three-linux-kernel.html"
+      },
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added three security flaws impacting the Linux kernel to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation. The vulnerabilities are listed below - CVE-2025-39682 (CVSS score: 9.8) - An improper check for unusual or exceptional conditions vulner...",
+      "tags": [
+        "cve",
+        "kernel",
+        "linux",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "CISA Flags Three Linux Kernel Vulnerabilities Exploited in the Wild",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "kernel",
+          "known-exploited",
+          "linux"
+        ],
+        "products": [
+          "Kernel"
+        ],
+        "vendors": [
+          "Linux"
+        ]
+      },
+      "cves": [
+        "CVE-2025-39964"
+      ],
+      "id": "cisa-kev:CVE-2025-39964",
+      "kind": "vulnerability",
+      "published": "2026-09-18",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state.",
+      "tags": [
+        "cisa-kev",
+        "kernel",
+        "known-exploited",
+        "linux"
+      ],
+      "title": "Linux Kernel Linux Kernel Race Condition Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "kernel",
+          "known-exploited",
+          "linux"
+        ],
+        "products": [
+          "Kernel"
+        ],
+        "vendors": [
+          "Linux"
+        ]
+      },
+      "cves": [
+        "CVE-2026-53266"
+      ],
+      "id": "cisa-kev:CVE-2026-53266",
+      "kind": "vulnerability",
+      "published": "2026-09-18",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-lif...",
+      "tags": [
+        "cisa-kev",
+        "kernel",
+        "known-exploited",
+        "linux"
+      ],
+      "title": "Linux Kernel Linux Kernel Out-of-Bounds Write Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "kernel",
+          "known-exploited",
+          "linux"
+        ],
+        "products": [
+          "Kernel"
+        ],
+        "vendors": [
+          "Linux"
+        ]
+      },
+      "cves": [
+        "CVE-2025-39682"
+      ],
+      "id": "cisa-kev:CVE-2025-39682",
+      "kind": "vulnerability",
+      "published": "2026-09-18",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to b...",
+      "tags": [
+        "cisa-kev",
+        "kernel",
+        "known-exploited",
+        "linux"
+      ],
+      "title": "Linux Kernel Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "kernel",
+          "linux",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:public-exploits-released-for-four-linux-kernel-flaws-that-enable-local-root",
+      "kind": "news",
+      "published": "2026-09-18",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/09/public-exploits-released-for-four-linux.html"
+      },
+      "summary": "A security researcher has released working exploit code for four Linux kernel flaws that each let a local user gain root, the highest level of access on a machine. Kernel maintainers have fixed all four over the past few weeks, so a system running an up-to-date kernel is not affected. But the exploit code is now public, and any machine still running an olde...",
+      "tags": [
+        "kernel",
+        "linux",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Public Exploits Released for Four Linux Kernel Flaws That Enable Local Root",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "news",
+          "rce",
+          "the-hacker-news",
+          "web"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:new-wordpress-click2shell-flaw-forces-theme-installs-can-chain-to-code-execution",
+      "kind": "news",
+      "published": "2026-09-18",
+      "severity": "high",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/09/new-wordpress-click2shell-flaw-forces.html"
+      },
+      "summary": "WordPress today released patches to fix a new set of vulnerabilities in its core software, one of which could allow a crafted web link, opened by a logged-in administrator, to install a theme from the official WordPress.org directory without anyone clicking Install. The security firm pwn.ai, whose researchers reported the flaw, calls the attack chain Click2...",
+      "tags": [
+        "news",
+        "rce",
+        "the-hacker-news",
+        "web"
+      ],
+      "title": "New WordPress Click2Shell Flaw Forces Theme Installs, Can Chain to Code Execution",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "ai-exposure",
+          "news",
+          "the-hacker-news"
+        ],
+        "products": [],
+        "vendors": []
+      },
+      "id": "thn:claimed-bug-bounty-hunter-likely-used-llm-to-build-phantomraven-npm-stealer",
+      "kind": "news",
+      "published": "2026-09-18",
+      "severity": "info",
+      "source": {
+        "name": "The Hacker News",
+        "url": "https://thehackernews.com/2026/09/claimed-bug-bounty-hunter-likely-used.html"
+      },
+      "summary": "A financially motivated threat actor has been linked to the development and distribution of a JavaScript (JS)-based information stealer known as PhantomRaven via the npm package registry. \"The developer likely wrote the malware using a large language model (LLM), an assessment made with high confidence based on verbose comments, placeholder code, and statis...",
+      "tags": [
+        "ai-exposure",
+        "news",
+        "the-hacker-news"
+      ],
+      "title": "Claimed Bug Bounty Hunter Likely Used LLM to Build PhantomRaven npm Stealer",
+      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Pixel"
+        ],
+        "vendors": [
+          "Google"
+        ]
+      },
+      "cves": [
+        "CVE-2026-58704"
+      ],
+      "id": "cisa-kev:CVE-2026-58704",
+      "kind": "vulnerability",
+      "published": "2026-09-16",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Google Pixel Google Pixel Improper Authorization Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Identity Services Engine"
+        ],
+        "vendors": [
+          "Cisco"
+        ]
+      },
+      "cves": [
+        "CVE-2026-76460"
+      ],
+      "id": "cisa-kev:CVE-2026-76460",
+      "kind": "vulnerability",
+      "published": "2026-09-16",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) contain an incorrect use of privileged APIs vulnerability that could allow an unauthenticated, remote attacker to gain unauthorized access to the affected device by bypassing the web-based ma...",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Cisco Identity Services Engine Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Backup"
+        ],
+        "vendors": [
+          "Acronis"
+        ]
+      },
+      "cves": [
+        "CVE-2026-87886"
+      ],
+      "id": "cisa-kev:CVE-2026-87886",
+      "kind": "vulnerability",
+      "published": "2026-09-16",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Acronis Backup plugin for cPanel & WHM and extension for Plesk contains an incorrect default permissions vulnerability that could allow for privilege escalation.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Acronis Backup Acronis Backup Incorrect Default Permissions Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
+    },
+    {
+      "affected": {
+        "keywords": [
+          "cisa-kev",
+          "known-exploited"
+        ],
+        "products": [
+          "Secure Email Gateway"
+        ],
+        "vendors": [
+          "Cisco"
+        ]
+      },
+      "cves": [
+        "CVE-2026-76461"
+      ],
+      "id": "cisa-kev:CVE-2026-76461",
+      "kind": "vulnerability",
+      "published": "2026-09-14",
+      "severity": "high",
+      "source": {
+        "name": "CISA Known Exploited Vulnerabilities Catalog",
+        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      "summary": "Cisco AsyncOS software for Cisco Secure Email Gateway (SEG) contains a SQL injection vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary commands with root privileges on the underlying operating system.",
+      "tags": [
+        "cisa-kev",
+        "known-exploited"
+      ],
+      "title": "Cisco Secure Email Gateway Cisco Secure Email Gateway SQL Injection Vulnerability",
+      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     },
     {
       "affected": {
@@ -113,7 +496,7 @@
         "name": "CISA Known Exploited Vulnerabilities Catalog",
         "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to file transfer and execution through an active remote sessions without authorization or host confirmation.",
+      "summary": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active remote session without authorization or host confirmation.",
       "tags": [
         "cisa-kev",
         "known-exploited"
@@ -145,7 +528,7 @@
         "name": "CISA Known Exploited Vulnerabilities Catalog",
         "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "JFrog Artifactory contains an incorrect authorization vulnerability that allows leads to privilege escalation attack due to a validation check of the token signature/issuer and not the token\u2019s scope.",
+      "summary": "JFrog Artifactory contains an incorrect authorization vulnerability that leads to a privilege escalation attack due to a validation check of the token signature/issuer and not the token\u2019s scope.",
       "tags": [
         "cisa-kev",
         "known-exploited"
@@ -220,35 +603,6 @@
     {
       "affected": {
         "keywords": [
-          "cve",
-          "news",
-          "ransomware",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:cisco-fmc-flaws-exploited-to-steal-credentials-and-deploy-qilin-ransomware",
-      "kind": "news",
-      "published": "2026-09-11",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/09/cisco-fmc-flaws-exploited-to-steal.html"
-      },
-      "summary": "Cisco has revealed that three distinct threat clusters linked to ransomware and state-sponsored attacks have been exploiting two recently patched Secure Firewall Management Center (FMC) vulnerabilities. The attacks leverage CVE-2026-20079 (CVSS score: 10.0), an authentication bypass vulnerability in the web interface of FMC software that could allow an unau...",
-      "tags": [
-        "cve",
-        "news",
-        "ransomware",
-        "the-hacker-news"
-      ],
-      "title": "Cisco FMC Flaws Exploited to Steal Credentials and Deploy Qilin Ransomware",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
-    },
-    {
-      "affected": {
-        "keywords": [
           "cisa-kev",
           "known-exploited"
         ],
@@ -270,7 +624,7 @@
         "name": "CISA Known Exploited Vulnerabilities Catalog",
         "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "MikroTik RouterOS contains an improper neutralization of argument delimiters in a command vulnerability which allows an attacked to change the trusted RouterOS policy mask, leading to privilege escalation.",
+      "summary": "MikroTik RouterOS contains an improper neutralization of argument delimiters in a command vulnerability which allows an attacker to change the trusted RouterOS policy mask, leading to privilege escalation.",
       "tags": [
         "cisa-kev",
         "known-exploited"
@@ -302,40 +656,13 @@
         "name": "CISA Known Exploited Vulnerabilities Catalog",
         "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
       },
-      "summary": "MikroTik RouterOS contains a missing authenticaion for critical function vulnerability which allows kernel memory disclosure and denial of service in the btest service.",
+      "summary": "MikroTik RouterOS contains a missing authentication for critical function vulnerability which allows kernel memory disclosure and denial of service in the btest service.",
       "tags": [
         "cisa-kev",
         "known-exploited"
       ],
       "title": "MikroTik RouterOS MikroTik RouterOS Missing Authentication for Critical Function Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "news",
-          "rce",
-          "the-hacker-news"
-        ],
-        "products": [],
-        "vendors": []
-      },
-      "id": "thn:check-point-discloses-two-9-8-rated-vpn-certificate-flaws-enabling-unauthenticated-rce",
-      "kind": "news",
-      "published": "2026-09-10",
-      "severity": "high",
-      "source": {
-        "name": "The Hacker News",
-        "url": "https://thehackernews.com/2026/09/check-point-discloses-two-98-rated-vpn.html"
-      },
-      "summary": "Check Point has patched two critical vulnerabilities in the way its firewall and management products handle VPN certificates. The company says both could allow an unauthenticated remote attacker to run code, but only \"under specific conditions\" that it has not described. One flaw affects Check Point's Security Gateways, its firewall appliances. The other af...",
-      "tags": [
-        "news",
-        "rce",
-        "the-hacker-news"
-      ],
-      "title": "Check Point Discloses Two 9.8-Rated VPN Certificate Flaws Enabling Unauthenticated RCE",
-      "zsec_action": "Review exposure and patch through normal vendor/security channels. ZSEC will not execute actions from news items."
     },
     {
       "affected": {
@@ -1884,240 +2211,6 @@
       ],
       "title": "N-able N-central N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "credential",
-          "known-exploited"
-        ],
-        "products": [
-          "Secure Firewall Management Center (FMC)"
-        ],
-        "vendors": [
-          "Cisco"
-        ]
-      },
-      "cves": [
-        "CVE-2026-20316"
-      ],
-      "id": "cisa-kev:CVE-2026-20316",
-      "kind": "vulnerability",
-      "published": "2026-07-29",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Cisco Secure Firewall Management Center (FMC) formerly known as Firepower Management Center contains a use of hard-coded password vulnerability that could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive...",
-      "tags": [
-        "cisa-kev",
-        "credential",
-        "known-exploited"
-      ],
-      "title": "Cisco Secure Firewall Management Center (FMC) Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "FortiOS"
-        ],
-        "vendors": [
-          "Fortinet"
-        ]
-      },
-      "cves": [
-        "CVE-2025-68686"
-      ],
-      "id": "cisa-kev:CVE-2025-68686",
-      "kind": "vulnerability",
-      "published": "2026-07-27",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Fortinet FortiOS contains an exposure of sensitive information to an unauthorized actor vulnerability. This may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP...",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Fortinet FortiOS Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited",
-          "rce"
-        ],
-        "products": [
-          "VeloCloud Orchestrator"
-        ],
-        "vendors": [
-          "Arista"
-        ]
-      },
-      "cves": [
-        "CVE-2026-16812"
-      ],
-      "id": "cisa-kev:CVE-2026-16812",
-      "kind": "vulnerability",
-      "published": "2026-07-27",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Arista VeloCloud Orchestrator On-Prem contains an OS command injection vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of t...",
-      "tags": [
-        "cisa-kev",
-        "known-exploited",
-        "rce"
-      ],
-      "title": "Arista VeloCloud Orchestrator Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited"
-        ],
-        "products": [
-          "SmartConsole"
-        ],
-        "vendors": [
-          "Check Point"
-        ]
-      },
-      "cves": [
-        "CVE-2026-16232"
-      ],
-      "id": "cisa-kev:CVE-2026-16232",
-      "kind": "vulnerability",
-      "published": "2026-07-22",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Check Point SmartConsole contains an improper authentication vulnerability which could allow an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges.",
-      "tags": [
-        "cisa-kev",
-        "known-exploited"
-      ],
-      "title": "Check Point SmartConsole Check Point SmartConsole Improper Authentication Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "cve",
-          "known-exploited"
-        ],
-        "products": [
-          "SharePoint"
-        ],
-        "vendors": [
-          "Microsoft"
-        ]
-      },
-      "cves": [
-        "CVE-2026-50522"
-      ],
-      "id": "cisa-kev:CVE-2026-50522",
-      "kind": "vulnerability",
-      "published": "2026-07-22",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "Microsoft SharePoint contains a deserialization of untrusted data vulnerability which could allow an unauthorized attacker to execute code over a network.",
-      "tags": [
-        "cisa-kev",
-        "cve",
-        "known-exploited"
-      ],
-      "title": "Microsoft SharePoint Microsoft SharePoint Deserialization of Untrusted Data Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited",
-          "web"
-        ],
-        "products": [
-          "Core"
-        ],
-        "vendors": [
-          "WordPress"
-        ]
-      },
-      "cves": [
-        "CVE-2026-60137"
-      ],
-      "id": "cisa-kev:CVE-2026-60137",
-      "kind": "vulnerability",
-      "published": "2026-07-21",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "WordPress Core contains a SQL injection vulnerability when a plugin or theme passes untrusted input to the parameter. This vulnerability can be chained with CVE-2026-63030 to allow an unauthenticated attacker to gain remote code execution on default WordPress installations.",
-      "tags": [
-        "cisa-kev",
-        "known-exploited",
-        "web"
-      ],
-      "title": "WordPress Core WordPress Core SQL Injection Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
-    },
-    {
-      "affected": {
-        "keywords": [
-          "cisa-kev",
-          "known-exploited",
-          "web"
-        ],
-        "products": [
-          "Core"
-        ],
-        "vendors": [
-          "WordPress"
-        ]
-      },
-      "cves": [
-        "CVE-2026-63030"
-      ],
-      "id": "cisa-kev:CVE-2026-63030",
-      "kind": "vulnerability",
-      "published": "2026-07-21",
-      "severity": "high",
-      "source": {
-        "name": "CISA Known Exploited Vulnerabilities Catalog",
-        "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
-      },
-      "summary": "WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137.",
-      "tags": [
-        "cisa-kev",
-        "known-exploited",
-        "web"
-      ],
-      "title": "WordPress Core WordPress Core Interpretation Conflict Vulnerability",
-      "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
     }
   ],
   "policy": {
@@ -2134,7 +2227,7 @@
       "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     },
     {
-      "items": 3,
+      "items": 6,
       "name": "The Hacker News RSS",
       "status": "ok",
       "url": "https://feeds.feedburner.com/TheHackersNews"
