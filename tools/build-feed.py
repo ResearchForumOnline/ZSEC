@@ -108,6 +108,13 @@ def tags_for_text(*values):
     return sorted(tags)
 
 
+def cisa_tags(vendor, product, name, description, cve):
+    tags = set(["cisa-kev", "known-exploited"] + tags_for_text(vendor, product, name, description))
+    if cve:
+        tags.add("cve")
+    return sorted(tags)
+
+
 def news_tags_for_text(title, summary):
     tags = set(tags_for_text(title, summary))
     title_blob = (title or "").lower()
@@ -187,13 +194,14 @@ def build_cisa_items(limit):
         notes = clean_text(vuln.get("notes"), 280)
         action = "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
         title = " ".join(part for part in [vendor, product, name] if part)
-        tags = sorted(set(["cisa-kev", "known-exploited"] + tags_for_text(vendor, product, name, notes)))
+        description = clean_text(vuln.get("shortDescription"), 280)
+        tags = cisa_tags(vendor, product, name, description, cve)
         items.append({
             "id": "cisa-kev:%s" % cve,
             "kind": "vulnerability",
             "severity": "high",
             "title": title or cve,
-            "summary": clean_text(vuln.get("shortDescription"), 280) or notes,
+            "summary": description or notes,
             "published": clean_text(vuln.get("dateAdded"), 32),
             "cves": [cve] if cve else [],
             "affected": {

@@ -48,6 +48,17 @@ class FeedClassificationTests(unittest.TestCase):
         self.assertIn("rce", tags)
         self.assertEqual("high", BUILD_FEED.severity_for_text("Unauthenticated attackers can run code"))
 
+    def test_cisa_tags_ignore_tracking_notes_and_use_structured_fields(self):
+        tags = BUILD_FEED.cisa_tags(
+            "MikroTik",
+            "RouterOS",
+            "Improper Enforcement of Behavioral Workflow Vulnerability",
+            "An unauthenticated client can send an exec request.",
+            "CVE-2026-67279",
+        )
+        self.assertNotIn("ai-exposure", tags)
+        self.assertIn("cve", tags)
+
     def test_authentication_bypass_language_is_high_severity(self):
         for wording in [
             "Attackers gain access without authentication",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T20:02:06Z",
+  "generated_at": "2026-09-27T20:06:07Z",
   "home_url": "https://talktoai.org/zsec/",
   "items": [
     {
@@ -177,8 +177,8 @@
     {
       "affected": {
         "keywords": [
-          "ai-exposure",
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -201,8 +201,8 @@
       },
       "summary": "Mikrotik RouterOS contains an improper enforcement of behavioral workflow vulnerability that could allow an unauthenticated client to open a session channel and send an exec request. This vulnerability can be chained to achieve unauthenticated exploitation of CVE-2026-86060.",
       "tags": [
-        "ai-exposure",
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "MikroTik RouterOS Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability",
@@ -213,7 +213,8 @@
         "keywords": [
           "cisa-kev",
           "cve",
-          "known-exploited"
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "SharePoint"
@@ -237,7 +238,8 @@
       "tags": [
         "cisa-kev",
         "cve",
-        "known-exploited"
+        "known-exploited",
+        "rce"
       ],
       "title": "Microsoft SharePoint Microsoft SharePoint Code Injection Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -246,7 +248,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited",
+          "rce",
           "web"
         ],
         "products": [
@@ -270,7 +274,9 @@
       "summary": "WordPress Core contains a remote file inclusion vulnerability which could allow an unauthenticated attacker to make page-template resolution include a chosen readable local `.php` file outside the active theme directories, leading to remote code execution.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited",
+        "rce",
         "web"
       ],
       "title": "WordPress Core WordPress Core Remote File Inclusion Vulnerability",
@@ -280,7 +286,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "Multiple Products"
@@ -303,7 +311,9 @@
       "summary": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "rce"
       ],
       "title": "WSO2 Multiple Products WSO2 Multiple Products Path Traversal Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -312,6 +322,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -335,6 +346,7 @@
       "summary": "Adobe Commerce and Magento contains an incorrect authorization vulnerability that could allow an attacker to leverage this vulnerability to gain elevated access to sensitive resources without any user interaction.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Adobe Commerce and Magento Adobe Commerce and Magento Incorrect Authorization Vulnerability",
@@ -371,6 +383,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -394,6 +407,7 @@
       "summary": "Arista VeloCloud Orchestrator (VCO) on-prem contains an improper input validation vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availa...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Arista VeloCloud Orchestrator Arista VeloCloud Orchestrator Improper Input Validation Vulnerability",
@@ -403,7 +417,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "BIG-IP APM"
@@ -426,7 +442,9 @@
       "summary": "F5 BIG-IP APM contains a heap-based buffer overflow vulnerability when access policy and an OAuth profile are configured on a virtual server. This vulnerability could allow an unauthenticated attacker to perform remote code execution.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "rce"
       ],
       "title": "F5 BIG-IP APM F5 BIG-IP APM Heap-based Buffer Overflow Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -435,6 +453,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -458,6 +477,7 @@
       "summary": "Check Point Security Management Server, Multi-Domain Security Management Server, Log Server, Multi-Domain Log Server, and SmartEvent contain a path traversal vulnerability that allows an unauthenticated attacker to upload and execute arbitrary scripts.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Check Point Multiple Products Check Point Multiple Products Path Traversal Vulnerability",
@@ -467,6 +487,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -490,6 +511,7 @@
       "summary": "Check Point Security Gateway and Check Point Spark Firewall using Site to Site VPN or Remote Access VPN contain an improper certificate validation vulnerability which could allow an unauthenticated remote attacker to execute arbitrary code on the Gateway.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Check Point Multiple Products Check Point Multiple Products Improper Certificate Validation Vulnerability",
@@ -499,6 +521,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -522,6 +545,7 @@
       "summary": "Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Zyxel GS1900 Series Switches Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability",
@@ -531,6 +555,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "kernel",
           "known-exploited",
           "linux"
@@ -556,6 +581,7 @@
       "summary": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state.",
       "tags": [
         "cisa-kev",
+        "cve",
         "kernel",
         "known-exploited",
         "linux"
@@ -567,6 +593,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "kernel",
           "known-exploited",
           "linux"
@@ -592,6 +619,7 @@
       "summary": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-lif...",
       "tags": [
         "cisa-kev",
+        "cve",
         "kernel",
         "known-exploited",
         "linux"
@@ -603,6 +631,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "kernel",
           "known-exploited",
           "linux"
@@ -628,6 +657,7 @@
       "summary": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to b...",
       "tags": [
         "cisa-kev",
+        "cve",
         "kernel",
         "known-exploited",
         "linux"
@@ -639,6 +669,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -662,6 +693,7 @@
       "summary": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Google Pixel Google Pixel Improper Authorization Vulnerability",
@@ -671,6 +703,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -694,6 +727,7 @@
       "summary": "Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) contain an incorrect use of privileged APIs vulnerability that could allow an unauthenticated, remote attacker to gain unauthorized access to the affected device by bypassing the web-based ma...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Cisco Identity Services Engine Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability",
@@ -703,7 +737,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "lpe"
         ],
         "products": [
           "Backup"
@@ -726,7 +762,9 @@
       "summary": "Acronis Backup plugin for cPanel & WHM and extension for Plesk contains an incorrect default permissions vulnerability that could allow for privilege escalation.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "lpe"
       ],
       "title": "Acronis Backup Acronis Backup Incorrect Default Permissions Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -735,6 +773,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -758,6 +797,7 @@
       "summary": "Cisco AsyncOS software for Cisco Secure Email Gateway (SEG) contains a SQL injection vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary commands with root privileges on the underlying operating system.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Cisco Secure Email Gateway Cisco Secure Email Gateway SQL Injection Vulnerability",
@@ -767,6 +807,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -790,6 +831,7 @@
       "summary": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active remote session without authorization or host confirmation.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "ConnectWise ScreenConnect ConnectWise ScreenConnect Improper Privilege Management and Missing Authorization Vulnerability",
@@ -799,7 +841,10 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "credential",
+          "cve",
+          "known-exploited",
+          "lpe"
         ],
         "products": [
           "Artifactory"
@@ -822,7 +867,10 @@
       "summary": "JFrog Artifactory contains an incorrect authorization vulnerability that leads to a privilege escalation attack due to a validation check of the token signature/issuer and not the token\u2019s scope.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "credential",
+        "cve",
+        "known-exploited",
+        "lpe"
       ],
       "title": "JFrog Artifactory JFrog Artifactory Incorrect Authorization Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -831,6 +879,8 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "credential",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -854,6 +904,8 @@
       "summary": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources.",
       "tags": [
         "cisa-kev",
+        "credential",
+        "cve",
         "known-exploited"
       ],
       "title": "JFrog Artifactory JFrog Artifactory Improper Authentication Vulnerability",
@@ -863,6 +915,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -886,6 +939,7 @@
       "summary": "GitLab Community Edition and Enterprise Edition contains a path traversal vulnerability that allows an unauthenticated user to read arbitrary files due to an improper path confinement and missing authentication enforcement in the repository commits API.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "GitLab Community Edition and Enterprise Edition GitLab Community Edition and Enterprise Edition Path Traversal Vulnerability",
@@ -895,7 +949,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "lpe"
         ],
         "products": [
           "RouterOS"
@@ -918,7 +974,9 @@
       "summary": "MikroTik RouterOS contains an improper neutralization of argument delimiters in a command vulnerability which allows an attacker to change the trusted RouterOS policy mask, leading to privilege escalation.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "lpe"
       ],
       "title": "MikroTik RouterOS MikroTik RouterOS Improper Neutralization of Argument Delimiters in a Command Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -927,6 +985,8 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
+          "kernel",
           "known-exploited"
         ],
         "products": [
@@ -950,6 +1010,8 @@
       "summary": "MikroTik RouterOS contains a missing authentication for critical function vulnerability which allows kernel memory disclosure and denial of service in the btest service.",
       "tags": [
         "cisa-kev",
+        "cve",
+        "kernel",
         "known-exploited"
       ],
       "title": "MikroTik RouterOS MikroTik RouterOS Missing Authentication for Critical Function Vulnerability",
@@ -959,6 +1021,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -982,6 +1045,7 @@
       "summary": "Citrix NetScaler ADC and NetScaler Gateway contain an authentication-bypass vulnerability involving an alternate path or channel. When the NetScaler appliance is configured as an AAA virtual server or as a Gateway (SSL VPN, ICA Proxy, CVPN, or RDP Proxy), an unauthenticated remo...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Citrix NetScaler Citrix NetScaler Authentication Bypass Using an Alternate Path or Channel Vulnerability",
@@ -991,6 +1055,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1014,6 +1079,7 @@
       "summary": "Fortinet FortiOS, FortiSwitchManager, and FortiSASE contain a heap-based buffer overflow vulnerability that allows an attacker to execute unauthorized code or commands via specially crafted packets.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Fortinet Multiple Products Fortinet Multiple Products Heap-based Buffer Overflow Vulnerability",
@@ -1023,6 +1089,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1046,6 +1113,7 @@
       "summary": "Google Chromium V8 contains an out of bounds write vulnerability that allows a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Google Chromium V8 Google Chromium V8 Out of Bounds Write Vulnerability",
@@ -1055,6 +1123,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1078,6 +1147,7 @@
       "summary": "Cisco Secure Firewall Management Center (FMC) Software and Cisco Security Cloud Control (SCC) Firewall Management contain an authentication Bypass using an alternate path or channel vulnerability that could allow an unauthenticated, remote attacker to bypass authentication and e...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Cisco Secure Firewall Management Center (FMC) and Security Cloud Control (SCC) Firewall Management Cisco Firewall Management Center Authentication Bypass Using an Alternate Path or Channel Vulnerability",
@@ -1087,6 +1157,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1110,6 +1181,7 @@
       "summary": "Adobe Commerce and Magento Open Source contain an improper neutralization of special elements used in a template engine vulnerability that could allow an attacker to execute arbitrary code.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Adobe Commerce and Magento Adobe Commerce and Magento Improper Neutralization of Special Elements Used in a Template Engine Vulnerability",
@@ -1154,7 +1226,8 @@
         "keywords": [
           "cisa-kev",
           "cve",
-          "known-exploited"
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "N-central"
@@ -1178,7 +1251,8 @@
       "tags": [
         "cisa-kev",
         "cve",
-        "known-exploited"
+        "known-exploited",
+        "rce"
       ],
       "title": "N-able N-central N-able N-central Static Code Injection Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -1221,6 +1295,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1244,6 +1319,7 @@
       "summary": "Google Chromium V8 contains a type confusion vulnerability that allows a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrom...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Google Chromium V8 Google Chromium V8 Type Confusion Vulnerability",
@@ -1252,7 +1328,10 @@
     {
       "affected": {
         "keywords": [
+          "ai-exposure",
           "cisa-kev",
+          "credential",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1275,7 +1354,10 @@
       },
       "summary": "BerriAI LiteLLM contains an improper authentication vulnerability in the MCP Streamable HTTP endpoint that could allow an unauthenticated attacker to establish an authenticated MCP session using an arbitrary Bearer token.",
       "tags": [
+        "ai-exposure",
         "cisa-kev",
+        "credential",
+        "cve",
         "known-exploited"
       ],
       "title": "BerriAI LiteLLM BerriAI LiteLLM Improper Authentication Vulnerability",
@@ -1285,6 +1367,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1308,6 +1391,7 @@
       "summary": "Kludex Starlette contains a HTTP request/response smuggling vulnerability that could allow attackers to inject paths into the host part, prepending the actual path leading to issues such as authentication bypass when the authentication depends on the reconstructed URL\u2019s path. Th...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Kludex Starlette Kludex Starlette HTTP Request/Response Smuggling Vulnerability",
@@ -1317,6 +1401,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited",
           "rce"
         ],
@@ -1341,6 +1426,7 @@
       "summary": "Kestra OSS contains an OS command injection vulnerability that could allow an unauthenticated remote attacker to create and execute arbitrary workflows without credentials.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited",
         "rce"
       ],
@@ -1351,6 +1437,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1374,6 +1461,7 @@
       "summary": "JFrog Artifactory contains an improper authentication vulnerability that under default configuration can allow an unauthenticated attacker with network access to obtain administrative privileges.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "JFrog Artifactory JFrog Artifactory Improper Authentication Vulnerability",
@@ -1383,7 +1471,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "Switchvox"
@@ -1406,7 +1496,9 @@
       "summary": "Sangoma Switchvox contains a SQL injection vulnerability which allows an unauthenticated remote attacker to execute arbitrary SQL statements against the backend PostgreSQL database using a single crafted request, including database operations and remote code execution.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "rce"
       ],
       "title": "Sangoma Switchvox Sangoma Switchvox SQL Injection Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -1415,6 +1507,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1438,6 +1531,7 @@
       "summary": "SonicWall SMA1000 Appliances contains a server-side request forgery vulnerability that could allow a remote unauthenticated attacker to gain unauthorized access to sensitive functionality and perform unauthorized operations.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "SonicWall SMA1000 Appliances SonicWall SMA1000 Appliances Server-Side Request Forgery Vulnerability",
@@ -1447,6 +1541,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited",
           "rce"
         ],
@@ -1471,6 +1566,7 @@
       "summary": "SonicWall SMA1000 Appliances contains an OS command injection vulnerability that could enable a remote authenticated attacker as administrator to execute arbitrary OS commands, resulting in remote code execution.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited",
         "rce"
       ],
@@ -1481,6 +1577,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1504,6 +1601,7 @@
       "summary": "PaperCut NG/MF contains an unsafe reflection vulnerability that allows an attacker to manipulate system configuration parameters and execute arbitrary Java bytecode residing on the application classpath under the security context of the PaperCut server process. This vulnerabilit...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "PaperCut NG/MF PaperCut NG/MF Unsafe Reflection Vulnerability",
@@ -1513,6 +1611,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1536,6 +1635,7 @@
       "summary": "PaperCut NG/MF contains a missing authentication for critical function vulnerability which allows an unauthenticated remote attacker to modify certain system configurations. This vulnerability can be chained with CVE-2026-82078.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "PaperCut NG/MF PaperCut NG/MF Missing Authentication for Critical Function Vulnerability",
@@ -1545,6 +1645,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1568,6 +1669,7 @@
       "summary": "ownCloud contains an improper authentication vulnerability that allows an attacker to access, modify, or delete any file without authentication if the username of a victim is known, and the victim has no signing-key configured.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "ownCloud ownCloud ownCloud Improper Authentication Vulnerability",
@@ -1577,9 +1679,11 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "kernel",
           "known-exploited",
-          "linux"
+          "linux",
+          "lpe"
         ],
         "products": [
           "Kernel"
@@ -1602,9 +1706,11 @@
       "summary": "Linux Kernel contains an unspecified vulnerability that can allow for privilege escalation via IPv6 networking subsystem. This vulnerability can impact multiple products, including but not limited to Suse, Red Hat, and other products using Linux.",
       "tags": [
         "cisa-kev",
+        "cve",
         "kernel",
         "known-exploited",
-        "linux"
+        "linux",
+        "lpe"
       ],
       "title": "Linux Kernel Linux Kernel Unspecified Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -1613,6 +1719,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1636,6 +1743,7 @@
       "summary": "JFrog Artifactory contains an improper limitation of a pathname to a restricted directory vulnerability. This can allow an authenticated user to write data outside the intended Docker cache path under specific remote-repository conditions.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "JFrog Artifactory JFrog Artifactory Improper Limitation of a Pathname to a Restricted Directory Vulnerability",
@@ -1645,7 +1753,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "Ajax.NET Professional"
@@ -1668,7 +1778,9 @@
       "summary": "Ajax.NET Professional (AjaxPro) contains a deserialization of untrusted data vulnerability that could allow for remote code execution via arbitrary .NET classes. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use...",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "rce"
       ],
       "title": "Ajax.NET Professional Ajax.NET Professional Ajax.NET Professional Deserialization of Untrusted Data Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -1677,7 +1789,9 @@
       "affected": {
         "keywords": [
           "cisa-kev",
-          "known-exploited"
+          "cve",
+          "known-exploited",
+          "lpe"
         ],
         "products": [
           "Libuser"
@@ -1700,7 +1814,9 @@
       "summary": "Red Hat libuser contains a race condition vulnerability that allows authenticated local users to corrupt the /etc/passwd file to cause a denial of service or privilege escalation.",
       "tags": [
         "cisa-kev",
-        "known-exploited"
+        "cve",
+        "known-exploited",
+        "lpe"
       ],
       "title": "Red Hat Libuser Red Hat Libuser Race Condition Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -1709,6 +1825,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited",
           "lpe"
         ],
@@ -1733,6 +1850,7 @@
       "summary": "Red Hat Automatic Bug Reporting Tool (ABRT) contains a privilege escalation vulnerability that could allow local users with certain permissions to gain privileges via a symlink attack on a file with a predictable name. The impacted product(s) could be end-of-life (EoL) and/or en...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited",
         "lpe"
       ],
@@ -1743,6 +1861,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "kernel",
           "known-exploited",
           "linux"
@@ -1768,6 +1887,7 @@
       "summary": "Linux Kernel contains an out-of-bounds memory write vulnerability which could allow a local user to gain privileged access or cause a denial of service on the system.",
       "tags": [
         "cisa-kev",
+        "cve",
         "kernel",
         "known-exploited",
         "linux"
@@ -1779,6 +1899,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1802,6 +1923,7 @@
       "summary": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability which could lead to denial of service.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Citrix NetScaler ADC and NetScaler Gateway Citrix NetScaler ADC and NetScaler Gateway Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
@@ -1847,6 +1969,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1870,6 +1993,7 @@
       "summary": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Gitea Gitea Gitea Code Injection Vulnerability",
@@ -1879,6 +2003,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1902,6 +2027,7 @@
       "summary": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in contain an improper access control vulnerability that can result in unauthorized creation, deletion or modification access to critical data as well as unauthorized access to critical data or complete access to all Oracl...",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability",
@@ -1911,6 +2037,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited",
           "rce"
         ],
@@ -1935,6 +2062,7 @@
       "summary": "Zimbra Collaboration Suite (ZCS) contains an OS command injection vulnerability which could allow an unauthenticated attacker to send specially crafted SMTP requests that may result in execution of arbitrary operating system commands as the Zimbra user.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited",
         "rce"
       ],
@@ -1945,6 +2073,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -1968,6 +2097,7 @@
       "summary": "TrueConf Server contains a code injection vulnerability that could allow an unauthorized remote attacker with network access via port 4307/TCP to use a specially crafted script to break out of the isolated environment and execute arbitrary code on the host system.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "TrueConf Server TrueConf Server Code Injection Vulnerability",
@@ -1977,6 +2107,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -2000,6 +2131,7 @@
       "summary": "TrueConf Server contains a missing authentication for critical function vulnerability which could allow a remote unauthorized attacker with network access via port 4307/TCP to execute an arbitrary script.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "TrueConf Server TrueConf Server Missing Authentication for Critical Function Vulnerability",
@@ -2009,6 +2141,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -2032,6 +2165,7 @@
       "summary": "MLflow contains a server-side request forgery vulnerability that can allow attackers to reach internal or cloud metadata services and receive response_status and response_body.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "MLflow MLflow MLflow Server-Side Request Forgery Vulnerability",
@@ -2042,7 +2176,8 @@
         "keywords": [
           "cisa-kev",
           "cve",
-          "known-exploited"
+          "known-exploited",
+          "rce"
         ],
         "products": [
           "Internet Key Exchange (IKE) Service Extensions"
@@ -2066,7 +2201,8 @@
       "tags": [
         "cisa-kev",
         "cve",
-        "known-exploited"
+        "known-exploited",
+        "rce"
       ],
       "title": "Microsoft Internet Key Exchange (IKE) Service Extensions Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability",
       "zsec_action": "Apply vendor security updates if this product is present. ZSEC clients may only auto-apply OS security packages; this feed creates a review TODO."
@@ -2075,6 +2211,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -2098,6 +2235,7 @@
       "summary": "Broadcom VMware vCenter contains a path traversal vulnerability which could allow a threat actor with network access to vCenter to execute arbitrary code.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Broadcom VMware vCenter Broadcom VMware vCenter Path Traversal Vulnerability",
@@ -2141,6 +2279,7 @@
       "affected": {
         "keywords": [
           "cisa-kev",
+          "cve",
           "known-exploited"
         ],
         "products": [
@@ -2164,6 +2303,7 @@
       "summary": "Apple macOS contains an improper authentication vulnerability that could allow an attacker on the network to authenticate to Screen Sharing without valid credentials.",
       "tags": [
         "cisa-kev",
+        "cve",
         "known-exploited"
       ],
       "title": "Apple macOS Apple macOS Improper Authentication Vulnerability",
