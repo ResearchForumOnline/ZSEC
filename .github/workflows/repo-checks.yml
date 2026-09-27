@@ -41,7 +41,23 @@ jobs:
 
           feed = json.loads(Path("site/talktoai-zsec/feed.json").read_text(encoding="utf-8"))
           assert feed.get("schema") == "zsec.feed.v1", "unexpected feed schema"
-          assert isinstance(feed.get("items"), list), "feed items must be a list"
+          items = feed.get("items")
+          assert isinstance(items, list) and items, "feed items must be a nonempty list"
+
+          item_ids = [item.get("id") for item in items]
+          assert all(isinstance(item_id, str) and item_id for item_id in item_ids), "feed item IDs must be nonempty strings"
+          assert len(item_ids) == len(set(item_ids)), "feed item IDs must be unique"
+
+          sources = {source.get("name"): source for source in feed.get("sources", [])}
+          for name in ("CISA KEV", "The Hacker News RSS"):
+              source = sources.get(name)
+              assert source, f"missing required source: {name}"
+              assert source.get("status") == "ok", f"required source is unhealthy: {name}"
+              assert isinstance(source.get("items"), int) and source["items"] > 0, f"required source is empty: {name}"
+
+          policy = feed.get("policy", {})
+          assert policy.get("remote_commands_allowed") is False, "remote commands must remain disabled"
+          assert policy.get("auto_update_scope") == "OS security packages only", "auto-update scope must remain security-only"
           print(f"Feed items: {len(feed['items'])}")
           PY
 
